@@ -6,13 +6,10 @@ import { ProfileProps } from "../types/profile";
 const reducer = (state: Array<ProfileProps> = [], action: Action) => {
     switch (action.type) {
         case ActionType.ADDUSER:
-            return state.push(action.payload);
+            return state.concat(action.payload);
         
-        // case ActionType.EDITUSER:
-        //     const newState = state.map(item => 
-        //         item.
-        //     );
-        //     return state.map(item)
+        case ActionType.REMOVEUSER:
+            return state.filter((item) => item.id !== action.id);
 
         default:
             return state

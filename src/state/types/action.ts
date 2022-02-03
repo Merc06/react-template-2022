@@ -6,10 +6,15 @@ interface AddUserAction {
     payload: ProfileProps
 }
 
+interface RemoveUserAction {
+    type: ActionType.REMOVEUSER,
+    id: number
+}
+
 interface editUserAction {
     index: number,
     type: ActionType.EDITUSER,
     payload: ProfileProps
 }
 
-export type Action = AddUserAction | editUserAction;
+export type Action = AddUserAction | editUserAction | RemoveUserAction;
