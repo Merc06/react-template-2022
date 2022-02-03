@@ -1,21 +1,15 @@
+import { ActionType } from "../enums";
+import { Action } from "../types/action";
+import { ProfileProps } from "../types/profile";
 
-interface AddUserAction {
-    type: "addUser",
-    payload: object
-}
 
-type Action = AddUserAction;
-
-const reducer = (state: Array<object>, action: Action) => {
+const reducer = (state: Array<ProfileProps> = [], action: Action) => {
     switch (action.type) {
-        // case "addUser":
-        //     return state + action.payload;
+        case ActionType.ADDUSER:
+            return state.concat(action.payload);
         
-        // case "editUser":
-        //     const newState = state.map(item => 
-        //         item.
-        //     );
-        //     return state.map(item)
+        case ActionType.REMOVEUSER:
+            return state.filter((item) => item.id !== action.id);
 
         default:
             return state
