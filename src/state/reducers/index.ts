@@ -8,4 +8,4 @@ const reducers = combineReducers({
 
 export default reducers;
 
-export type ProfileState = ReturnType<typeof reducers>
+export type ProfilesState = ReturnType<typeof reducers>

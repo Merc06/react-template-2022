@@ -13,6 +13,15 @@ export const addUserProfile = (item: ProfileProps) => {
     }
 }
 
+export const removeUserProfile = (id: number) => {
+    return (dispatch: Dispatch<Action>) => {
+        dispatch({
+            type: ActionType.REMOVEUSER,
+            id
+        })
+    }
+}
+
 export const editUserProfile = (index: number, item: ProfileProps) => {
     return (dispatch: Dispatch<Action>) => {
         dispatch({
