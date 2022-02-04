@@ -1,22 +1,34 @@
-import { NavLink } from 'react-router-dom';
-import { Navs } from '../../constants';
+// import { NavLink } from 'react-router-dom';
+// import { Navs } from '../../constants';
+import brandLogo from '../../../../images/brand2.png';
+import menu from '../../../../images/menu.png';
 
-const Header = () => {
+interface Props {
+    isMenuShow: boolean;
+    setIsMenuShow: (isMenuShow: boolean) => void;
+}
+
+const Header = ({
+    isMenuShow,
+    setIsMenuShow
+}: Props) => {
 
     return (
-        <div className='w-full border-gray-500 shadow bg-gray-300'>
-            <div className="flex justify-center py-2 space-x-3">
-            {
-                Navs.map(({ key, path, label }) => (
-                    <NavLink 
-                        key={key} 
-                        to={path}
-                        className={(navData) => navData.isActive ? "text-blue-700 font-bold" : "text-gray-600" }
+        <div className='w-full shadow fixed bg-white z-50 top-0'>
+            <div className="flex justify-between items-center p-4">
+                <div className='w-24'>
+                    <img src={brandLogo} alt="Logo Brand" />
+                </div>
+
+                <div className="flex items-center space-x-4">
+                    <button className='text-xs uppercase font-bold border border-gray-700 px-3 py-2 shadow rounded'>Login</button>
+                    <div
+                        className='w-6'
+                        onClick={() => setIsMenuShow(!isMenuShow)}
                     >
-                        {label}
-                    </NavLink>
-                ))
-            }
+                        <img src={menu} alt="Menu" />
+                    </div>
+                </div>
             </div>
         </div>
     );

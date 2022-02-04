@@ -1,15 +1,24 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import Header from './Header';
+import Menu from './Menu';
 
 interface Props {
     children: ReactNode;
 }
 
 const Content = ({ children }: Props) => {
+    const [isMenuShow, setIsMenuShow] = useState<boolean>(false);
     return (
         <>
-            <Header />
-            <div className='mt-14'>
+            <Header
+                isMenuShow={isMenuShow}
+                setIsMenuShow={setIsMenuShow}
+            />
+            <Menu
+                isMenuShow={isMenuShow}
+                setIsMenuShow={setIsMenuShow}
+            />
+            <div className='mt-16 p-4'>
                 {children}
             </div>
         </>
