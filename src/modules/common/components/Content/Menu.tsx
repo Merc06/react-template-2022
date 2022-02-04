@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { Navs } from '../../constants';
+import { Navs } from '../../constants/navlist-routes';
 
 interface Props {
     isMenuShow: boolean;
