@@ -39,10 +39,4 @@ export const Navs: Array<RouteProps> = [
         label: 'About',
         component: <About />
     },
-    // {
-    //     key: 'emailrequest',
-    //     path: 'email-request',
-    //     label: 'EmailRequest',
-    //     component: <EmailRequest />
-    // }
 ]

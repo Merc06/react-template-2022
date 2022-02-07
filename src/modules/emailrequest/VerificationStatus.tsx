@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Email from '../../images/email-illustration.png'
 
 const VerificationStatus = () => {
@@ -10,7 +11,7 @@ const VerificationStatus = () => {
       <h1 className="text-sm text-gray-700 text-center font-semibold">youremail@domain.com</h1>
       <h1 className="text-sm text-gray-700 text-center">Click the link, and you'll be signed in.</h1>
     </div>
-    <h1 className="text-sm text-red-600 text-center mt-5">Click here to simulate email-checking.</h1>
+    <Link to="/verification-link" className="text-sm text-red-600 text-center mt-5">Click here to simulate email-checking.</Link>
     <div className="mt-5">
       <img src={Email} alt="Email" className="h-72" />
     </div>
