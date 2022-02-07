@@ -1836,22 +1836,8 @@ export const ChevronDown = ({...rest}) => (
 )
 
 export const ChevronRight = ({...rest}) => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    aria-hidden="true" 
-    role="img" 
-    width="1em" 
-    height="1em" 
-    preserveAspectRatio="xMidYMid meet" 
-    viewBox="0 0 24 24"
-    {...rest}>
-      <g fill="none">
-      <path 
-        fillRule="evenodd" 
-        clipRule="evenodd" 
-        d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11s11-4.925 11-11S18.075 1 12 1zM9.793 8.707a1 1 0 0 1 1.414-1.414l4 4a1 1 0 0 1 0 1.414l-4 4a1 1 0 0 1-1.414-1.414L13.086 12L9.793 8.707z" 
-        fill="currentColor"/>
-      </g>
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" {...rest}>
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={4} d="M9 5l7 7-7 7" />
   </svg>
 )
 
@@ -2509,5 +2495,11 @@ export const IconPin = ({ ...rest }) => (
     <g fill="currentColor">
       <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588c-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828l-3.182 3.182c-.195.195-1.219.902-1.414.707c-.195-.195.512-1.22.707-1.414l3.182-3.182l-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"/>
     </g>
+  </svg>
+)
+
+export const IconPlay = ({ ...rest }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
   </svg>
 )
