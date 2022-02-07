@@ -6,6 +6,7 @@ const Categories = lazy(() => import('../../categories'));
 const Resources = lazy(() => import('../../resources'));
 const ProGigs = lazy(() => import('../../pro-gigs'));
 const About = lazy(() => import('../../about'));
+// const EmailRequest = lazy(() => import('../../emailrequest'));
 
 export const Navs: Array<RouteProps> = [
     {
@@ -37,5 +38,11 @@ export const Navs: Array<RouteProps> = [
         path: 'about',
         label: 'About',
         component: <About />
-    }
+    },
+    // {
+    //     key: 'emailrequest',
+    //     path: 'email-request',
+    //     label: 'EmailRequest',
+    //     component: <EmailRequest />
+    // }
 ]
