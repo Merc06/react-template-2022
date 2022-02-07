@@ -18,7 +18,7 @@ const Content = ({ children }: Props) => {
                 isMenuShow={isMenuShow}
                 setIsMenuShow={setIsMenuShow}
             />
-            <div className='mt-16 p-4'>
+            <div className='mt-16'>
                 {children}
             </div>
         </>
