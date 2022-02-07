@@ -4,7 +4,7 @@ import GigLogo from '../../images/GigLogo.png';
 
 const VerificationLink = () => {
   return (
-  <div className="flex flex-col items-center justify-center px-10 mt-7">
+  <div className="flex flex-col items-center justify-center px-10 pt-12">
     <img src={GigLogo} alt="GigLogo" className="w-24" />
     <h1 className="text-gray-700 text-2xl font-semibold mt-8">You're almost there!</h1>
     <p className="mt-8 text-xs text-gray-500 text-center">
