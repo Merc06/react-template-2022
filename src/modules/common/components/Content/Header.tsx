@@ -20,14 +20,11 @@ const Header = ({
                     <img src={brandLogo} alt="Logo Brand" />
                 </div>
 
-                <div className="flex items-center space-x-4">
-                    <button className='text-xs uppercase font-bold border border-gray-700 px-3 py-2 shadow rounded'>Login</button>
-                    <div
-                        className='w-6'
-                        onClick={() => setIsMenuShow(!isMenuShow)}
-                    >
-                        <img src={menu} alt="Menu" />
-                    </div>
+                <div
+                    className='w-6'
+                    onClick={() => setIsMenuShow(!isMenuShow)}
+                >
+                    <img src={menu} alt="Menu" />
                 </div>
             </div>
         </div>
