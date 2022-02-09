@@ -8,6 +8,7 @@ import VerificationStatus from './modules/emailrequest/VerificationStatus';
 import VerificationLink from './modules/emailrequest/VerificationLink';
 import UserType from './modules/auth/components/UserType';
 import getToken from './helpers/getToken';
+import PageSetup from './modules/pagesetup';
 
 const Router = () => {
     const PageNotFound = lazy(() => import('./modules/common/components/PageNotFound'));
@@ -25,6 +26,8 @@ const Router = () => {
                 <Route path="/email-request" element={<EmailRequest />} />
                 <Route path="/verification-status" element={<VerificationStatus />} />
                 <Route path="/verification-link" element={<VerificationLink />} />
+
+                <Route path="/page-setup" element={<PageSetup />} />
                 {
                     Navs.map(({ path, key, component }) => (
                     <Route path={path} key={key} element={component} />
