@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-import Seller from '../../images/Seller.png';
-import Manager from '../../images/Manager.png';
-import { IconPlay } from '../common/components/Icons';
+import Seller from '../../../images/Seller.png';
+import Manager from '../../../images/Manager.png';
+import { IconPlay } from '../../common/components/Icons';
 
-const GetStarted = () => {
+const UserType = () => {
   const [item] = useState ([
     {
       img: Seller, 
@@ -49,4 +49,4 @@ const GetStarted = () => {
   );
 };
 
-export default GetStarted;
+export default UserType;

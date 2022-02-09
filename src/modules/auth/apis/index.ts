@@ -18,3 +18,21 @@ export const signupEmail = async (
       callback();
     }
 };
+
+export const signupVerify = async (
+    payload: object,
+    callback: () => void
+) => {
+    const cancellationKey = createKey('sign-up-verify');
+    const res = await api.post('signup/verify', {
+      payload,
+      cancelToken: cancellationKey.token,
+    });
+  
+    removeKey('sign-up-verify');
+    if (res) {
+      toastMessage(res);
+      localStorage.setItem('token', res?.data?.token?.token);
+      callback();
+    }
+  };
