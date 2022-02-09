@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import gigs from "../../../images/token-gigs.png";
+import gigs from "../../../images/token-gigs2.png";
 import { ChevronRight, IconPlay } from "../../common/components/Icons";
 
 const Banner = () => {

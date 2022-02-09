@@ -8,17 +8,17 @@ import VerificationStatus from './modules/emailrequest/VerificationStatus';
 import VerificationLink from './modules/emailrequest/VerificationLink';
 import VerificationSuccess from './modules/emailrequest/VerificationSuccess';
 import GetStarted from './modules/emailrequest/GetStarted';
+import getToken from './helpers/getToken';
 
 const Router = () => {
     const Home = lazy(() => import('./modules/home'));
     const PageNotFound = lazy(() => import('./modules/common/components/PageNotFound'));
-    
+    const Auth = lazy(() => import('./modules/auth'));
 
     return (
         <>
             <Routes>
-                
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={getToken() ? <Home /> : <Auth />} />
                 {
                     Navs.map(({ path, key, component }) => (
                     <Route path={path} key={key} element={component} />

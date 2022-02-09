@@ -1,21 +1,23 @@
-import { Suspense } from 'react';
+import { lazy, Suspense } from 'react';
+import { Toaster } from 'react-hot-toast';
 
-import Loading from './modules/common/components/Loading';
 import Content from './modules/common/components/Content';
-
 import './App.css';
-import Routes from './Routes';
+import Spinner from './modules/common/components/Spinner';
 
 
 function App() {
-
+  const Routes = lazy(() => import('./Routes'));
 
   return (
-    <Content>
-      <Suspense fallback={<Loading />}>
-        <Routes />
+    <>
+      <Suspense fallback={<Spinner />}>
+        <Content>
+          <Routes />
+        </Content>
+        <Toaster />
       </Suspense>
-    </Content>
+    </>
   );
 }
 
