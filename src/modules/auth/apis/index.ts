@@ -35,4 +35,21 @@ export const signupVerify = async (
       localStorage.setItem('token', res?.data?.token?.token);
       callback();
     }
+};
+
+
+export const signupUserType = async (
+    payload: object,
+    callback: () => void
+) => {
+    const cancellationKey = createKey('profile-type');
+    const res = await api.put('profile/type', {
+      payload,
+      cancelToken: cancellationKey.token,
+    });
+    removeKey('profile-type');
+    
+    if (res) {
+      callback();
+    }
   };
