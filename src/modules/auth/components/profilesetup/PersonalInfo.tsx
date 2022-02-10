@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {IconSquareEdit} from '../../../common/components/Icons'
+import {IconSquareEdit, PlusIcon} from '../../../common/components/Icons'
 
 import Dp from '../../../../images/famousLogo.png'
 
@@ -32,35 +32,25 @@ const PersonalInfo = () => {
         <h1 className="text-blue-700 font-medium text-xs">Change</h1>
       </button>
     </div>
-    <div className="flex justify-between items-center">
-      <h1 className="text-xs text-gray-700 font-medium tracking-wide pt-4">
+    <h1 className="text-xs text-gray-700 font-medium tracking-wide pt-4">
+      Description<span className="text-red-500">*</span>
+    </h1>
+    <textarea 
+      name="Desc" 
+      id="Descrioption"
+      placeholder="I am..."
+      className="border border-gray-300 p-2 text-xs rounded-md focus:outline-none text-gray-400"></textarea>
+    <div className="flex justify-between items-center pt-4">
+      <h1 className="text-xs text-gray-700 font-medium tracking-wide">
         Language<span className="text-red-500">*</span>
       </h1>
       <button className="flex items-center space-x-1">
-        <h1 className="text-xs text-blue-700 font-medium tracking-wide pt-4 uppercase">
-          + Add New
+        <PlusIcon className="text-blue-700"/>
+        <h1 className="text-xs text-blue-700 font-medium tracking-wide uppercase">
+          Add New
         </h1>
       </button>
     </div>
-    <table className="text-xs table-auto border-0">
-      <thead>
-        <tr className="bg-gray-200">
-          <th className="border-0 p-1">Language</th>
-          <th className="border-0 p-1">Level</th>
-          <th className="border-0 p-1"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr className="text-center">
-          <td className="p-1 border-r-0 border-gray-200">English</td>
-          <td className="p-1 border-r-0 border-l-0 border-gray-200">Conversational</td>
-          <td className="p-1 flex justify-center border-gray-200 space-x-1 items-center border-l-0">
-            <button className="text-xs text-blue-700 font-semibold uppercase">Edit</button>
-            <button className="text-xs text-blue-700 font-semibold uppercase">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
   </div>
   );
 };
