@@ -556,7 +556,7 @@ export const IconSquareEdit = ({ ...rest }) => (
       data-name="Icon awesome-edit"
       d="M10.28,2.28l2.3,2.467a.281.281,0,0,1,0,.377L7.006,11.1l-2.369.282a.515.515,0,0,1-.549-.588l.263-2.538L9.927,2.28A.238.238,0,0,1,10.28,2.28Zm4.136-.626L13.17.319a.952.952,0,0,0-1.409,0l-.9.968a.281.281,0,0,0,0,.377l2.3,2.467a.238.238,0,0,0,.352,0l.9-.968a1.124,1.124,0,0,0,0-1.51ZM9.8,9.472v2.784H1.634V3.5H7.5a.3.3,0,0,0,.217-.1L8.74,2.315a.332.332,0,0,0-.217-.561h-7.3A1.272,1.272,0,0,0,0,3.067v9.627a1.272,1.272,0,0,0,1.226,1.313h8.988a1.272,1.272,0,0,0,1.226-1.313V8.378a.3.3,0,0,0-.523-.232L9.894,9.24A.349.349,0,0,0,9.8,9.472Z"
       transform="translate(0 -0.007)"
-      fill="inherit"
+      fill="CurrentColor"
     />
   </svg>
 );
@@ -1815,6 +1815,25 @@ export const FilterIcon = ({...rest}) => (
   </svg>
 )
 
+export const ChevronLeft = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 24 24"
+    className="inline-block fill-current"
+    {...rest}
+  >
+    <path 
+      d="M13.293 6.293L7.586 12l5.707 5.707l1.414-1.414L10.414 12l4.293-4.293z" 
+      fill="currentColor"
+    />
+  </svg>
+)
+
 export const ChevronDown = ({...rest}) => (
   <svg 
     xmlns="http://www.w3.org/2000/svg" 
@@ -2499,7 +2518,162 @@ export const IconPin = ({ ...rest }) => (
 )
 
 export const IconPlay = ({ ...rest }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    className="h-5 w-5" 
+    viewBox="0 0 20 20" 
+    fill="currentColor"
+    {...rest}
+  >
+    <path 
+      fillRule="evenodd" 
+      d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" 
+      clipRule="evenodd"
+    />
+  </svg>
+)
+
+export const FbIcon = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="0.49em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 486.037 1000"
+    className="inline-block fill-current"
+    {...rest}
+  >
+    <path 
+      d="M124.074 1000V530.771H0V361.826h124.074V217.525C124.074 104.132 197.365 0 366.243 0C434.619 0 485.18 6.555 485.18 6.555l-3.984 157.766s-51.564-.502-107.833-.502c-60.9 0-70.657 28.065-70.657 74.646v123.361h183.331l-7.977 168.945H302.706V1000H124.074" 
+      fill="currentColor"
+    />
+  </svg>
+)
+
+export const GoogleIcon = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 32 32"
+    className="inline-block fill-current"
+    {...rest}
+  >
+  <path 
+    d="M27.39 13.82H16.21v4.63h6.44c-.6 2.95-3.11 4.64-6.44 4.64a7.09 7.09 0 0 1 0-14.18a7 7 0 0 1 4.42 1.58L24.12 7a12 12 0 1 0-7.91 21c6 0 11.45-4.36 11.45-12a9.56 9.56 0 0 0-.27-2.18z" 
+    fill="currentColor"
+  />
+  </svg>
+)
+
+export const TwitterIcon = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 1024 1024"
+    className="inline-block fill-current"
+    {...rest}
+  >
+    <path 
+      d="M928 254.3c-30.6 13.2-63.9 22.7-98.2 26.4a170.1 170.1 0 0 0 75-94a336.64 336.64 0 0 1-108.2 41.2A170.1 170.1 0 0 0 672 174c-94.5 0-170.5 76.6-170.5 170.6c0 13.2 1.6 26.4 4.2 39.1c-141.5-7.4-267.7-75-351.6-178.5a169.32 169.32 0 0 0-23.2 86.1c0 59.2 30.1 111.4 76 142.1a172 172 0 0 1-77.1-21.7v2.1c0 82.9 58.6 151.6 136.7 167.4a180.6 180.6 0 0 1-44.9 5.8c-11.1 0-21.6-1.1-32.2-2.6C211 652 273.9 701.1 348.8 702.7c-58.6 45.9-132 72.9-211.7 72.9c-14.3 0-27.5-.5-41.2-2.1C171.5 822 261.2 850 357.8 850C671.4 850 843 590.2 843 364.7c0-7.4 0-14.8-.5-22.2c33.2-24.3 62.3-54.4 85.5-88.2z" 
+      fill="currentColor"
+    />
+  </svg>
+)
+
+export const GithubIcon = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 24 24"
+    className="inline-block fill-current"
+    {...rest}
+  >
+    <g fill="none">
+      <path 
+        fill-rule="evenodd" 
+        clip-rule="evenodd" 
+        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385c.6.105.825-.255.825-.57c0-.285-.015-1.23-.015-2.235c-3.015.555-3.795-.735-4.035-1.41c-.135-.345-.72-1.41-1.23-1.695c-.42-.225-1.02-.78-.015-.795c.945-.015 1.62.87 1.845 1.23c1.08 1.815 2.805 1.305 3.495.99c.105-.78.42-1.305.765-1.605c-2.67-.3-5.46-1.335-5.46-5.925c0-1.305.465-2.385 1.23-3.225c-.12-.3-.54-1.53.12-3.18c0 0 1.005-.315 3.3 1.23c.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23c.66 1.65.24 2.88.12 3.18c.765.84 1.23 1.905 1.23 3.225c0 4.605-2.805 5.625-5.475 5.925c.435.375.81 1.095.81 2.22c0 1.605-.015 2.895-.015 3.3c0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" 
+        fill="currentColor"
+      />
+    </g>
+  </svg>
+)
+
+export const StackOverflowIcon = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 24 24"
+    className="inline-block fill-current"
+    {...rest}
+  >
+    <g fill="none">
+      <path 
+        d="M18.372 20.222v-5.358h1.79V22H4v-7.136h1.79v5.358h12.582z" 
+        fill="currentColor"
+      />
+      <path 
+        d="M7.768 14.356l8.79 1.824l.372-1.755L8.14 12.6l-.372 1.756zm1.162-4.157l8.14 3.764l.744-1.617l-8.14-3.787l-.744 1.64zm2.256-3.973l6.907 5.705l1.14-1.363l-6.907-5.704l-1.14 1.362zM15.651 2L14.21 3.062l5.35 7.16L21 9.159L15.651 2zm-8.07 16.42h8.977v-1.778H7.581v1.778z" 
+        fill="currentColor"
+      />
+    </g>
+  </svg>
+)
+
+export const EmailIcon = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 36 36"
+    className="inline-block fill-current"
+    {...rest}
+  >
+    <path 
+      className="clr-i-outline clr-i-outline-path-1" d="M32 6H4a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h28a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2zm-1.54 22H5.66l7-7.24l-1.44-1.39L4 26.84V9.52l12.43 12.37a2 2 0 0 0 2.82 0L32 9.21v17.5l-7.36-7.36l-1.41 1.41zM5.31 8h25.07L17.84 20.47z" 
+      fill="currentColor"
+    />
+  </svg>
+)
+
+export const TelephoneIcon = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 16 16"
+    className="inline-block fill-current"
+    {...rest}
+  >
+    <g fill="currentColor">
+      <path 
+        fill-rule="evenodd" 
+        d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42a18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"
+      />
+    </g>
   </svg>
 )

@@ -11,6 +11,7 @@ const Router = () => {
     const Home = lazy(() => import('./modules/home'));
     const Auth = lazy(() => import('./modules/auth'));
     const CreateAccount = lazy(() => import('./modules/auth/components/CreateAccount'));
+    const ProfileSetup = lazy(() => import('./modules/auth/components/profilesetup/ProfileSetup'));
 
     return (
         <>
@@ -20,7 +21,7 @@ const Router = () => {
                 <Route path="/user-type" element={<UserType />} />
 
                 <Route path="/verification-link" element={<VerificationLink />} />
-
+                <Route path="/profile-setup" element={<ProfileSetup />} />
                 {
                     Navs.map(({ path, key, component }) => (
                     <Route path={path} key={key} element={component} />
