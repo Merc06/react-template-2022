@@ -6,9 +6,9 @@ interface Props {
 }
 
 const Header = ({ title, onClose }: Props) => (
-  <div className="flex items-center justify-between p-4 border-b border-solid border-gray-100 rounded-t-lg bg-blue-400">
-    <h3 className="text-sm flex-1 font-meduim text-white tracking-wider">{title}</h3>
-    <button
+  <div className="flex items-center justify-between p-4 border-b border-solid border-gray-100 rounded-t-lg bg-gray-200">
+    <h3 className="text-sm flex-1 font-meduim text-grayblack text-center font-bold tracking-wider">{title}</h3>
+    {/* <button
       data-testid="modal-header-close"
       type="button"
       className="rounded-full bg-white ml-auto bg-transparent border-0 text-blue-400 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
@@ -17,7 +17,7 @@ const Header = ({ title, onClose }: Props) => (
       <span className="bg-transparent h-5 w-5 text-xl block outline-none focus:outline-none">
         ×
       </span>
-    </button>
+    </button> */}
   </div>
 );
 
