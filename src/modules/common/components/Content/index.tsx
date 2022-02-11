@@ -1,5 +1,6 @@
 import React, { ReactNode, useState } from 'react';
-import getToken from '../../../../helpers/getToken';
+import useAppSelector from '../../../../helpers/useAppSelector';
+import { ProfileProps } from '../../types';
 import Header from './Header';
 import Menu from './Menu';
 
@@ -9,12 +10,12 @@ interface Props {
 
 const Content = ({ children }: Props) => {
     const [isMenuShow, setIsMenuShow] = useState<boolean>(false);
-    const token = getToken();
+    const profile: ProfileProps = useAppSelector('common.profile');
 
     return (
         <>
             {
-                token &&
+                profile.first_name &&
                 <>
                     <Header
                         isMenuShow={isMenuShow}
@@ -26,7 +27,7 @@ const Content = ({ children }: Props) => {
                     />
                 </>
             }
-            <div className={`${token && 'mt-16'}`}>
+            <div className={`${profile.first_name && 'mt-16'}`}>
                 {children}
             </div>
         </>

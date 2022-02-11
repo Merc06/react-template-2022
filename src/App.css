@@ -2,15 +2,28 @@ body {
     background-color: #fafafa;
 }
 
-table, th, td {
+/* table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
 }
 
 table {
     min-width: 35%;
-}
+} */
 
 th, td {
     padding: 2px 8px;
 }
+
+.uploadcare--powered-by {
+    display: none;
+  }
+  
+  .uploadcare--widget,
+  .uploadcare--widget__button,
+  .uploadcare--widget__dragndrop-area,
+  .uploadcare--progress,
+  .uploadcare--widget__text {
+    display: none;
+    position: absolute;
+  }
