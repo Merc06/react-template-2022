@@ -79,9 +79,9 @@ const Form = () => {
                 </div>
             }
 
-            <div className='border-b border-gray-200 py-1' />
+            {/* <div className='border-b border-gray-200 py-1' /> */}
 
-            <div className='flex justify-center items-center space-x-1'>
+            <div className='flex justify-center items-center space-x-1 py-1'>
                 {
                     type === 'LOGIN' ?
                     <>
