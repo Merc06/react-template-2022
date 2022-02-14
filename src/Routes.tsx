@@ -3,21 +3,19 @@ import { lazy } from 'react';
 
 import { Navs } from './modules/common/constants/navlist-routes';
 import VerificationLink from './modules/emailrequest/VerificationLink';
-import getToken from './helpers/getToken';
 import ProtectedRoutes from './ProtectedRoutes';
 
 const Router = () => {
     const PageNotFound = lazy(() => import('./modules/common/components/PageNotFound'));
-    const Home = lazy(() => import('./modules/home'));
     const Auth = lazy(() => import('./modules/auth'));
     const CreateAccount = lazy(() => import('./modules/auth/components/CreateAccount'));
-    const UserType = lazy(() => import('./modules/auth/components/UserType'));
-    const ProfileSetup = lazy(() => import('./modules/auth/components/profilesetup/ProfileSetup'));
+    const UserType = lazy(() => import('./modules/profilesetup/components/UserType'));
+    const ProfileSetup = lazy(() => import('./modules/profilesetup/components/ProfileSetup'));
 
     return (
         <>
             <Routes>
-                <Route path="/" element={getToken() ? <Home /> : <Auth />} />
+                <Route path="/" element={<Auth />} />
                 <Route path="/signup/verify" element={<CreateAccount />} />
 
                 <Route element={<ProtectedRoutes />}>

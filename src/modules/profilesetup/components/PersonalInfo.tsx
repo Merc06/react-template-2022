@@ -1,14 +1,17 @@
-import React, { Dispatch, SetStateAction, SyntheticEvent, useState } from 'react';
+import React, { Dispatch, SetStateAction, SyntheticEvent, useEffect, useState } from 'react';
 import { FileInfo } from '@uploadcare/react-widget';
 
-import {IconSquareEdit} from '../../../common/components/Icons'
+import {IconSquareEdit} from '../../common/components/Icons'
 
-import Dp from '../../../../images/famousLogo.png'
-import { LanguageInfo, PersonalInfoState } from '../../types';
-import Input from '../../../common/components/Input';
-import Uploader from '../../../common/components/Uploader';
-import TextArea from '../../../common/components/TextArea';
-import LanguageFormModal from './LanguageFormModal';
+import Dp from '../../../images/famousLogo.png'
+import { PersonalInfoState } from '../../auth/types';
+import Input from '../../common/components/Input';
+import Uploader from '../../common/components/Uploader';
+import TextArea from '../../common/components/TextArea';
+import LanguageFormModal from './Modal';
+import useAppSelector from '../../../helpers/useAppSelector';
+import { deleteLanguage, getLanguageList } from '../apis';
+import { LanguageProps } from '../types';
 
 interface Props {
   personalInfoState: PersonalInfoState,
@@ -20,7 +23,12 @@ const PersonalInfo = ({
   setPersonalInfoState
 }: Props) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [LanguagesState, setLanguagesState] = useState<Array<LanguageInfo>>([]);
+  const [itemToEdit, setItemToEdit] = useState<any>({});
+  const languageList: Array<LanguageProps> = useAppSelector('profile.languageList');
+
+  useEffect(() => {
+    getLanguageList();
+  }, []);
 
   const onChange = (e: SyntheticEvent): void => {
     const { name, value } = e.target as HTMLInputElement;
@@ -38,8 +46,19 @@ const PersonalInfo = ({
     // setLoadingUploadcare(false)
   };
 
-  console.log(LanguagesState)
-  
+  const onEditLanguage = (item: LanguageProps) => {
+    setItemToEdit({
+      ...itemToEdit,
+      ...item
+    })
+
+    setIsModalOpen(true);
+  }
+
+  const onDeleteLanguage = (id: string) => {
+    deleteLanguage(id, () => {})
+  }
+
   return (
     <>
     <div className="flex flex-col space-y-3">
@@ -125,14 +144,24 @@ const PersonalInfo = ({
         </thead>
         <tbody>
         {
-          LanguagesState.length ?
-          LanguagesState.map((item, key) => (
-              <tr className="text-center" key={key}>
+          languageList ?
+          languageList.map((item) => (
+              <tr className="text-center" key={item.id}>
                 <td colSpan={1} className="p-1 border-r-0 border-gray-200">{item.language}</td>
-                <td colSpan={1} className="p-1 border-r-0 border-l-0 border-gray-200">{item.proficiency}</td>
+                <td colSpan={1} className="p-1 border-r-0 border-l-0 border-gray-200">{item.level}</td>
                 <td colSpan={1} className="p-1 flex justify-center border-gray-200 space-x-1 items-center border-l-0">
-                  <button className="text-xs text-blue-700 font-semibold uppercase">Edit</button>
-                  <button className="text-xs text-blue-700 font-semibold uppercase">Delete</button>
+                  <button
+                    className="text-xs text-blue-700 font-semibold uppercase"
+                    onClick={() => onEditLanguage(item)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="text-xs text-blue-700 font-semibold uppercase"
+                    onClick={() => onDeleteLanguage(item.id)}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
           )) :
@@ -146,8 +175,9 @@ const PersonalInfo = ({
     <LanguageFormModal
       isModalOpen={isModalOpen}
       setIsModalOpen={setIsModalOpen}
-      LanguagesState={LanguagesState}
-      setLanguagesState={setLanguagesState}
+      itemToEdit={itemToEdit}
+      setItemToEdit={setItemToEdit}
+      type="LANGUAGE"
     />
     </>
   );

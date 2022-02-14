@@ -7,22 +7,15 @@ interface CreateAccountState {
     code: string;
 }
 
-interface LanguageInfo {
-    language: string;
-    proficiency: string;
-}
-
 interface PersonalInfoState {
     first_name: string;
     last_name: string;
     photo: string;
-    languages: Array<LanguageInfo>;
     description: string;
 }
 
 
 export type {
     CreateAccountState,
-    PersonalInfoState,
-    LanguageInfo
+    PersonalInfoState
 }

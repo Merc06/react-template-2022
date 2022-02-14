@@ -7,9 +7,10 @@ import {
 import type {
   ProfileProps
 } from '../../../modules/common/types';
-import toastMessage from '../../../helpers/toastMessage';
 
-export const getProfile = async () => {
+export const getProfile = async (
+  callback: (res: ProfileProps) => void
+) => {
   const cancellationKey = createKey('profile');
   const res = await api.get('profile', {
     cancelToken: cancellationKey.token,
@@ -17,13 +18,14 @@ export const getProfile = async () => {
   removeKey('profile');
 
   if (res as ProfileProps) {
+    callback(res)
     dispatch(setProfile(res));
   }
 };
 
 export const updateProfile = async (
   payload: object,
-  callback: () => void = () => {}
+  callback: () => void
 ) => {
   const cancellationKey = createKey('update-profile');
   const res = await api.put('profile', {
@@ -33,7 +35,7 @@ export const updateProfile = async (
   removeKey('update-profile');
 
   if (res) {
-    toastMessage(res);
     callback();
   }
 };
+

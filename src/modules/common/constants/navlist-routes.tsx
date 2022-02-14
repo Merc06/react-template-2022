@@ -11,7 +11,7 @@ const About = lazy(() => import('../../about'));
 export const Navs: Array<RouteProps> = [
     {
         key: 'home',
-        path: '/',
+        path: '/home',
         label: 'Home',
         component: <Home />
     },
