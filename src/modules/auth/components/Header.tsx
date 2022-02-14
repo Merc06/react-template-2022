@@ -1,5 +1,5 @@
 import brandLogo from '../../../images/brand2.png';
-import imgLogin from '../../../images/img-login.png';
+import imgLogin from '../../../images/img-landing-banner-graphic-v2.png';
 import gig from '../../../images/gig.png';
 
 const Header = () => {

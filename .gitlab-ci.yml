@@ -1,0 +1,102 @@
+cache:
+  paths:
+    - node_modules/
+    - .yarn
+
+stages:
+  - build
+  - test
+  - deploy
+
+build:staging:
+  image: node:16
+  stage: build
+  variables:
+    REACT_APP_ENDPOINT: $STAGING_REACT_APP_ENDPOINT
+    REACT_APP_URL: $STAGING_REACT_APP_URL
+  script:
+    - echo "Building on staging..."
+    - CI=false
+    - yarn config set cache-folder .yarn
+    - yarn install --pure-lockfile --cache-folder .yarn
+    - yarn
+    - yarn build
+  artifacts:
+    paths:
+      - ./build
+  only:
+    - staging
+
+build:production:
+  image: node:12
+  stage: build
+  variables:
+    REACT_APP_ENDPOINT: $PRODUCTION_REACT_APP_ENDPOINT
+    REACT_APP_URL: $PRODUCTION_REACT_APP_URL
+  script:
+    - echo "Building on production..."
+    - CI=false
+    - yarn config set cache-folder .yarn
+    - yarn install --pure-lockfile --cache-folder .yarn
+    - yarn
+    - yarn build
+  artifacts:
+    paths:
+      - ./build
+  only:
+    - main
+
+test:staging:
+  image: node:16
+  stage: test
+  script:
+    - echo "Running test on staging..."
+  only:
+    - staging
+
+test:production:
+  image: node:12
+  stage: test
+  script:
+    - echo "Running test on production..."
+  only:
+    - main
+
+deploy:staging:
+  image: python:latest
+  stage: deploy
+  variables:
+    AWS_ACCESS_KEY_ID: $STAGING_AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY: $STAGING_AWS_SECRET_ACCESS_KEY
+    AWS_S3_BUCKET: $STAGING_AWS_S3_BUCKET
+    AWS_DISTRIBUTION_ID: $STAGING_AWS_DISTRIBUTION_ID
+  script:
+    - echo "Deploying to staging..."
+    - pip install awscli
+    - echo "Uploading to s3://$STAGING_AWS_S3_BUCKET/$CI_COMMIT_SHORT_SHA"
+    - aws s3 cp ./build/ s3://$STAGING_AWS_S3_BUCKET/$CI_COMMIT_SHORT_SHA/ --recursive
+    - aws s3 rm s3://$STAGING_AWS_S3_BUCKET/latest/ --recursive
+    - aws s3 cp s3://$STAGING_AWS_S3_BUCKET/$CI_COMMIT_SHORT_SHA/ s3://$STAGING_AWS_S3_BUCKET/latest/ --recursive
+    - aws cloudfront create-invalidation --distribution-id $STAGING_AWS_DISTRIBUTION_ID --paths '/*'
+  only:
+    - staging
+
+deploy:production:
+  image: python:latest
+  stage: deploy
+  variables:
+    AWS_ACCESS_KEY_ID: $PRODUCTION_AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY: $PRODUCTION_AWS_SECRET_ACCESS_KEY
+    AWS_S3_BUCKET: $PRODUCTION_AWS_S3_BUCKET
+    AWS_DISTRIBUTION_ID: $PRODUCTION_AWS_DISTRIBUTION_ID
+  script:
+    - echo "Deploying to production..."
+    - pip install awscli
+    - echo "Uploading to s3://$PRODUCTION_AWS_S3_BUCKET/$CI_COMMIT_SHORT_SHA"
+    - aws s3 cp ./build/ s3://$PRODUCTION_AWS_S3_BUCKET/$CI_COMMIT_SHORT_SHA/ --recursive
+    - aws s3 rm s3://$PRODUCTION_AWS_S3_BUCKET/latest/ --recursive
+    - aws s3 cp s3://$PRODUCTION_AWS_S3_BUCKET/$CI_COMMIT_SHORT_SHA/ s3://$PRODUCTION_AWS_S3_BUCKET/latest/ --recursive
+    - aws cloudfront create-invalidation --distribution-id $PRODUCTION_AWS_DISTRIBUTION_ID --paths '/*'
+  only:
+    - main
+  when: manual

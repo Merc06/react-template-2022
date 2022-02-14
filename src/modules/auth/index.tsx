@@ -22,6 +22,11 @@ const Auth = () => {
                 <div className='border-b border-gray-300 pt-2' />
             </div>
             <Form />
+            <div className="flex justify-center items-center space-x-2 pt-4 pb-7 border-t border-gray-300">
+                <h1 className="text-xs text-blue-700">Terms of Use</h1>
+                <h1 className="text-xs text-blue-700">•</h1>
+                <h1 className="text-xs text-blue-700">Privacy Policy</h1>
+            </div>
         </div>
     );
 };
