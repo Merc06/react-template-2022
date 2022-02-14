@@ -37,7 +37,6 @@ export const signupVerify = async (
     }
 };
 
-
 export const signupUserType = async (
     payload: object,
     callback: () => void
@@ -53,3 +52,20 @@ export const signupUserType = async (
       callback();
     }
   };
+
+export const loginEmail = async (
+  payload: object,
+  callback: () => void
+) => {
+  const cancellationKey = createKey('login-email');
+  const res = await api.post('auth', {
+    payload,
+    cancelToken: cancellationKey.token,
+  });
+  removeKey('login-email');
+
+  if (res) {
+    localStorage.setItem('token', res?.data?.token);
+    callback();
+  }
+};

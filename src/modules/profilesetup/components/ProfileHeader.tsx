@@ -1,9 +1,9 @@
 import React from 'react';
-import { ChevronLeft } from '../../../common/components/Icons';
+import { ChevronLeft } from '../../common/components/Icons';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 
-import GigLogo from '../../../../images/GigLogo.png';
+import GigLogo from '../../../images/GigLogo.png';
 
 const ProfileHeader = () => {
 

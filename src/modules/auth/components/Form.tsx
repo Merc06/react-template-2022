@@ -1,8 +1,12 @@
 import React, { SyntheticEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useAppSelector from '../../../helpers/useAppSelector';
 import Button from '../../common/components/Button';
+import { IconEye, IconEyeSlash } from '../../common/components/Icons';
 import Input from '../../common/components/Input';
-import { signupEmail } from '../apis';
+import InputGroup from '../../common/components/InputGroup';
+import { ProfileProps } from '../../common/types';
+import { loginEmail, signupEmail } from '../apis';
 import VerifiedModal from './VerifiedModal';
 
 interface FormProps {
@@ -16,9 +20,13 @@ const initFormState = {
 }
 
 const Form = () => {
+    const navigate = useNavigate();
+
     const [state, setState] = useState<FormProps>(initFormState);
     const [type, setType] = useState<'SIGNUP' | 'LOGIN'>('LOGIN');
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    const [isShowPass, setIsShowPass] =  useState<boolean>(false);
+    const profile: ProfileProps = useAppSelector('common.profile');
 
     const onChange = (e: SyntheticEvent) => {
         const { name, value } = e.target as HTMLInputElement;
@@ -28,7 +36,8 @@ const Form = () => {
         })
     }
 
-    const onSubmit = (btnType: 'SIGNUP' | 'LOGIN') => {
+    const onSubmit = (event: SyntheticEvent, btnType: 'SIGNUP' | 'LOGIN') => {
+        event.preventDefault();
         if (btnType === 'SIGNUP') {
             const { email } = state; 
             const payload = { email };
@@ -37,13 +46,22 @@ const Form = () => {
             });
         } else {
             // LOGIN PROCESS ...
-            console.log("Signing in!");
+            const payload = {
+                username: state.email,
+                password: state.password
+            }
+
+            loginEmail(payload, () => {
+                profile.first_name ?
+                navigate('/dashboard') :
+                navigate('/user-type')
+            });
         }
     }
 
     return (
         <>
-        <div className='py-3 space-y-3 text-xs'>
+        <form onSubmit={(event) => onSubmit(event, type)} className='py-3 space-y-3 text-xs'>
             <Input
                 value={state.email}
                 onChange={onChange}
@@ -52,17 +70,26 @@ const Form = () => {
             />
             {
                 type === 'LOGIN' &&
-                <Input
-                    type='password'
+                <InputGroup
+                    type={`${isShowPass ? 'text' : 'password'}`}
+                    placeholder="Password"
+                    name='password'
                     value={state.password}
                     onChange={onChange}
-                    name="password"
-                    placeholder="Password"
-                />
+                    icon={
+                    <div onClick={() => setIsShowPass(!isShowPass)}>
+                        {
+                        isShowPass ?
+                        <IconEye /> :
+                        <IconEyeSlash />
+                        }
+                    </div>
+                    }
+              />
             }
             <Button
+                type='submit'
                 className='uppercase bg-accent text-grayblack font-bold w-full'
-                onClick={() => onSubmit(type)}
             >
                 { type === 'LOGIN' ? 'Login' : 'Signup' } with Email
             </Button>
@@ -94,7 +121,7 @@ const Form = () => {
                     </>
                 }
             </div>
-        </div>
+        </form>
         <VerifiedModal 
             isModalOpen={isModalOpen}
             setIsModalOpen={setIsModalOpen}

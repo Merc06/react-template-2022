@@ -14,7 +14,7 @@ const Header = ({
 }: Props) => {
 
     return (
-        <div className='w-full shadow fixed bg-white z-50 top-0'>
+        <div className='w-full shadow fixed bg-white z-40 top-0'>
             <div className="flex justify-between items-center p-4">
                 <div className='w-24'>
                     <img src={brandLogo} alt="Logo Brand" />

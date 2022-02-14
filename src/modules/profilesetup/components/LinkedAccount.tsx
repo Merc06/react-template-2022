@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Button from '../../../common/components/Button';
-import { FbIcon, GithubIcon, GoogleIcon, StackOverflowIcon, TwitterIcon } from '../../../common/components/Icons';
+import Button from '../../common/components/Button';
+import { FbIcon, GithubIcon, GoogleIcon, StackOverflowIcon, TwitterIcon } from '../../common/components/Icons';
 
 const LinkedAccount = () => {
   return (

@@ -17,7 +17,7 @@ interface Props {
 
 const getString = (transparent: boolean): string => {
   const className =
-    'border-0 rounded-lg shadow-lg relative flex flex-col w-full outline-none focus:outline-none';
+    'border-0 rounded-lg shadow-lg z-50 relative flex flex-col w-full outline-none focus:outline-none';
 
   return `${className} ${transparent ? 'bg-transparent' : 'bg-white'}`;
 };

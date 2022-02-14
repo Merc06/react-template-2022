@@ -1,9 +1,18 @@
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import getToken from '../../helpers/getToken';
 import Form from './components/Form';
 import Header from './components/Header';
 import LoginWithDoc from './components/LoginWithDoc';
 
 
 const Auth = () => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        getToken() && navigate('/home');
+    })
+
     return (
         <div className='p-4 mx-8'>
             <Header />

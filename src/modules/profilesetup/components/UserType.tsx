@@ -1,18 +1,12 @@
-import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getProfile } from '../../common/apis';
 import Button from '../../common/components/Button';
 
 import { IconPlay } from '../../common/components/Icons';
-import { signupUserType } from '../apis';
-import { Items } from '../constants/userType';
+import { signupUserType } from '../../auth/apis';
+import { Items } from '../../auth/constants/userType';
 
 const UserType = () => {
   const navigate = useNavigate();
-
-  useEffect(() => {
-    getProfile();
-  }, []);
 
   const onChoose = (type: string): void => {
     signupUserType({ type }, () => {
