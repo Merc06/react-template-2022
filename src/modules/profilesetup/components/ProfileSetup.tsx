@@ -15,13 +15,18 @@ import { PersonalInfoState } from '../../auth/types';
 import { INIT_PERSONAL_INFO_STATE } from '../../auth/constants';
 import { getProfile, updateProfile } from '../../common/apis';
 import { ProfileProps } from '../../common/types';
+import { Link } from 'react-router-dom';
 
+export interface WebsiteStateProps {
+  website: string;
+}
 
 const ProfileSetup = () => {
   const [activeStep, setActiveStep] = useState(0);
   // const profile: ProfileProps = useAppSelector('common.profile');
   const [personalInfoState, setPersonalInfoState] = useState<PersonalInfoState>(INIT_PERSONAL_INFO_STATE);
   const [cRate, setcRate] = useState<string>("0");
+  const [websiteState, setWebsiteState] = useState<WebsiteStateProps>({ website: '' });
 
   useEffect(() => {
     getProfile((res: ProfileProps) => {
@@ -31,12 +36,19 @@ const ProfileSetup = () => {
         photo: res.photo || "",
         description: res.description || ""
       })
+      setWebsiteState({
+        website: res.website || ""
+      })
     });
   }, []);
 
   const nextStep = (percent: string) => {
     activeStep === 0 ?
     updateProfile(personalInfoState, () => {
+      setActiveStep((currentStep) => currentStep + 1)
+    }) :
+    activeStep === 1 ?
+    updateProfile(websiteState, () => {
       setActiveStep((currentStep) => currentStep + 1)
     }) :
     setActiveStep((currentStep) => currentStep + 1);
@@ -97,7 +109,10 @@ const ProfileSetup = () => {
         <Step>
           <StepLabel>Professional Info</StepLabel>
           <StepContent>
-            <ProfInfo />
+            <ProfInfo
+              websiteState={websiteState}
+              setWebsiteState={setWebsiteState}
+            />
             <div className="flex justify-end space-x-2 mt-7">
               <Button 
                   className="bg-gray-300 px-2 text-gray-700 uppercase font-semibold"
@@ -149,11 +164,12 @@ const ProfileSetup = () => {
                 >
                   Previous
               </Button>
-              <Button 
-                className="bg-yellow-500 px-2 text-gray-700 uppercase font-semibold"
+              <Link 
+                className="bg-yellow-500 px-2 text-gray-700 uppercase font-semibold text-xxs py-2 rounded-lg"
+                to="/profile-completed"
               >
                 Finish
-              </Button>
+              </Link>
             </div>
           </StepContent>
         </Step>

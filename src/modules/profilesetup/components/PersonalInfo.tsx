@@ -1,9 +1,10 @@
 import React, { Dispatch, SetStateAction, SyntheticEvent, useEffect, useState } from 'react';
 import { FileInfo } from '@uploadcare/react-widget';
+import _ from 'lodash';
 
 import {IconSquareEdit} from '../../common/components/Icons'
 
-import Dp from '../../../images/famousLogo.png'
+import noImage from '../../../images/no-image.jpeg';
 import { PersonalInfoState } from '../../auth/types';
 import Input from '../../common/components/Input';
 import Uploader from '../../common/components/Uploader';
@@ -96,7 +97,7 @@ const PersonalInfo = ({
         {
           personalInfoState.photo ?
           <img src={personalInfoState.photo} alt="Profile" className="h-20 w-20 border" /> :
-          <img src={Dp} alt="Display" className="h-20 w-20 border" />
+          <img src={noImage} alt="Display" className="h-20 w-20 border" />
         }
 
         <Uploader
@@ -144,7 +145,7 @@ const PersonalInfo = ({
         </thead>
         <tbody>
         {
-          languageList ?
+          !_.isEmpty(languageList) ?
           languageList.map((item) => (
               <tr className="text-center" key={item.id}>
                 <td colSpan={1} className="p-1 border-r-0 border-gray-200">{item.language}</td>

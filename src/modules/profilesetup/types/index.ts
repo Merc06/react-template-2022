@@ -43,6 +43,11 @@ type CertificationProps = {
   year: string;
 }
 
+type fieldListProps = {
+  title: string;
+  type: "LANGUAGE" | "OCCUPATION" | "SKILLS" | "EDUCATION" | "CERTIFICATION" | "";
+}
+
 export type {
   OccupationProps,
   LanguageProps,
@@ -50,4 +55,5 @@ export type {
   CertificationProps,
   SkillProps,
   SkillListProps,
+  fieldListProps
 };
