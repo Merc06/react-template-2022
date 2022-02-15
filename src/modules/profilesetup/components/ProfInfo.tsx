@@ -1,16 +1,28 @@
 import _ from 'lodash';
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Dispatch, Fragment, SetStateAction, SyntheticEvent, useEffect, useState } from 'react';
 import useAppSelector from '../../../helpers/useAppSelector';
 import Button from '../../common/components/Button';
 import { PlusIcon } from '../../common/components/Icons';
+import Input from '../../common/components/Input';
 import { deleteCertification, deleteEducation, deleteOccupation, deleteSkill, getCertificationList, getEducationList, getOccupationList, getSkillList, getSkills } from '../apis';
+import { fieldList } from '../constants/fieldList';
 import { CertificationProps, EducationProps, OccupationProps, SkillListProps } from '../types';
 // import Input from '../../../common/components/Input';
 import Modal from './Modal';
+import { WebsiteStateProps } from './ProfileSetup';
 
-const ProfInfo = () => {
+interface Props {
+  websiteState: WebsiteStateProps; 
+  setWebsiteState: Dispatch<SetStateAction<WebsiteStateProps>>
+}
+
+const ProfInfo = ({
+  websiteState,
+  setWebsiteState
+}: Props) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [itemToEdit, setItemToEdit] = useState<any>({});
+
   const [modalType, setModalType] = useState<"LANGUAGE" | "OCCUPATION" | "SKILLS" | "EDUCATION" | "CERTIFICATION" | "">("");
   
   const occupationList: Array<OccupationProps> = useAppSelector('profile.occupationList');
@@ -26,29 +38,14 @@ const ProfInfo = () => {
     getSkills();
   }, [])
 
-  interface fieldListProps {
-    title: string;
-    type: "LANGUAGE" | "OCCUPATION" | "SKILLS" | "EDUCATION" | "CERTIFICATION" | "";
-  }
 
-  const fieldList: Array<fieldListProps> = [
-    {
-      title: "Your Occupation",
-      type: "OCCUPATION"
-    },
-    {
-      title: "Skills",
-      type: "SKILLS"
-    },
-    {
-      title: "Education",
-      type: "EDUCATION"
-    },
-    {
-      title: "Certifications",
-      type: "CERTIFICATION"
-    }
-  ];
+  const onChange = (e: SyntheticEvent): void => {
+      const { name, value } = e.target as HTMLInputElement;
+      setWebsiteState({
+        ...websiteState,
+        [name]: value}
+      );
+  }
 
   const onOpenModal = async (modalType: "LANGUAGE" | "OCCUPATION" | "SKILLS" | "EDUCATION" | "CERTIFICATION" | "") => {
     await setModalType(modalType)
@@ -210,12 +207,13 @@ const ProfInfo = () => {
         <h1 className="text-xs font-semibold text-gray-700">
           Personal Website <span className="text-gray-300">(Optional)</span>
         </h1>
-        <input 
-          type="text"
-          name="text"
-          placeholder="Provide a link to your professional website"
-          className="w-full border rounded-md p-2 text-xs"
-        />
+        <Input 
+            name="website"
+            value={websiteState.website}
+            placeholder="Provide a link to your professional website"
+            className="w-full border rounded-md p-2 text-xs"
+            onChange={onChange}
+          />
       </div>
     </div>
     <Modal

@@ -13,8 +13,8 @@ interface ProfileState {
   languageList: Array<LanguageProps>;
   educationList: Array<EducationProps>;
   certificationList: Array<CertificationProps>;
-  skillList: Array<SkillProps>
-  skills: Array<SkillListProps>;
+  skillList: Array<SkillListProps>
+  skills: Array<SkillProps>;
 }
 
 const initialState: ProfileState = {
@@ -42,10 +42,10 @@ export const profileSlice = createSlice({
     setCertificationList: (state, action: PayloadAction<Array<CertificationProps>>) => {
       state.certificationList = action.payload || [];
     },
-    setSkillList: (state, action: PayloadAction<Array<SkillProps>>) => {
+    setSkillList: (state, action: PayloadAction<Array<SkillListProps>>) => {
       state.skillList = action.payload || [];
     },
-    setSkills: (state, action: PayloadAction<Array<SkillListProps>>) => {
+    setSkills: (state, action: PayloadAction<Array<SkillProps>>) => {
       state.skills = action.payload || [];
     },
   },

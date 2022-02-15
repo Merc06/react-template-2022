@@ -23,6 +23,7 @@ type ProfileProps = {
   language: Array<LanguageProps>;
   last_name: string;
   photo: string;
+  website: string;
 };
 
 
