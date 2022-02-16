@@ -10,6 +10,9 @@ module.exports = {
       fontSize: {
         'xxs': '0.60rem',
       },
+      transitionProperty: {
+        'height': 'height'
+      }
     },
   },
   variants: {

@@ -9,7 +9,7 @@ import type {
 } from '../../../modules/common/types';
 
 export const getProfile = async (
-  callback: (res: ProfileProps) => void
+  callback: (res: ProfileProps) => void = () => {}
 ) => {
   const cancellationKey = createKey('profile');
   const res = await api.get('profile', {
@@ -35,6 +35,7 @@ export const updateProfile = async (
   removeKey('update-profile');
 
   if (res) {
+    getProfile();
     callback();
   }
 };

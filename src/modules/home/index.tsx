@@ -1,15 +1,12 @@
-import Banner from "./components/Banner";
-import Content from "./components/Content";
+import Content from './components/Content';
 
-
-const Home = () => {
+const index = () => {
 
     return (
-      <>
-        <Banner />
-        <Content />
-      </>
+        <div>
+            <Content />
+        </div>
     );
 };
 
-export default Home;
+export default index;

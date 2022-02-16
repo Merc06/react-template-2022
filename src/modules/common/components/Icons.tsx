@@ -1820,8 +1820,8 @@ export const ChevronLeft = ({ ...rest }) => (
     xmlns="http://www.w3.org/2000/svg" 
     aria-hidden="true" 
     role="img" 
-    width="1em" 
-    height="1em" 
+    width="2em" 
+    height="2em" 
     preserveAspectRatio="xMidYMid meet" 
     viewBox="0 0 24 24"
     className="inline-block fill-current"
@@ -1835,28 +1835,20 @@ export const ChevronLeft = ({ ...rest }) => (
 )
 
 export const ChevronDown = ({...rest}) => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    aria-hidden="true" 
-    role="img" 
-    width="1em" 
-    height="1em" 
-    preserveAspectRatio="xMidYMid meet" 
-    viewBox="0 0 24 24"
-    {...rest}>
-      <g fill="none">
-      <path 
-        fillRule="evenodd" 
-        clipRule="evenodd" 
-        d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11s11-4.925 11-11S18.075 1 12 1zM8.707 9.793a1 1 0 0 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L12 13.086L8.707 9.793z" 
-        fill="currentColor"/>
-      </g>
+  <svg xmlns="http://www.w3.org/2000/svg" {...rest} className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
   </svg>
 )
 
 export const ChevronRight = ({...rest}) => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" {...rest}>
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={4} d="M9 5l7 7-7 7" />
+  </svg>
+)
+
+export const Chevronleft2 = ({...rest}) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" {...rest}>
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={4} d="M15 19l-7-7 7-7" />
   </svg>
 )
 

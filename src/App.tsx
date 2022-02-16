@@ -4,11 +4,12 @@ import { Toaster } from 'react-hot-toast';
 import Content from './modules/common/components/Content';
 import './App.css';
 import Spinner from './modules/common/components/Spinner';
+import { useCheckIsLogin } from './modules/common/hooks';
 
+const Routes = lazy(() => import('./Routes'));
 
 function App() {
-  const Routes = lazy(() => import('./Routes'));
-
+  useCheckIsLogin();
   return (
     <>
       <Suspense fallback={<Spinner />}>
