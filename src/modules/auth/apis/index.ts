@@ -1,6 +1,8 @@
 import api from '../../../helpers/api';
 import { createKey, removeKey } from '../../../helpers/apiCancellation';
+import dispatch from '../../../helpers/dispatch';
 import toastMessage from '../../../helpers/toastMessage';
+import { resetAuth } from '../../common/reducers';
 
 export const signupEmail = async (
     payload: object,
@@ -49,6 +51,7 @@ export const signupUserType = async (
     removeKey('profile-type');
     
     if (res) {
+      dispatch(resetAuth(true));
       callback();
     }
   };
@@ -65,6 +68,7 @@ export const loginEmail = async (
   removeKey('login-email');
 
   if (res) {
+    dispatch(resetAuth(true));
     localStorage.setItem('token', res?.data?.token);
     callback();
   }

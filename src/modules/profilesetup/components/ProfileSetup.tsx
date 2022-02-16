@@ -10,7 +10,7 @@ import PersonalInfo from './PersonalInfo';
 import ProfInfo from './ProfInfo';
 import LinkedAccount from './LinkedAccount';
 import AccountSecurity from './AccountSecurity';
-import ProfileHeader from './ProfileHeader';
+// import ProfileHeader from './ProfileHeader';
 import { PersonalInfoState } from '../../auth/types';
 import { INIT_PERSONAL_INFO_STATE } from '../../auth/constants';
 import { getProfile, updateProfile } from '../../common/apis';
@@ -63,7 +63,7 @@ const ProfileSetup = () => {
 
   return (
   <>
-    <ProfileHeader />
+    {/* <ProfileHeader /> */}
     <div className="p-4 flex flex-col space-y-5">
       <div className="flex space-x-3 items-center">
 

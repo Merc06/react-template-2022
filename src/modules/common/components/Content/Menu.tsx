@@ -19,7 +19,7 @@ const Menu = ({
                         onClick={() => setIsMenuShow(false)}
                         key={key} 
                         to={path}
-                        className={(navData) => navData.isActive ? "text-grayblack font-bold" : "text-white" }
+                        className={(navData) => navData.isActive ? "text-blue-600 font-bold" : "text-grayblack" }
                     >
                         {label}
                     </NavLink>

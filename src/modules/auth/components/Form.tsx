@@ -1,11 +1,10 @@
 import React, { SyntheticEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import useAppSelector from '../../../helpers/useAppSelector';
+
 import Button from '../../common/components/Button';
 import { IconEye, IconEyeSlash } from '../../common/components/Icons';
 import Input from '../../common/components/Input';
 import InputGroup from '../../common/components/InputGroup';
-import { ProfileProps } from '../../common/types';
 import { loginEmail, signupEmail } from '../apis';
 import VerifiedModal from './VerifiedModal';
 
@@ -26,7 +25,6 @@ const Form = () => {
     const [type, setType] = useState<'SIGNUP' | 'LOGIN'>('LOGIN');
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const [isShowPass, setIsShowPass] =  useState<boolean>(false);
-    const profile: ProfileProps = useAppSelector('common.profile');
 
     const onChange = (e: SyntheticEvent) => {
         const { name, value } = e.target as HTMLInputElement;
@@ -52,9 +50,7 @@ const Form = () => {
             }
 
             loginEmail(payload, () => {
-                profile.first_name ?
-                navigate('/dashboard') :
-                navigate('/user-type')
+                navigate('/');
             });
         }
     }

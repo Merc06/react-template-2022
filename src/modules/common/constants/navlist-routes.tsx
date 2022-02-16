@@ -1,7 +1,6 @@
 import { lazy } from "react";
 import { RouteProps } from "../types";
 
-const Home = lazy(() => import('../../home'));
 const Categories = lazy(() => import('../../categories'));
 const Resources = lazy(() => import('../../resources'));
 const ProGigs = lazy(() => import('../../pro-gigs'));
@@ -9,12 +8,6 @@ const About = lazy(() => import('../../about'));
 // const EmailRequest = lazy(() => import('../../emailrequest'));
 
 export const Navs: Array<RouteProps> = [
-    {
-        key: 'home',
-        path: '/home',
-        label: 'Home',
-        component: <Home />
-    },
     {
         key: 'categories',
         path: '/categories',
