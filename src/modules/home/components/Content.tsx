@@ -44,18 +44,18 @@ const Content = () => {
             <img src={imgLogin} className="max-h-64 mx-auto" alt="Doc-Gig Brand" />
             <div className="flex flex-col space-y-4">
                 <h1 className="text-lg text-center text-gray-400">I want to:</h1>
-                <form className="flex space-x-3 items-center justify-center">
-                    <div className="space-x-2">
+                <div className="radio-group flex space-x-3 items-center justify-center">
+                    <label className="space-x-2">
                         <input type="radio" value="choiceServices" id="services" name="service" />
                         <label className="text-gray-500" htmlFor="services">Provide services</label>
-                    </div>
-                    <div className="space-x-2">
+                    </label>
+                    <label className="space-x-2">
                         <input type="radio" value="hoiceTalents" id="talents" name="talents" />
                         <label className="text-gray-500" htmlFor="talents">Hire Talents</label>
-                    </div>
-                </form>
+                    </label>
+                </div>
                 <div className="flex justify-center pt-2">
-                    <Button className="uppercase text-lg font-semibold p-2 w-60 border-2 border-blue-800 rounded-lg">
+                    <Button className="uppercase text-sm font-semibold p-2 w-60 border-2 border-blue-800 rounded-lg">
                         Explore Doc Gig
                     </Button>
                 </div>
