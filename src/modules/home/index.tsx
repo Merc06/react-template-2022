@@ -1,6 +1,6 @@
 import Content from './components/Content';
 
-const index = () => {
+const Home = () => {
 
     return (
         <div>
@@ -9,4 +9,4 @@ const index = () => {
     );
 };
 
-export default index;
+export default Home;

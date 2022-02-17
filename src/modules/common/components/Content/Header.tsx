@@ -1,7 +1,7 @@
 // import { NavLink } from 'react-router-dom';
 // import { Navs } from '../../constants';
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import useAppSelector from '../../../../helpers/useAppSelector';
 import brandLogo from '../../../../images/brand2.png';
 import menu from '../../../../images/menu.png';
@@ -11,6 +11,7 @@ import Button from '../Button';
 import { ChevronDown } from '../Icons';
 import dispatch from '../../../../helpers/dispatch';
 import { resetAuth, setProfile } from '../../reducers';
+import { DropdownList } from '../../constants/routes';
 // import { getProfile } from '../../apis';
 
 interface Props {
@@ -58,7 +59,10 @@ const Header = ({
                         </Link> :
                         <Button
                             className='flex items-center border space-x-5 py-0.5 border-grayblack px-2'
-                            onClick={() => setIsDropDownOpen(!isDropDownOpen)}
+                            onClick={() => {
+                                setIsDropDownOpen(!isDropDownOpen);
+                                setIsMenuShow(false);
+                            }}
                         >
                             <div className='space-x-2 flex items-center'>
                                 <div className="h-4 w-4">
@@ -77,7 +81,10 @@ const Header = ({
                     }
                     <div
                         className='w-6'
-                        onClick={() => setIsMenuShow(!isMenuShow)}
+                        onClick={() => {
+                            setIsMenuShow(!isMenuShow);
+                            setIsDropDownOpen(false);
+                        }}
                     >
                         <img src={menu} alt="Menu" />
                     </div> 
@@ -87,11 +94,18 @@ const Header = ({
 
         <div className={`fixed shadow-md z-50 bg-accent rounded-md right-12 top-12 text-grayblack text-xs ${!isDropDownOpen ? 'p-0 h-0' : 'p-4 h-auto'}`}>
             <div className={`${!isDropDownOpen ? 'hidden' : 'inline'} space-y-2 flex flex-col`}>
-                <Link to="/">Create A Gig to sell</Link>
-                <Link to="/">My Gigs</Link>
-                <Link to="/">My Orders</Link>
-                <Link to="/">My Profile</Link>
-                <Link to="/">My Account Settings</Link>
+                {
+                    DropdownList.map(({ key, path, label }) => (
+                        <NavLink 
+                            onClick={() => setIsDropDownOpen(false)}
+                            key={key} 
+                            to={path}
+                            className={(navData) => navData.isActive ? "text-blue-600 font-bold" : "text-grayblack" }
+                        >
+                            {label}
+                        </NavLink>
+                    ))
+                }
                 <div
                     className='border-t border-gray-600 pt-2 cursor-pointer'
                     onClick={onLogout}
