@@ -11,6 +11,7 @@ interface Props {
   testid?: string;
   disabled?: boolean;
   className?: string;
+  readOnly?: boolean;
 }
 
 const InputGroup = ({
@@ -23,7 +24,8 @@ const InputGroup = ({
   required,
   testid,
   disabled,
-  className
+  className,
+  readOnly = false
 }: Props) => (
   <div className={`${className} input-group flex items-center border text-xs border-gray-500 rounded-lg overflow-hidden focus-within:border-accent placeholder:text-gray-400 transition duration-300 ease-in-out`}>
     <input
@@ -36,6 +38,7 @@ const InputGroup = ({
       name={name}
       data-testid={testid}
       disabled={disabled}
+      readOnly={readOnly}
     />
     <span className="side px-4 py-2 border-l border-gray-300 transition duration-300 ease-in-out">
       {icon}
