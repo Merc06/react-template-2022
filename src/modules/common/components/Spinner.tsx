@@ -6,7 +6,7 @@ interface Props {
 
 const Spinner = ({ height = '100vh' }: Props) => (
   <div style={{ height }} className="w-full flex items-center justify-center">
-    <img src={gigLoader} alt="spinner" width="80px" />
+    <img src={gigLoader} alt="spinner" width="80px" className='animate-pulse' />
   </div>
 );
 
