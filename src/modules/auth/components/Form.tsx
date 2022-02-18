@@ -7,7 +7,12 @@ import Input from '../../common/components/Input';
 import InputGroup from '../../common/components/InputGroup';
 import { loginEmail, signupEmail } from '../apis';
 import VerifiedModal from './VerifiedModal';
+import { Dispatch, SetStateAction } from 'react';
 
+interface Props {
+    type: 'SIGNUP' | 'LOGIN';
+    setType: Dispatch<SetStateAction<'SIGNUP' | 'LOGIN'>>;
+}
 interface FormProps {
     email: string;
     password: string;
@@ -18,11 +23,13 @@ const initFormState = {
     password: ""
 }
 
-const Form = () => {
+const Form = ({
+    type,
+    setType
+}: Props) => {
     const navigate = useNavigate();
 
     const [state, setState] = useState<FormProps>(initFormState);
-    const [type, setType] = useState<'SIGNUP' | 'LOGIN'>('LOGIN');
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const [isShowPass, setIsShowPass] =  useState<boolean>(false);
 
@@ -107,14 +114,14 @@ const Form = () => {
             <div className='flex justify-center items-center space-x-1 py-1'>
                 {
                     type === 'LOGIN' ?
-                    <>
-                    <p>Not a member yet?</p>
-                    <span onClick={() => setType('SIGNUP')} className='text-blue-800 cursor-pointer font-bold'>Join now</span> 
-                    </> :
-                    <>
-                    <p>Already a member?</p>
-                    <span onClick={() => setType('LOGIN')} className='text-blue-800 cursor-pointer font-bold'>Login</span>
-                    </>
+                    <div className='flex flex-col items-center w-full'>
+                        <p className='pt-4'>Not a member yet?</p>
+                        <span onClick={() => setType('SIGNUP')} className='text-blue-800 text-lg cursor-pointer font-bold'>Join now</span> 
+                    </div> :
+                    <div className='flex flex-col items-center w-full'>
+                        <p className='pt-4'>Already a member?</p>
+                        <span onClick={() => setType('LOGIN')} className='text-blue-800 text-lg cursor-pointer font-bold'>Login</span>
+                    </div>
                 }
             </div>
         </form>
