@@ -107,14 +107,14 @@ const Form = () => {
             <div className='flex justify-center items-center space-x-1 py-1'>
                 {
                     type === 'LOGIN' ?
-                    <>
-                    <p>Not a member yet?</p>
-                    <span onClick={() => setType('SIGNUP')} className='text-blue-800 cursor-pointer font-bold'>Join now</span> 
-                    </> :
-                    <>
-                    <p>Already a member?</p>
-                    <span onClick={() => setType('LOGIN')} className='text-blue-800 cursor-pointer font-bold'>Login</span>
-                    </>
+                    <div className='flex flex-col items-center w-full'>
+                        <p className='pt-4'>Not a member yet?</p>
+                        <span onClick={() => setType('SIGNUP')} className='text-blue-800 text-lg cursor-pointer font-bold'>Join now</span> 
+                    </div> :
+                    <div className='flex flex-col items-center w-full'>
+                        <p className='pt-4'>Already a member?</p>
+                        <span onClick={() => setType('LOGIN')} className='text-blue-800 text-lg cursor-pointer font-bold'>Login</span>
+                    </div>
                 }
             </div>
         </form>
