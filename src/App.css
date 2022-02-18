@@ -17,13 +17,13 @@ th, td {
 
 .uploadcare--powered-by {
     display: none;
-  }
-  
-  .uploadcare--widget,
-  .uploadcare--widget__button,
-  .uploadcare--widget__dragndrop-area,
-  .uploadcare--progress,
-  .uploadcare--widget__text {
+    }
+
+    .uploadcare--widget,
+    .uploadcare--widget__button,
+    .uploadcare--widget__dragndrop-area,
+    .uploadcare--progress,
+    .uploadcare--widget__text {
     display: none;
     position: absolute;
   }
