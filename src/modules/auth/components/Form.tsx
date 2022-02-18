@@ -7,7 +7,12 @@ import Input from '../../common/components/Input';
 import InputGroup from '../../common/components/InputGroup';
 import { loginEmail, signupEmail } from '../apis';
 import VerifiedModal from './VerifiedModal';
+import { Dispatch, SetStateAction } from 'react';
 
+interface Props {
+    type: 'SIGNUP' | 'LOGIN';
+    setType: Dispatch<SetStateAction<'SIGNUP' | 'LOGIN'>>;
+}
 interface FormProps {
     email: string;
     password: string;
@@ -18,11 +23,13 @@ const initFormState = {
     password: ""
 }
 
-const Form = () => {
+const Form = ({
+    type,
+    setType
+}: Props) => {
     const navigate = useNavigate();
 
     const [state, setState] = useState<FormProps>(initFormState);
-    const [type, setType] = useState<'SIGNUP' | 'LOGIN'>('LOGIN');
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const [isShowPass, setIsShowPass] =  useState<boolean>(false);
 

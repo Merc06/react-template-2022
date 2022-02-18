@@ -1,9 +1,13 @@
 // import brandLogo from '../../../images/brand2.png';
 // import imgLogin from '../../../images/img-landing-banner-graphic-v2.png';
 // import gig from '../../../images/gig.png';
-import GigLogo from '../../../images/GigLogo.png'
+import GigLogo from '../../../images/GigLogo.png';
 
-const Header = () => {
+interface Props {
+    type: 'SIGNUP' | 'LOGIN';
+}
+
+const Header = ({ type }: Props) => {
     
     return (
         <div className='py-20 flex space-x-1 justify-center'>
@@ -15,7 +19,7 @@ const Header = () => {
                 <h1 className='text-xl font-bold text-grayblack'>marketplace</h1>
             </div> */}
 
-            <h1 className="text-2xl font-semibold text-gray-900 mt-1">Login to</h1> 
+            <h1 className="text-2xl font-semibold text-gray-900 mt-1">{type === "LOGIN" ? "Login" : "Signup"} to</h1> 
             <div className='object-contain w-32'><img src={GigLogo} alt="Gig" /></div>
         </div>
     );
