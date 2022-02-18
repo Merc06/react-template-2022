@@ -48,36 +48,39 @@ const CreateGig = () => {
             </Box>
 
             <MobileStepper
-                className='fixed bottom-0 w-full flex items-center'
-                variant="progress"
+                className='fixed bottom-16 w-full flex items-center border-y border-gray-200'
+                style={{ backgroundColor: "#fafafa" }}
+                variant="dots"
                 steps={maxSteps}
                 position="static"
                 activeStep={activeStep}
                 nextButton={
                     <Button
-                        className='text-accent text-xs'
                         onClick={activeStep === maxSteps - 1 ? onPublished : handleNext}
                     >
-                        {activeStep === maxSteps - 1 ? 'PUBLISH' : 'NEXT'}
-                        {theme.direction === 'rtl' ? (
-                        <ChevronLeft />
-                        ) : (
-                        <ChevronRight />
-                        )}
+                        <p className='text-grayblack flex items-center font-bold'>
+                            {activeStep === maxSteps - 1 ? 'DONE' : 'NEXT'}
+                            {theme.direction === 'rtl' ? (
+                            <ChevronLeft />
+                            ) : (
+                            <ChevronRight />
+                            )}
+                        </p>
                     </Button>
                 }
                 backButton={
                     <Button
-                        className='text-accent text-xs'
                         onClick={handleBack}
                         disabled={activeStep === 0}
                     >
-                        {theme.direction === 'rtl' ? (
-                        <ChevronRight />
-                        ) : (
-                        <ChevronLeft />
-                        )}
-                        Back
+                        <p className={`${activeStep === 0 ? 'text-gray-300' : 'text-grayblack'} flex items-center font-bold`}>
+                            {theme.direction === 'rtl' ? (
+                            <ChevronRight />
+                            ) : (
+                            <ChevronLeft />
+                            )}
+                            Back
+                        </p>
                     </Button>
                 }
             />

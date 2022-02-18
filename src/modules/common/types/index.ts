@@ -8,6 +8,7 @@ type RouteProps = {
     path: string;
     label: string;
     component: JSX.Element;
+    icon?: JSX.Element;
 };
 
 type CancellationKeys = {

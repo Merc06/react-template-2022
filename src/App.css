@@ -26,7 +26,8 @@ th, td {
     .uploadcare--widget__text {
     display: none;
     position: absolute;
+  }
+
+.MuiMobileStepper-dotActive {
+    background-color: #ffc92c !important;
 }
-
-
-
