@@ -27,3 +27,7 @@ th, td {
     display: none;
     position: absolute;
   }
+
+.MuiMobileStepper-dotActive {
+    background-color: #ffc92c !important;
+}
