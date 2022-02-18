@@ -1,25 +1,33 @@
 import React, { ReactNode, useState } from 'react';
+import useAppSelector from '../../../../helpers/useAppSelector';
 import Header from './Header';
 import Menu from './Menu';
+import Sidebar from './Sidebar';
 
 interface Props {
     children: ReactNode;
 }
 
 const Content = ({ children }: Props) => {
-    const [isMenuShow, setIsMenuShow] = useState<boolean>(false);
+    const [isSidebarShow, setIsSidebarShow] = useState<boolean>(false);
+    const isLogin: boolean = useAppSelector('common.isLogin');
 
     return (
         <>
+            {
+                isLogin &&
+                <Menu />
+            }
             <Header
-                isMenuShow={isMenuShow}
-                setIsMenuShow={setIsMenuShow}
+                isSidebarShow={isSidebarShow}
+                setIsSidebarShow={setIsSidebarShow}
+                isLogin={isLogin}
             />
-            <Menu
-                isMenuShow={isMenuShow}
-                setIsMenuShow={setIsMenuShow}
+            <Sidebar
+                isSidebarShow={isSidebarShow}
+                setIsSidebarShow={setIsSidebarShow}
             />
-            <div className='mt-16'>
+            <div className="my-16">
                 {children}
             </div>
         </>

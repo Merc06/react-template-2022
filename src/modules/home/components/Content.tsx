@@ -78,8 +78,8 @@ const Content = () => {
                 </div>
                 <div className="flex flex-col space-y-4 px-5 pt-4">
                     <h1 className="text-sm text-gray-800 tracking-wider font-bold">TOKEN SUB CATEGORIES</h1>
-                    {btn.map((btn) => (
-                        <Button className="uppercase text-sm font-medium p-2 w-full border shadow-md text-gray-800 border-gray-800 rounded-lg">
+                    {btn.map((btn, key) => (
+                        <Button key={key} className="uppercase text-sm font-medium p-2 w-full border shadow-md text-gray-800 border-gray-800 rounded-lg">
                             {btn.name}
                         </Button>
                     ))}
@@ -87,8 +87,8 @@ const Content = () => {
                 <div className="flex flex-col space-y-4 px-5 pt-4">
                     <h1 className="text-sm text-gray-800 tracking-wider font-bold">EXPLORE TOKEN GIGS</h1>
                     <div className="grid grid-cols-2 gap-2">
-                        {object.map((object) => (
-                            <div className={object.class}>
+                        {object.map((object, key) => (
+                            <div className={object.class} key={key}>
                                 <div className="w-full py-1 bg-gray-800 bg-opacity-80 text-sm text-white tracking-wide uppercase">{object.text}</div>
                             </div>
                         ))}
