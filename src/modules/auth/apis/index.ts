@@ -43,18 +43,35 @@ export const signupUserType = async (
     payload: object,
     callback: () => void
 ) => {
-    const cancellationKey = createKey('profile-type');
+    const cancellationKey = createKey('user-type');
     const res = await api.put('profile/type', {
       payload,
       cancelToken: cancellationKey.token,
     });
-    removeKey('profile-type');
+    removeKey('user-type');
     
     if (res) {
       dispatch(resetAuth(true));
       callback();
     }
-  };
+};
+
+export const signupUprofileRole = async (
+    payload: object,
+    callback: () => void
+) => {
+    const cancellationKey = createKey('profile-role');
+    const res = await api.put('profile/role', {
+      payload,
+      cancelToken: cancellationKey.token,
+    });
+    removeKey('profile-role');
+    
+    if (res) {
+      dispatch(resetAuth(true));
+      callback();
+    }
+};
 
 export const loginEmail = async (
   payload: object,

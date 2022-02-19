@@ -16,6 +16,7 @@ const Router = () => {
     // PROFILE SETUP ROUTES
     const CreateAccount = lazy(() => import('./modules/auth/components/CreateAccount'));
     const UserType = lazy(() => import('./modules/profilesetup/components/UserType'));
+    const ProfileRole = lazy(() => import('./modules/profilesetup/components/ProfileRole'));
     const ProfileSetup = lazy(() => import('./modules/profilesetup/components/ProfileSetup'));
     const ProfileCompleted = lazy(() => import('./modules/profilesetup/components/ProfileCompleted'));
 
@@ -29,6 +30,7 @@ const Router = () => {
 
                 <Route path="/signup/verify" element={<CreateAccount />} />
                 <Route path="/user-type" element={<UserType />} />
+                <Route path="/profile-role" element={<ProfileRole />} />
                 <Route path="/profile-setup" element={<ProfileSetup />} />
                 <Route path="/profile-completed" element={<ProfileCompleted />} />
 
