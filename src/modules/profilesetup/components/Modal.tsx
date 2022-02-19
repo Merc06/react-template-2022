@@ -7,7 +7,7 @@ import Input from '../../common/components/Input';
 import Modal from '../../common/components/Modal';
 import Select from '../../common/components/Select';
 // import { INIT_CERTIFICATION_INFO, INIT_EDUCATION_INFO, INIT_LANGUAGE_INFO, INIT_OCCUPATION_INFO, INIT_SKILLS_INFO } from '../../../constants';
-import { Proficiency } from '../../auth/constants/proficiency';
+import { Proficiency } from '../constants/proficiency';
 import TextArea from '../../common/components/TextArea';
 import { getYear } from '../constants/year';
 import { SkillProps } from '../types';
