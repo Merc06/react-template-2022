@@ -3,6 +3,7 @@ import imgLogin from '../../../images/img-landing-banner-graphic-v2.png';
 import Button from '../../common/components/Button';
 import { DoubleChevronDown, IconPlay } from '../../common/components/Icons';
 import './content.css';
+import brush from '../../../images/brush.png'
 
 import tokengig from '../../../images/tokengig.png';
 import { useState } from 'react';
@@ -65,17 +66,7 @@ const Content = () => {
             <img src={imgLogin} className="max-h-64 mx-auto" alt="Doc-Gig Brand" />
             <div className="flex flex-col space-y-4">
                 <h1 className="text-lg text-center text-gray-400">I want to:</h1>
-                {/* <div className="radio-group flex space-x-3 items-center justify-center">
-                    <label className="space-x-2">
-                        <input type="radio" value="choiceServices" id="services" name="service" />
-                        <label className="text-gray-500" htmlFor="services">Provide services</label>
-                    </label>
-                    <label className="space-x-2">
-                        <input type="radio" value="hoiceTalents" id="talents" name="talents" />
-                        <label className="text-gray-500" htmlFor="talents">Hire Talents</label>
-                    </label>
-                </div> */}
-                <div className="radio-button flex space-x-2 justify-center">
+                <div className="radio-button flex space-x-2 justify-center relative">
                     <label className="radio flex items-center">
                         <input type="radio" value="Services" name="select" className="mr-1" />
                             I want to provide services
@@ -105,7 +96,7 @@ const Content = () => {
                         we decided to build and offer the solutions we wanted for ourselves.
                     </p>
                     <div className="flex justify-center pt-2">
-                        <Button className="uppercase text-xs flex items-center space-x-2 font-semibold py-2 px-4 border border-gray-800 rounded-xl">
+                        <Button className={visible ? 'uppercase text-xs flex items-center space-x-2 font-semibold py-2 px-4 border border-gray-800 rounded-xl' : ''}>
                             <IconPlay />
                             <h1 className="text-xs">How Doc Gig Works</h1>
                         </Button>
@@ -124,7 +115,8 @@ const Content = () => {
                     <div className="grid grid-cols-2 gap-2">
                         {object.map((object, key) => (
                             <div className={object.class} key={key}>
-                                <div className="w-full py-1 bg-gray-800 bg-opacity-80 text-sm text-white tracking-wide uppercase">{object.text}</div>
+                                <div className="w-full py-1 z-20 text-xs text-white tracking-wide uppercase">{object.text}</div>
+                                <img src={brush} alt="Brush Background" className="absolute object-contain" /> 
                             </div>
                         ))}
                     </div>
