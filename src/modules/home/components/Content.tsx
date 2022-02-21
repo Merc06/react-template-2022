@@ -2,6 +2,8 @@ import gig from '../../../images/gig.png';
 import imgLogin from '../../../images/img-landing-banner-graphic-v2.png';
 import Button from '../../common/components/Button';
 import { DoubleChevronDown, IconPlay } from '../../common/components/Icons';
+import './content.css';
+import brush from '../../../images/brush.png'
 
 import tokengig from '../../../images/tokengig.png';
 import { useState } from 'react';
@@ -13,7 +15,27 @@ const Content = () => {
             { name: 'LISTING'},
             { name: 'INFLUENCER'},
             { name: 'PRO SERVICES'},
-        ]) 
+        ])
+
+        const [visible, setVisible] = useState(false)
+        
+        const toggleVisible = () => {
+        const scrolled = document.documentElement.scrollTop;
+        if (scrolled > 300){
+            setVisible(true)
+            } 
+            else if (scrolled <= 300){
+            setVisible(false)
+            }
+        };
+        
+        const scrollToBottom = () =>{
+            window.scrollTo({
+            top: 600, 
+            behavior: 'smooth'
+            });
+        };
+    window.addEventListener('scroll', toggleVisible); 
 
     const [object] = useState ([
         {
@@ -44,14 +66,16 @@ const Content = () => {
             <img src={imgLogin} className="max-h-64 mx-auto" alt="Doc-Gig Brand" />
             <div className="flex flex-col space-y-4">
                 <h1 className="text-lg text-center text-gray-400">I want to:</h1>
-                <div className="radio-group flex space-x-3 items-center justify-center">
-                    <label className="space-x-2">
-                        <input type="radio" value="choiceServices" id="services" name="service" />
-                        <label className="text-gray-500" htmlFor="services">Provide services</label>
+                <div className="radio-button flex space-x-2 justify-center relative">
+                    <label className="radio flex items-center">
+                        <input type="radio" value="Services" name="select" className="mr-1" />
+                            I want to provide services
+                        <span></span>
                     </label>
-                    <label className="space-x-2">
-                        <input type="radio" value="hoiceTalents" id="talents" name="talents" />
-                        <label className="text-gray-500" htmlFor="talents">Hire Talents</label>
+                    <label className="radio flex items-center">
+                        <input type="radio" value="Talents" name="select" className="mr-1" />
+                            I want to hire talents
+                        <span></span>
                     </label>
                 </div>
                 <div className="flex justify-center pt-2">
@@ -59,9 +83,11 @@ const Content = () => {
                         Explore Doc Gig
                     </Button>
                 </div>
-                <div className="flex justify-center pt-2 pb-6">
+                <button 
+                    onClick={scrollToBottom}
+                    className="flex justify-center pt-2 pb-6">
                     <DoubleChevronDown className="text-5xl font-bold"/>
-                </div>
+                </button>
                 <div className="flex flex-col items-center py-5 space-y-4 bg-yellow-400 relative px-7">
                     <img src={tokengig} alt="Token Gig Illustration" className="object-contain w-56" />
                     <p className="text-xs text-gray-700 leading-relaxed font-medium text-center">
@@ -70,7 +96,7 @@ const Content = () => {
                         we decided to build and offer the solutions we wanted for ourselves.
                     </p>
                     <div className="flex justify-center pt-2">
-                        <Button className="uppercase text-xs flex items-center space-x-2 font-semibold py-2 px-4 border border-gray-800 rounded-xl">
+                        <Button className={visible ? 'uppercase text-xs flex items-center space-x-2 font-semibold py-2 px-4 border border-gray-800 rounded-xl' : ''}>
                             <IconPlay />
                             <h1 className="text-xs">How Doc Gig Works</h1>
                         </Button>
@@ -89,7 +115,8 @@ const Content = () => {
                     <div className="grid grid-cols-2 gap-2">
                         {object.map((object, key) => (
                             <div className={object.class} key={key}>
-                                <div className="w-full py-1 bg-gray-800 bg-opacity-80 text-sm text-white tracking-wide uppercase">{object.text}</div>
+                                <div className="w-full py-1 z-20 text-xs text-white tracking-wide uppercase">{object.text}</div>
+                                <img src={brush} alt="Brush Background" className="absolute object-contain" /> 
                             </div>
                         ))}
                     </div>
