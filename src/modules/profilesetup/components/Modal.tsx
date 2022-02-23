@@ -88,6 +88,9 @@ const AddModal = ({
             case "CERTIFICATION":
                 addCertification(state);
                 break;
+
+            default:
+                return;
         }
 
         clearState();
