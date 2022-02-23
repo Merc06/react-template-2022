@@ -13,7 +13,7 @@ import AccountSecurity from './AccountSecurity';
 // import ProfileHeader from './ProfileHeader';
 import { PersonalInfoState } from '../../auth/types';
 import { INIT_PERSONAL_INFO_STATE } from '../../auth/constants';
-import { getProfile, updateProfile } from '../../common/apis';
+import { addProfile, getProfile, updateProfile } from '../../common/apis';
 import { ProfileProps } from '../../common/types';
 import { Link } from 'react-router-dom';
 
@@ -39,12 +39,17 @@ const ProfileSetup = () => {
       setWebsiteState({
         website: res.website || ""
       })
+      setActiveStep(
+        res.profile_status === "inProgress-professional" ? 1 :
+        res.profile_status === "inProgress-linkedAccounts" ? 2 :
+        res.profile_status === "inProgress-accountSecurity" ? 3 : 0
+      )
     });
   }, []);
 
   const nextStep = (percent: string) => {
     activeStep === 0 ?
-    updateProfile(personalInfoState, () => {
+    addProfile(personalInfoState, () => {
       setActiveStep((currentStep) => currentStep + 1)
     }) :
     activeStep === 1 ?

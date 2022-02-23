@@ -24,6 +24,8 @@ type ProfileProps = {
   language: Array<LanguageProps>;
   last_name: string;
   photo: string;
+  profile_status: string;
+  verified: number;
   website: string;
 };
 

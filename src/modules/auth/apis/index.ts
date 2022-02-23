@@ -2,7 +2,9 @@ import api from '../../../helpers/api';
 import { createKey, removeKey } from '../../../helpers/apiCancellation';
 import dispatch from '../../../helpers/dispatch';
 import toastMessage from '../../../helpers/toastMessage';
+import { getProfile } from '../../common/apis';
 import { resetAuth } from '../../common/reducers';
+import { ProfileProps } from '../../common/types';
 
 export const signupEmail = async (
     payload: object,
@@ -75,7 +77,7 @@ export const signupUprofileRole = async (
 
 export const loginEmail = async (
   payload: object,
-  callback: () => void
+  callback: (profile: ProfileProps) => void
 ) => {
   const cancellationKey = createKey('login-email');
   const res = await api.post('auth', {
@@ -87,6 +89,8 @@ export const loginEmail = async (
   if (res) {
     dispatch(resetAuth(true));
     localStorage.setItem('token', res?.data?.token);
-    callback();
+    getProfile((profile) => {
+      callback(profile);
+    })
   }
 };

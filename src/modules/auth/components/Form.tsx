@@ -56,8 +56,10 @@ const Form = ({
                 password: state.password
             }
 
-            loginEmail(payload, () => {
-                navigate('/');
+            loginEmail(payload, (profile) => {
+                profile.profile_status.includes("inProgress") ?
+                navigate('/profile-setup') :
+                navigate('/')
             });
         }
     }
