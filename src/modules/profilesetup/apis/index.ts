@@ -14,7 +14,8 @@ import {
   setEducationList,
   setCertificationList,
   setSkillList,
-  setSkills
+  setSkills,
+  setLinkedAccountList
 } from '../reducers';
 
 
@@ -364,15 +365,36 @@ export const deleteCertification = async (
 };
 // END CERTIFICATION
 
-export const getFacebook = async (callback: () => void = () => {}) => {
-  const cancellationKey = createKey('facebook');
-  const res = await api.get('/facebook', {
+// LINKED ACCOUNTS
+export const getLinkedAccountsList = async (
+  callback: (res: any) => void = () => {}
+) => {
+  const cancellationKey = createKey('get-linked-account-list');
+  const res = await api.get('linked', {
     cancelToken: cancellationKey.token,
   });
-  removeKey('facebook');
+  removeKey('get-linked-account-list');
 
   if (res) {
-    console.log("FB: ", res)
-    callback();
+    dispatch(setLinkedAccountList(res));
+    callback(res);
+  }
+};
+
+export const linkAccount = async (
+  payload: object,
+  callback: (res: any) => void = () => {}
+) => {
+  const cancellationKey = createKey('link-account');
+  const res = await api.post('linked', {
+    payload,
+    cancelToken: cancellationKey.token,
+  });
+  removeKey('link-account');
+
+  if (res) {
+    getLinkedAccountsList();
+    toastMessage(res);
+    callback(res);
   }
 };

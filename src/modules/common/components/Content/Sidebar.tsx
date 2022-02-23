@@ -59,7 +59,7 @@ const Sidebar = ({
                     <p className="text-white text-xxs font-bold">Privacy Policy <span className='px-2'>.</span> Terms of Service</p>
                     <p className='text-xxs text-white'>© Doconchain 2022</p>
 
-                    <div className="flex items-center justify-evenly text-white space-x-3">
+                    <div className="flex items-center justify-evenly text-white space-x-3 pt-5">
                         <TelegramIcon />
                         <TwitterIcon />
                         <img src={discord} className="" alt="Discord Icon" />

@@ -5,7 +5,8 @@ import type {
   EducationProps,
   CertificationProps,
   SkillProps,
-  SkillListProps
+  SkillListProps,
+  LinkedAccountProps
 } from '../types';
 
 interface ProfileState {
@@ -15,6 +16,7 @@ interface ProfileState {
   certificationList: Array<CertificationProps>;
   skillList: Array<SkillListProps>
   skills: Array<SkillProps>;
+  LinkedAccountList: Array<LinkedAccountProps>;
 }
 
 const initialState: ProfileState = {
@@ -24,6 +26,7 @@ const initialState: ProfileState = {
   certificationList: [],
   skillList: [],
   skills: [],
+  LinkedAccountList: []
 };
 
 export const profileSlice = createSlice({
@@ -48,6 +51,9 @@ export const profileSlice = createSlice({
     setSkills: (state, action: PayloadAction<Array<SkillProps>>) => {
       state.skills = action.payload || [];
     },
+    setLinkedAccountList: (state, action: PayloadAction<Array<LinkedAccountProps>>) => {
+      state.LinkedAccountList = action.payload || [];
+    },
   },
 });
 
@@ -57,7 +63,8 @@ export const {
   setEducationList,
   setCertificationList,
   setSkillList,
-  setSkills
+  setSkills,
+  setLinkedAccountList
 } = profileSlice.actions;
 
 export default profileSlice.reducer;

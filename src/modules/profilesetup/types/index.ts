@@ -43,6 +43,16 @@ type CertificationProps = {
   year: string;
 }
 
+type LinkedAccountProps = {
+  client: number;
+  email: string;
+  id: number;
+  presence_name: string;
+  profile_status: string;
+  social_id: string;
+  verified: string;
+}
+
 type fieldListProps = {
   title: string;
   type: "LANGUAGE" | "OCCUPATION" | "SKILLS" | "EDUCATION" | "CERTIFICATION" | "";
@@ -55,5 +65,6 @@ export type {
   CertificationProps,
   SkillProps,
   SkillListProps,
-  fieldListProps
+  fieldListProps,
+  LinkedAccountProps
 };
