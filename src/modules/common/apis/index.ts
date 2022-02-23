@@ -23,6 +23,23 @@ export const getProfile = async (
   }
 };
 
+export const addProfile = async (
+  payload: object,
+  callback: () => void
+) => {
+  const cancellationKey = createKey('update-profile');
+  const res = await api.post('profile', {
+    cancelToken: cancellationKey.token,
+    payload,
+  });
+  removeKey('update-profile');
+
+  if (res) {
+    getProfile();
+    callback();
+  }
+};
+
 export const updateProfile = async (
   payload: object,
   callback: () => void
