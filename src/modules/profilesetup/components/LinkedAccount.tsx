@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import React, { useEffect } from 'react';
 import GoogleLogin from 'react-google-login';
+import FacebookLogin from 'react-facebook-login';
 import toast from 'react-hot-toast';
 import useAppSelector from '../../../helpers/useAppSelector';
 
@@ -16,7 +17,7 @@ const LinkedAccount = () => {
     getLinkedAccountsList();
   }, [])
 
-  const responseGoogle = (response: any) => {
+  const googleResponse = (response: any) => {
     if (response.error) {
       toast.error(response.details ? `${response.error}: ${response.details}` : `${response.error}`);
     } else {
@@ -28,6 +29,25 @@ const LinkedAccount = () => {
       };
 
       linkAccount(payload);
+    }
+  }
+
+  const fbResponse = (response: any) => {
+    if (response.error) {
+      toast.error(response.error.message);
+    } else {
+      const payload = {
+        email: response.email,
+        social_id: response.id,
+        name: response.name,
+        social: "facebook"
+      };
+
+      const isPayloadComplete = Object.values(payload).every(value => (
+        value ? true : false
+      ))
+      
+      isPayloadComplete && linkAccount(payload);
     }
   }
   
@@ -56,10 +76,10 @@ const LinkedAccount = () => {
             return (
               googleProps ?
               <Button
-                className="px-4 uppercase border border-accent text-accent text-xxs py-2 rounded-lg"
+                className="px-4 uppercase border border-accent text-accent"
                 disabled
               >
-                Verified
+                Connected
               </Button> :
               <Button
                 className="px-4 uppercase border border-gray-700 text-gray-700 text-xxs py-2 rounded-lg"
@@ -71,8 +91,8 @@ const LinkedAccount = () => {
             )
           }}
           buttonText="Login"
-          onSuccess={responseGoogle}
-          onFailure={responseGoogle}
+          onSuccess={googleResponse}
+          onFailure={googleResponse}
           cookiePolicy={'single_host_origin'}
         />
       </div>
@@ -81,9 +101,24 @@ const LinkedAccount = () => {
           <FbIcon />
           <h1 className="text-xs text-gray-700 font-medium">Facebook</h1>
         </div>
-        <Button className="px-4 uppercase border border-gray-700 text-gray-700">
-          Connect
-        </Button>
+        {
+          _.find(linkedAccounts, (item) => (item.presence_name === 'facebook')) ?
+          <Button disabled className="px-4 uppercase border border-accent text-accent">
+            Connected
+          </Button> :
+          <FacebookLogin
+            appId={process.env.REACT_APP_STG_FACEBOOK_APP_ID as string}
+            // autoLoad={true}
+            disableMobileRedirect
+            reAuthenticate
+            fields="name,email,picture"
+            callback={fbResponse}
+            textButton="Connect"
+            typeButton="button"
+            isMobile
+            cssClass="px-4 uppercase border border-gray-700 text-gray-700 text-xxs py-2 rounded-lg"
+          />
+        }
       </div>
       <div className="flex justify-between items-center">
         <div className="flex space-x-2 items-center">
