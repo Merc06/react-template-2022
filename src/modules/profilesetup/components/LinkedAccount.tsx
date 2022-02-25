@@ -2,9 +2,11 @@ import _ from 'lodash';
 import React, { useEffect } from 'react';
 import GoogleLogin from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
-import toast from 'react-hot-toast';
-import useAppSelector from '../../../helpers/useAppSelector';
+import TwitterLogin from "react-twitter-login";
 
+import toast from 'react-hot-toast';
+
+import useAppSelector from '../../../helpers/useAppSelector';
 import Button from '../../common/components/Button';
 import { FbIcon, GithubIcon, GoogleIcon, StackOverflowIcon, TwitterIcon } from '../../common/components/Icons';
 import { getLinkedAccountsList, linkAccount } from '../apis';
@@ -50,6 +52,10 @@ const LinkedAccount = () => {
       isPayloadComplete && linkAccount(payload);
     }
   }
+
+  const twitterResponse = (err: any, data: any) => {
+    console.log(err, data);
+  };
   
   return (
   <div className="flex flex-col space-y-3">
@@ -125,9 +131,19 @@ const LinkedAccount = () => {
           <TwitterIcon />
           <h1 className="text-xs text-gray-700 font-medium">Twitter</h1>
         </div>
-        <Button className="px-4 uppercase border border-gray-700 text-gray-700">
+        <TwitterLogin
+          authCallback={twitterResponse}
+          consumerKey={process.env.REACT_APP_TWITTER_KEY as string}
+          consumerSecret={process.env.REACT_APP_TWITTER_SECRET_KEY as string}
+          children={
+            <Button className="px-4 uppercase border border-gray-700 text-gray-700">
+              Connect
+            </Button>
+          }
+        />
+        {/* <Button className="px-4 uppercase border border-gray-700 text-gray-700">
           Connect
-        </Button>
+        </Button> */}
       </div>
     </div>
     <h1 className="text-xs text-gray-700 font-medium tracking-wide pt-4 uppercase">
