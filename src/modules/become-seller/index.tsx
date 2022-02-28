@@ -3,7 +3,7 @@ import React from 'react'
 import Brush from '../../images/whitebrush.png';
 import GigIcon from '../../images/gigicon.png';
 import Group from '../../images/giggroup.png';
-import { ChevLeft, ChevRight, CIcon, HoldingDollar, P2P, Tools } from '../common/components/Icons';
+import { ChevLeft, ChevRight, CIcon, FourIcon, HoldingDollar, OneIcon, P2P, Tools } from '../common/components/Icons';
 
 const BecomeSeller = () => {
   // const [item] => ({
@@ -39,6 +39,14 @@ const BecomeSeller = () => {
             <div className="bg-yellow-200 shadow-md rounded-md flex text-center flex-col justify-center items-center p-3 space-y-3 text-xs">
               <CIcon className="text-3xl" />
               <h1>The ownership of your original work</h1>
+            </div>
+            <div className="bg-yellow-200 shadow-md rounded-md flex text-center flex-col justify-center items-center p-3 space-y-3 text-xs">
+              <OneIcon className="text-3xl" />
+              <h1>Possibility to join as a Scholar making use of 1 Gig slot provided by a manager</h1>
+            </div>
+            <div className="bg-yellow-200 shadow-md rounded-md flex text-center flex-col justify-center items-center p-3 space-y-3 text-xs">
+              <FourIcon className="text-3xl" />
+              <h1>Possibility to join as a Manager with a minimum of 4 different Gigs</h1>
             </div>
           </div>
         </div>
