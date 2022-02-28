@@ -1815,6 +1815,7 @@ export const FilterIcon = ({...rest}) => (
   </svg>
 )
 
+
 export const ChevronLeft = ({ ...rest }) => (
   <svg 
     xmlns="http://www.w3.org/2000/svg" 
@@ -1847,8 +1848,16 @@ export const ChevronRight = ({...rest}) => (
 )
 
 export const Chevronleft2 = ({...rest}) => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" {...rest}>
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={4} d="M15 19l-7-7 7-7" />
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    fill="none" viewBox="0 0 24 24" 
+    className="inline-block fill-current"
+    stroke="currentColor" {...rest}>
+    <path 
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
+      strokeWidth={4} d="M15 19l-7-7 7-7" 
+    />
   </svg>
 )
 
@@ -2810,5 +2819,50 @@ export const CIcon = ({ ...rest }) => (
         d="M32 17.618c-.898-1.83-3.593-5.031-8.983-4.574c-5.39.458-9.433 5.49-8.983 11.893c.45 6.404 5.39 10.063 9.881 10.063C29.305 35 32 30.609 32 30.609"
       />
     </g>
+  </svg>
+)
+
+export const ChevRight = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true" 
+    role="img" 
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 24 24"
+    className="inline-block fill-current"
+    { ...rest }
+  >
+    <path 
+      fill="none" 
+      stroke="currentColor" 
+      stroke-linecap="round" 
+      stroke-linejoin="round" 
+      stroke-width="2" d="m8 4l8 8l-8 8"
+    />
+  </svg>
+)
+
+export const ChevLeft = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 24 24"
+    className="inline-block fill-current"
+    { ...rest }
+  >
+    <path 
+      fill="none" 
+      stroke="currentColor" 
+      stroke-linecap="round" 
+      stroke-linejoin="round" 
+      stroke-width="2" 
+      d="m15 4l-8 8l8 8"
+    />
   </svg>
 )
