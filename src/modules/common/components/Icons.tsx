@@ -2806,9 +2806,9 @@ export const CIcon = ({ ...rest }) => (
     <g 
       fill="none" 
       stroke="currentColor" 
-      stroke-linecap="round" 
-      stroke-linejoin="round" 
-      stroke-width="4"
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
+      strokeWidth="4"
     >
       <circle 
         cx="24" 
@@ -2837,9 +2837,9 @@ export const ChevRight = ({ ...rest }) => (
     <path 
       fill="none" 
       stroke="currentColor" 
-      stroke-linecap="round" 
-      stroke-linejoin="round" 
-      stroke-width="2" d="m8 4l8 8l-8 8"
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
+      strokeWidth="2" d="m8 4l8 8l-8 8"
     />
   </svg>
 )
@@ -2859,9 +2859,9 @@ export const ChevLeft = ({ ...rest }) => (
     <path 
       fill="none" 
       stroke="currentColor" 
-      stroke-linecap="round" 
-      stroke-linejoin="round" 
-      stroke-width="2" 
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
+      strokeWidth="2" 
       d="m15 4l-8 8l8 8"
     />
   </svg>
