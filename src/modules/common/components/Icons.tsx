@@ -1815,6 +1815,7 @@ export const FilterIcon = ({...rest}) => (
   </svg>
 )
 
+
 export const ChevronLeft = ({ ...rest }) => (
   <svg 
     xmlns="http://www.w3.org/2000/svg" 
@@ -1847,8 +1848,16 @@ export const ChevronRight = ({...rest}) => (
 )
 
 export const Chevronleft2 = ({...rest}) => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" {...rest}>
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={4} d="M15 19l-7-7 7-7" />
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    fill="none" viewBox="0 0 24 24" 
+    className="inline-block fill-current"
+    stroke="currentColor" {...rest}>
+    <path 
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
+      strokeWidth={4} d="M15 19l-7-7 7-7" 
+    />
   </svg>
 )
 
@@ -2722,5 +2731,180 @@ export const DoubleChevronDown = ({ ...rest }) => (
         d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
       />
     </g>
+  </svg>
+)
+
+export const HoldingDollar = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="1.13em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 576 512"
+    className="inline-block fill-current"
+    { ...rest }
+  >
+    <path 
+      fill="currentColor" 
+      d="M568.2 336.3c-13.12-17.81-38.14-21.66-55.93-8.469l-119.7 88.17h-120.6c-8.748 0-15.1-7.25-15.1-15.99c0-8.75 7.25-16 15.1-16h78.25c15.1 0 30.75-10.88 33.37-26.62c3.25-20-12.12-37.38-31.62-37.38H191.1c-26.1 0-53.12 9.25-74.12 26.25l-46.5 37.74l-55.38-.901C7.251 383.1 0 391.3 0 400v95.98C0 504.8 7.251 512 15.1 512h346.1c22.03 0 43.92-7.188 61.7-20.27L558 392.21c19.5-13.11 23.3-38.11 10.2-55.91zM279.3 175c-7.6-1.1-17.6-4.7-26.4-7.9l-4.9-1.7c-12.5-5.3-26.2 2.1-30.6 13.7s2.121 26.2 14.59 30.64l4.655 1.656c8.486 3.061 17.88 6.095 27.39 8.312V232c0 13.25 10.73 24 23.98 24s24-10.75 24-24v-10.4c25.27-5.723 42.88-21.85 46.1-45.72c8.688-50.05-38.89-63.66-64.42-70.95l-5.295-1.83c-26.3-7.46-24.8-10.68-24.1-14.79c1.156-6.766 15.3-10.06 32.21-7.391c4.938.781 11.37 2.547 19.65 5.422c12.53 4.281 26.21-2.312 30.52-14.84s-2.309-26.19-14.84-30.53c-7.602-2.627-13.92-4.358-19.82-5.721V24c0-13.25-10.75-24-24-24s-23.98 10.75-23.98 24v10.52c-25.24 5.71-42.94 21.73-47.94 45.61c-7.7 49.47 40.6 63.67 58.8 69.07l6.498 1.875c31.66 9.062 31.15 11.89 30.34 16.64C310.6 174.5 296.5 177.8 279.3 175z"
+    />
+  </svg>
+)
+
+export const Tools = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 20 20"
+    className="inline-block fill-current"
+    { ...rest }
+  >
+    <path 
+      fill="currentColor" 
+      d="M3.135 6.89c.933-.725 1.707-.225 2.74.971c.116.135.272-.023.361-.1c.088-.078 1.451-1.305 1.518-1.361c.066-.059.146-.169.041-.292a36.238 36.238 0 0 1-.743-.951c-1.808-2.365 4.946-3.969 3.909-3.994c-.528-.014-2.646-.039-2.963-.004c-1.283.135-2.894 1.334-3.705 1.893c-1.061.726-1.457 1.152-1.522 1.211c-.3.262-.048.867-.592 1.344c-.575.503-.934.122-1.267.414c-.165.146-.627.492-.759.607c-.133.117-.157.314-.021.471c0 0 1.264 1.396 1.37 1.52c.105.122.391.228.567.071c.177-.156.632-.553.708-.623c.078-.066-.05-.861.358-1.177zm5.708.517c-.12-.139-.269-.143-.397-.029L7.012 8.63a.289.289 0 0 0-.027.4l8.294 9.439c.194.223.53.246.751.053l.97-.813a.54.54 0 0 0 .052-.758L8.843 7.407zM19.902 3.39c-.074-.494-.33-.391-.463-.182c-.133.211-.721 1.102-.963 1.506c-.24.4-.832 1.191-1.934.41c-1.148-.811-.749-1.377-.549-1.758c.201-.383.818-1.457.907-1.59c.089-.135-.015-.527-.371-.363c-.357.164-2.523 1.025-2.823 2.26c-.307 1.256.257 2.379-.85 3.494l-1.343 1.4l1.349 1.566l1.654-1.57c.394-.396 1.236-.781 1.998-.607c1.633.369 2.524-.244 3.061-1.258c.482-.906.402-2.814.327-3.308zM2.739 17.053a.538.538 0 0 0 0 .758l.951.93c.208.209.538.121.746-.088l4.907-4.824l-1.503-1.714l-5.101 4.938z"
+    />
+  </svg>
+)
+
+export const P2P = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 24 24"
+    className="inline-block fill-current"
+    { ...rest }
+  >
+    <path 
+      fill="currentColor" 
+      d="M9 7v10h2v-4h2a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2H9m2 2h2v2h-2V9m1-7a10 10 0 0 1 10 10a10 10 0 0 1-10 10A10 10 0 0 1 2 12A10 10 0 0 1 12 2Z"
+    />
+  </svg>
+)
+
+export const CIcon = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 48 48"
+    className="inline-block fill-current"
+    { ...rest }
+  >
+    <g 
+      fill="none" 
+      stroke="currentColor" 
+      stroke-linecap="round" 
+      stroke-linejoin="round" 
+      stroke-width="4"
+    >
+      <circle 
+        cx="24" 
+        cy="24" 
+        r="20"
+      />
+      <path 
+        d="M32 17.618c-.898-1.83-3.593-5.031-8.983-4.574c-5.39.458-9.433 5.49-8.983 11.893c.45 6.404 5.39 10.063 9.881 10.063C29.305 35 32 30.609 32 30.609"
+      />
+    </g>
+  </svg>
+)
+
+export const ChevRight = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true" 
+    role="img" 
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 24 24"
+    className="inline-block fill-current"
+    { ...rest }
+  >
+    <path 
+      fill="none" 
+      stroke="currentColor" 
+      stroke-linecap="round" 
+      stroke-linejoin="round" 
+      stroke-width="2" d="m8 4l8 8l-8 8"
+    />
+  </svg>
+)
+
+export const ChevLeft = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 24 24"
+    className="inline-block fill-current"
+    { ...rest }
+  >
+    <path 
+      fill="none" 
+      stroke="currentColor" 
+      stroke-linecap="round" 
+      stroke-linejoin="round" 
+      stroke-width="2" 
+      d="m15 4l-8 8l8 8"
+    />
+  </svg>
+)
+
+export const OneIcon = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 64 64"
+    className="inline-block fill-current"
+    { ...rest }
+  >
+    <path 
+      fill="currentColor" 
+      d="M32 2C15.432 2 2 15.432 2 32c0 16.568 13.432 30 30 30s30-13.432 30-30C62 15.432 48.568 2 32 2zm6 46h-6.107V24.979c-2.232 2.086-4.863 3.629-7.893 4.629v-5.543c1.594-.521 3.326-1.512 5.195-2.967c1.871-1.455 3.152-3.156 3.848-5.098H38v32z"
+    />
+  </svg>
+)
+
+export const FourIcon = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet"
+    viewBox="0 0 64 64"
+    className="inline-block fill-current"
+    { ...rest }
+  >
+    <path 
+      fill="currentColor" 
+      d="M33.662 36.217V25.326l-7.674 10.891z"
+    />
+    <path 
+      fill="currentColor" 
+      d="M32 2C15.432 2 2 15.432 2 32s13.432 30 30 30s30-13.432 30-30S48.568 2 32 2zm12 39.586h-4.145V48h-6.193v-6.414H20v-5.348L34.48 16h5.375v20.217H44v5.369z"
+    />
   </svg>
 )

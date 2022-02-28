@@ -31,3 +31,7 @@ th, td {
 .MuiMobileStepper-dotActive {
     background-color: #ffc92c !important;
 }
+
+.whitebrush {
+    width: 900px;
+}

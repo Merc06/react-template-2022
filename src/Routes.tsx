@@ -19,6 +19,7 @@ const Router = () => {
     const ProfileRole = lazy(() => import('./modules/profilesetup/components/ProfileRole'));
     const ProfileSetup = lazy(() => import('./modules/profilesetup/components/ProfileSetup'));
     const ProfileCompleted = lazy(() => import('./modules/profilesetup/components/ProfileCompleted'));
+    const BecomeSeller = lazy(() => import('./modules/become-seller'));
 
     const isLogin: boolean = useAppSelector('common.isLogin');
     
@@ -33,6 +34,7 @@ const Router = () => {
                 <Route path="/profile-role" element={<ProfileRole />} />
                 <Route path="/profile-setup" element={<ProfileSetup />} />
                 <Route path="/profile-completed" element={<ProfileCompleted />} />
+                <Route path="/become-a-seller" element={<BecomeSeller />} />
 
                 {
                     Navs.map(({ path, key, component }) => (

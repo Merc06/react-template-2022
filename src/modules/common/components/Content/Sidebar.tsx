@@ -6,6 +6,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import discord from '../../../../images/discord.svg';
 import CloseIcon from '@mui/icons-material/Close';
+import { Link } from 'react-router-dom';
 
 interface Props {
     isSidebarShow: boolean;
@@ -38,7 +39,7 @@ const Sidebar = ({
                         <div>
                             <h2 className='text-gray-300 font-bold uppercase'>Resources</h2>
                             <div className="flex flex-col py-3 px-5 font-bold text-grayblack space-y-2 text-sm">
-                                <p>Become a Seller</p>
+                                <Link to="/become-a-seller">Become a Seller</Link>
                                 <p>Become a Manager</p>
                                 <p>Become a Scholar</p>
                                 <p>Buy Gigs</p>
