@@ -42,9 +42,7 @@ const CreateGig = () => {
     const onNext = (step: 'OVERVIEW' | 'SCOPE') => {
         switch (step) {
             case 'OVERVIEW':
-                saveOverview(overviewState, () => {
-                    handleNext();
-                })
+                saveOverview(overviewState, () => handleNext());
                 break;
 
             case 'SCOPE':

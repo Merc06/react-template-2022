@@ -38,7 +38,7 @@ export const getSubCategoryList = async (
 
 export const saveOverview = async (
   payload: OverviewProps,
-  callback: () => void
+  callback: () => void = () => {}
 ) => {
     const cancellationKey = createKey('save-overview');
     const res = await api.post('gig', {
