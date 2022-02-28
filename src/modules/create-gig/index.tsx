@@ -1,89 +1,129 @@
-import { Box, Button, MobileStepper, useTheme } from '@mui/material';
-import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, IconEye, IconSave } from '../common/components/Icons';
+import {Step, StepContent, StepLabel, Stepper } from '@mui/material';
+import React, { SyntheticEvent, useState } from 'react';
+import Button from '../common/components/Button';
+import { IconEye, IconSave } from '../common/components/Icons';
+import { saveOverview } from './apis';
 import CompletedModal from './components/CompletedModal';
-import { steps } from './constants';
+import Overview from './components/Overview';
+import Scope from './components/Scope';
+import { INIT_OVERVIEW_STATE } from './constants';
+import { OverviewProps } from './types';
 
 
 const CreateGig = () => {
-    const theme = useTheme();
     const [activeStep, setActiveStep] = useState<number>(0);
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-    const maxSteps = steps.length;
+
+    const [overviewState, setOverviewState] = useState<OverviewProps>(INIT_OVERVIEW_STATE);
+    // const [scopeState, setScopeState] = useState<OverviewProps>(INIT_OVERVIEW_STATE);
+
+    const onChange = (e: SyntheticEvent, step: string): void => {
+        const { name, value } = e.target as HTMLInputElement;
+        step === 'OVERVIEW' &&
+        setOverviewState({
+            ...overviewState,
+            [name]: value
+        })
+    }
     
-  
-    const handleNext = () => {
+    const handleNext = (): void => {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
     };
   
-    const handleBack = () => {
+    const handleBack = (): void => {
       setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
-    const onPublished = () => {
-        // console.log("Setup Finished!")
-        setIsModalOpen(true);
+    // const onPublished = (): void => {
+    //     // console.log("Setup Finished!")
+    //     setIsModalOpen(true);
+    // }
+
+    const onNext = (step: 'OVERVIEW' | 'SCOPE') => {
+        switch (step) {
+            case 'OVERVIEW':
+                saveOverview(overviewState, () => {
+                    handleNext();
+                })
+                break;
+
+            case 'SCOPE':
+                // saveScope(scopeState, () => {
+                //     handleNext();
+                // })
+                break;
+
+            default:
+                return;
+        }
     }
     
     return (
-        <div>
-            <Box className='w-full grid grid-cols-1 divide-y p-4 space-y-3'>
-                <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2 font-bold">
-                        <div className="text-xxs rounded-full bg-blue-700 text-white h-4 w-4 flex items-center justify-center">
-                            { activeStep + 1 }
+        <div className='p-4'>
+            <Stepper activeStep={activeStep} orientation="vertical">
+                <Step>
+                    <StepLabel>
+                        <div className='flex items-center space-x-3 flex-row'>
+                            <h1 className='font-bold'>OVERVIEW</h1>
+                            {
+                                activeStep === 0 &&
+                                <>
+                                <IconEye />
+                                <IconSave className="w-4" />
+                                </>
+                            }
                         </div>
-                        <h1 className='uppercase text-sm'>{steps[activeStep].label}</h1>
-                    </div>
-
-                    <div className="flex items-center space-x-3 text-gray-600">
-                        <IconEye />
-                        <IconSave className="w-4" />
-                    </div>
-                </div>
-
-                <div className='py-3 pb-12'>
-                    {steps[activeStep].component}
-                </div>
-            </Box>
-
-            <MobileStepper
-                className='fixed bottom-16 w-full flex items-center border-y border-gray-200'
-                style={{ backgroundColor: "#fafafa" }}
-                variant="dots"
-                steps={maxSteps}
-                position="static"
-                activeStep={activeStep}
-                nextButton={
-                    <Button
-                        onClick={activeStep === maxSteps - 1 ? onPublished : handleNext}
-                    >
-                        <p className='text-grayblack flex items-center font-bold'>
-                            {activeStep === maxSteps - 1 ? 'DONE' : 'NEXT'}
-                            {theme.direction === 'rtl' ? (
-                            <ChevronLeft />
-                            ) : (
-                            <ChevronRight />
-                            )}
-                        </p>
-                    </Button>
-                }
-                backButton={
-                    <Button
-                        onClick={handleBack}
-                        disabled={activeStep === 0}
-                    >
-                        <p className={`${activeStep === 0 ? 'text-gray-300' : 'text-grayblack'} flex items-center font-bold`}>
-                            {theme.direction === 'rtl' ? (
-                            <ChevronRight />
-                            ) : (
-                            <ChevronLeft />
-                            )}
-                            Back
-                        </p>
-                    </Button>
-                }
-            />
+                    </StepLabel>
+                    <StepContent>
+                        <Overview
+                            state={overviewState}
+                            onChange={onChange}
+                        />
+                        <div className="flex justify-end space-x-2 mt-7">
+                        <Button 
+                            className="bg-accent px-2 text-grayblack uppercase font-semibold"
+                            onClick={() => onNext('OVERVIEW')}
+                        >
+                            Next
+                        </Button>
+                        </div>
+                    </StepContent>
+                </Step>
+                <Step>
+                    <StepLabel>
+                        <div className='flex items-center space-x-3 flex-row'>
+                            <h1 className='font-bold'>SCOPE AND PRICING</h1>
+                            {
+                                activeStep === 1 &&
+                                <>
+                                <IconEye />
+                                <IconSave className="w-4" />
+                                </>
+                            }
+                        </div>
+                    </StepLabel>
+                    <StepContent>
+                        <Scope
+                            // state={websiteState}
+                            // setWebsiteState={setWebsiteState}
+                        />
+                        <div className="flex justify-end space-x-2 mt-7">
+                        <Button 
+                            className="bg-gray-300 px-2 text-gray-700 uppercase font-semibold"
+                            onClick={handleBack}
+                            >
+                            Previous
+                        </Button>
+                        <Button 
+                            className="bg-yellow-500 px-2 text-gray-700 uppercase font-semibold"
+                            onClick={() => onNext('SCOPE')}
+                        >
+                            Next
+                        </Button>
+                        </div>
+                    </StepContent>
+                </Step>
+            </Stepper>
 
             <CompletedModal
                 isModalOpen={isModalOpen}

@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React, { useEffect } from 'react';
 import GoogleLogin from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
-import TwitterLogin from "react-twitter-login";
+// import TwitterLogin from "react-twitter-login";
 
 import toast from 'react-hot-toast';
 
@@ -53,9 +53,9 @@ const LinkedAccount = () => {
     }
   }
 
-  const twitterResponse = (err: any, data: any) => {
-    console.log(err, data);
-  };
+  // const twitterResponse = (err: any, data: any) => {
+  //   console.log(err, data);
+  // };
   
   return (
   <div className="flex flex-col space-y-3">
@@ -131,19 +131,19 @@ const LinkedAccount = () => {
           <TwitterIcon />
           <h1 className="text-xs text-gray-700 font-medium">Twitter</h1>
         </div>
-        <TwitterLogin
+        {/* <TwitterLogin
           authCallback={twitterResponse}
-          consumerKey={process.env.REACT_APP_TWITTER_KEY as string}
-          consumerSecret={process.env.REACT_APP_TWITTER_SECRET_KEY as string}
+          consumerKey={process.env.REACT_APP_TWITTER_CONSUMER_KEY as string}
+          consumerSecret={process.env.REACT_APP_TWITTER_CONSUMER_SECRET_KEY as string}
           children={
             <Button className="px-4 uppercase border border-gray-700 text-gray-700">
               Connect
             </Button>
           }
-        />
-        {/* <Button className="px-4 uppercase border border-gray-700 text-gray-700">
+        /> */}
+        <Button className="px-4 uppercase border border-gray-700 text-gray-700">
           Connect
-        </Button> */}
+        </Button>
       </div>
     </div>
     <h1 className="text-xs text-gray-700 font-medium tracking-wide pt-4 uppercase">
