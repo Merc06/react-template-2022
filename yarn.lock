@@ -2022,6 +2022,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-facebook-login@^4.1.4":
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/@types/react-facebook-login/-/react-facebook-login-4.1.4.tgz#64b9e7ef638ee3048a60c39acc8111c04aa9edf9"
+  integrity sha512-TX6y5shj0wCx8Whho05MqjAcb8lg1R33Jdy4raCl5b/t2nO9WC8/VLF+7u9cXzRd4ohN7Iz1RwuT+90LUROhyg==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-is@^16.7.1 || ^17.0.0":
   version "17.0.3"
   resolved "https://registry.yarnpkg.com/@types/react-is/-/react-is-17.0.3.tgz#2d855ba575f2fc8d17ef9861f084acc4b90a137a"
@@ -3339,6 +3346,11 @@ cross-spawn@^7.0.2, cross-spawn@^7.0.3:
     path-key "^3.1.0"
     shebang-command "^2.0.0"
     which "^2.0.1"
+
+crypto-js@^3.1.9-1:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-3.3.0.tgz#846dd1cce2f68aacfa156c8578f926a609b7976b"
+  integrity sha512-DIT51nX0dCfKltpRiXV+/TVZq+Qq2NgF4644+K7Ttnla7zEzqc+kjJyiB96BHNyUTBxyjzRcZYpUdZa+QAqi6Q==
 
 crypto-random-string@^2.0.0:
   version "2.0.0"
@@ -7312,6 +7324,11 @@ react-error-overlay@^6.0.10:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.10.tgz#0fe26db4fa85d9dbb8624729580e90e7159a59a6"
   integrity sha512-mKR90fX7Pm5seCOfz8q9F+66VCc1PGsWSBxKbITjfKVQHMNF2zudxHnMdJiB1fRCb+XsbQV9sO9DCkgsMQgBIA==
 
+react-facebook-login@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/react-facebook-login/-/react-facebook-login-4.1.1.tgz#005121236a6ac0dee02099976fb1a3265f9d633e"
+  integrity sha512-COnHEHlYGTKipz4963safFAK9PaNTcCiXfPXMS/yxo8El+/AJL5ye8kMJf23lKSSGGPgqFQuInskIHVqGqTvSw==
+
 react-fast-compare@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.2.0.tgz#641a9da81b6a6320f270e89724fb45a0b39e43bb"
@@ -7443,6 +7460,13 @@ react-transition-group@^4.4.2:
     dom-helpers "^5.0.1"
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
+
+react-twitter-login@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/react-twitter-login/-/react-twitter-login-1.5.0.tgz#09903d4b216268f26ca0cfb696fa011fb91281a1"
+  integrity sha512-onS9dwZ+07+4mMi+2xh6w0KPgY6jkWEfVVom5RCzAolGkDKWTvEMIutkAm1s6O7QtFmam+mpKoMBF8Lwam5iKA==
+  dependencies:
+    crypto-js "^3.1.9-1"
 
 react@^17.0.2:
   version "17.0.2"

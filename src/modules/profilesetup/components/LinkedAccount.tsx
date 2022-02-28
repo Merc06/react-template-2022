@@ -1,9 +1,12 @@
 import _ from 'lodash';
 import React, { useEffect } from 'react';
 import GoogleLogin from 'react-google-login';
-import toast from 'react-hot-toast';
-import useAppSelector from '../../../helpers/useAppSelector';
+import FacebookLogin from 'react-facebook-login';
+import TwitterLogin from "react-twitter-login";
 
+import toast from 'react-hot-toast';
+
+import useAppSelector from '../../../helpers/useAppSelector';
 import Button from '../../common/components/Button';
 import { FbIcon, GithubIcon, GoogleIcon, StackOverflowIcon, TwitterIcon } from '../../common/components/Icons';
 import { getLinkedAccountsList, linkAccount } from '../apis';
@@ -16,7 +19,7 @@ const LinkedAccount = () => {
     getLinkedAccountsList();
   }, [])
 
-  const responseGoogle = (response: any) => {
+  const googleResponse = (response: any) => {
     if (response.error) {
       toast.error(response.details ? `${response.error}: ${response.details}` : `${response.error}`);
     } else {
@@ -30,6 +33,29 @@ const LinkedAccount = () => {
       linkAccount(payload);
     }
   }
+
+  const fbResponse = (response: any) => {
+    if (response.error) {
+      toast.error(response.error.message);
+    } else {
+      const payload = {
+        email: response.email,
+        social_id: response.id,
+        name: response.name,
+        social: "facebook"
+      };
+
+      const isPayloadComplete = Object.values(payload).every(value => (
+        value ? true : false
+      ))
+      
+      isPayloadComplete && linkAccount(payload);
+    }
+  }
+
+  const twitterResponse = (err: any, data: any) => {
+    console.log(err, data);
+  };
   
   return (
   <div className="flex flex-col space-y-3">
@@ -56,10 +82,10 @@ const LinkedAccount = () => {
             return (
               googleProps ?
               <Button
-                className="px-4 uppercase border border-accent text-accent text-xxs py-2 rounded-lg"
+                className="px-4 uppercase border border-accent text-accent"
                 disabled
               >
-                Verified
+                Connected
               </Button> :
               <Button
                 className="px-4 uppercase border border-gray-700 text-gray-700 text-xxs py-2 rounded-lg"
@@ -71,8 +97,8 @@ const LinkedAccount = () => {
             )
           }}
           buttonText="Login"
-          onSuccess={responseGoogle}
-          onFailure={responseGoogle}
+          onSuccess={googleResponse}
+          onFailure={googleResponse}
           cookiePolicy={'single_host_origin'}
         />
       </div>
@@ -81,18 +107,43 @@ const LinkedAccount = () => {
           <FbIcon />
           <h1 className="text-xs text-gray-700 font-medium">Facebook</h1>
         </div>
-        <Button className="px-4 uppercase border border-gray-700 text-gray-700">
-          Connect
-        </Button>
+        {
+          _.find(linkedAccounts, (item) => (item.presence_name === 'facebook')) ?
+          <Button disabled className="px-4 uppercase border border-accent text-accent">
+            Connected
+          </Button> :
+          <FacebookLogin
+            appId={process.env.REACT_APP_STG_FACEBOOK_APP_ID as string}
+            // autoLoad={true}
+            disableMobileRedirect
+            reAuthenticate
+            fields="name,email,picture"
+            callback={fbResponse}
+            textButton="Connect"
+            typeButton="button"
+            isMobile
+            cssClass="px-4 uppercase border border-gray-700 text-gray-700 text-xxs py-2 rounded-lg"
+          />
+        }
       </div>
       <div className="flex justify-between items-center">
         <div className="flex space-x-2 items-center">
           <TwitterIcon />
           <h1 className="text-xs text-gray-700 font-medium">Twitter</h1>
         </div>
-        <Button className="px-4 uppercase border border-gray-700 text-gray-700">
+        <TwitterLogin
+          authCallback={twitterResponse}
+          consumerKey={process.env.REACT_APP_TWITTER_KEY as string}
+          consumerSecret={process.env.REACT_APP_TWITTER_SECRET_KEY as string}
+          children={
+            <Button className="px-4 uppercase border border-gray-700 text-gray-700">
+              Connect
+            </Button>
+          }
+        />
+        {/* <Button className="px-4 uppercase border border-gray-700 text-gray-700">
           Connect
-        </Button>
+        </Button> */}
       </div>
     </div>
     <h1 className="text-xs text-gray-700 font-medium tracking-wide pt-4 uppercase">
