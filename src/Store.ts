@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import common from './modules/common/reducers';
+import createGig from './modules/create-gig/reducers';
 import profile from './modules/profilesetup/reducers';
 // import dashboard from 'modules/dashboard/reducers';
 // import docPaperless from 'modules/doc-paperless/reducers';
@@ -16,6 +17,7 @@ const store = configureStore({
   reducer: {
     common,
     profile,
+    createGig
     // dashboard,
     // docPaperless,
     // docCopyright,
