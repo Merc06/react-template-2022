@@ -2,55 +2,76 @@ import {Step, StepContent, StepLabel, Stepper } from '@mui/material';
 import React, { SyntheticEvent, useState } from 'react';
 import Button from '../common/components/Button';
 import { IconEye, IconSave } from '../common/components/Icons';
-import { saveOverview } from './apis';
-import CompletedModal from './components/CompletedModal';
+import { addDescription, saveOverview } from './apis';
+import CompletedModal from './components/modals/CompletedModal';
+import Description from './components/Description';
 import Overview from './components/Overview';
 import Scope from './components/Scope';
-import { INIT_OVERVIEW_STATE } from './constants';
-import { OverviewProps } from './types';
+import { INIT_FAQ_STATE, INIT_OVERVIEW_STATE } from './constants';
+import { FaqProps, OverviewProps } from './types';
+import FaqModal from './components/modals/FaqModal';
 
 
 const CreateGig = () => {
     const [activeStep, setActiveStep] = useState<number>(0);
-    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    const [isCompleteModalOpen, setIsCompleteModalOpen] = useState<boolean>(false);
+    const [isFaqModalOpen, setIsFaqModalOpen] = useState<boolean>(false);
 
     const [overviewState, setOverviewState] = useState<OverviewProps>(INIT_OVERVIEW_STATE);
-    // const [scopeState, setScopeState] = useState<OverviewProps>(INIT_OVERVIEW_STATE);
+    const [faqToEditState, setFaqToEditState] = useState<FaqProps>(INIT_FAQ_STATE);
+    const [faqIdState, setFaqIdState] = useState<number>(0);
+    const [description, setDescription] = useState<string>('');
 
-    const onChange = (e: SyntheticEvent, step: string): void => {
+    const onChange = (e: SyntheticEvent, step: 'OVERVIEW' | 'FAQ') => {
         const { name, value } = e.target as HTMLInputElement;
-        step === 'OVERVIEW' &&
-        setOverviewState({
-            ...overviewState,
-            [name]: value
-        })
+
+        switch (step) {
+            case 'OVERVIEW':
+                setOverviewState({
+                    ...overviewState,
+                    [name]: value
+                })
+                break;
+
+            case 'FAQ':
+                setDescription(value);
+                break;
+
+            default:
+                return;
+        }
     }
     
     const handleNext = (): void => {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
     };
   
-    const handleBack = (): void => {
-      setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    };
+    // const handleBack = (): void => {
+    //   setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    // };
 
     // const onPublished = (): void => {
     //     // console.log("Setup Finished!")
     //     setIsModalOpen(true);
     // }
 
-    const onNext = (step: 'OVERVIEW' | 'SCOPE') => {
+    const onNext = (step: 'OVERVIEW' | 'SCOPE' | 'FAQ') => {
         switch (step) {
             case 'OVERVIEW':
-                saveOverview(overviewState, () => {
-                    handleNext();
-                })
+                saveOverview(overviewState, () => handleNext());
                 break;
 
             case 'SCOPE':
                 // saveScope(scopeState, () => {
-                //     handleNext();
+                    handleNext();
                 // })
+                break;
+
+            case 'FAQ':
+                const payload = { description };
+                addDescription(payload, () => {
+                    handleNext();
+                })
                 break;
 
             default:
@@ -108,12 +129,12 @@ const CreateGig = () => {
                             // setWebsiteState={setWebsiteState}
                         />
                         <div className="flex justify-end space-x-2 mt-7">
-                        <Button 
+                        {/* <Button 
                             className="bg-gray-300 px-2 text-gray-700 uppercase font-semibold"
                             onClick={handleBack}
                             >
                             Previous
-                        </Button>
+                        </Button> */}
                         <Button 
                             className="bg-yellow-500 px-2 text-gray-700 uppercase font-semibold"
                             onClick={() => onNext('SCOPE')}
@@ -123,11 +144,51 @@ const CreateGig = () => {
                         </div>
                     </StepContent>
                 </Step>
+                <Step>
+                    <StepLabel>
+                        <div className='flex items-center space-x-3 flex-row'>
+                            <h1 className='font-bold'>FAQ AND DESCRIPTION</h1>
+                            {
+                                activeStep === 2 &&
+                                <>
+                                <IconEye />
+                                <IconSave className="w-4" />
+                                </>
+                            }
+                        </div>
+                    </StepLabel>
+                    <StepContent>
+                        <Description
+                            description={description}
+                            onChange={onChange}
+                            setIsFaqModalOpen={setIsFaqModalOpen}
+                            setFaqToEditState={setFaqToEditState}
+                            setFaqIdState={setFaqIdState}
+                        />
+                        <div className="flex justify-end space-x-2 mt-7">
+                        <Button 
+                            className="bg-yellow-500 px-2 text-gray-700 uppercase font-semibold"
+                            onClick={() => onNext('FAQ')}
+                        >
+                            Next
+                        </Button>
+                        </div>
+                    </StepContent>
+                </Step>
             </Stepper>
 
             <CompletedModal
-                isModalOpen={isModalOpen}
-                setIsModalOpen={setIsModalOpen}
+                isModalOpen={isCompleteModalOpen}
+                setIsModalOpen={setIsCompleteModalOpen}
+            />
+
+            <FaqModal
+                faqToEditState={faqToEditState}
+                setFaqToEditState={setFaqToEditState}
+                faqIdState={faqIdState}
+                setFaqIdState={setFaqIdState}
+                isModalOpen={isFaqModalOpen}
+                setIsModalOpen={setIsFaqModalOpen}
             />
         </div>
     );

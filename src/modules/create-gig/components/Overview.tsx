@@ -7,7 +7,7 @@ import { CategoryProps, OverviewProps } from '../types';
 
 interface Props {
     state: OverviewProps;
-    onChange: (e: SyntheticEvent, step: string) => void;
+    onChange: (e: SyntheticEvent, step: 'OVERVIEW' | 'FAQ') => void;
 }
 
 const Overview = ({
@@ -42,8 +42,9 @@ const Overview = ({
                         value={state.category_id}
                         name="category_id"
                         onChange={(e) => onChange(e, step)}
-                        placeholder=""
-                        defaultOptionLabel=""
+                        placeholder="Token"
+                        hasDefaultOption
+                        defaultOptionLabel="Token"
                         options={
                             categoryList.map(({ id, name }: CategoryProps) => (
                                 {
@@ -57,8 +58,8 @@ const Overview = ({
                         value={state.subcategory_id}
                         name="subcategory_id"
                         onChange={(e) => onChange(e, step)}
-                        placeholder=""
-                        defaultOptionLabel=""
+                        placeholder="Select Sub-category"
+                        defaultOptionLabel="Select Sub-category"
                         options={
                             subcategoryList.map(({ id, name }: CategoryProps) => (
                                 {
