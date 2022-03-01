@@ -74,8 +74,8 @@ const BecomeManager = () => {
       </div>
       <div className="py-5 px-3 flex flex-col bg-white">
         {num.map((num, key) => (
-          <div className="flex flex-col relative items-center mb-4">
-            <div key={key} className="flex space-x-2 items-center">
+          <div key={key} className="flex flex-col relative items-center mb-4">
+            <div className="flex space-x-2 items-center">
               <img src={num.number} alt="One Illustration"  className="h-36" />
               <img src={Gathering} alt="Gathering Illustration" className="h-44" />
             </div>
@@ -89,7 +89,7 @@ const BecomeManager = () => {
         <h1 className="text-gray-700 text-lg text-center mb-4">
           Are you ready to build your team?
         </h1>
-        <button className="text-white bg-gray-800 px-14 py-2 font-extrabold upppercase rounded-md">
+        <button className="text-white bg-gray-900 px-14 py-2 font-extrabold upppercase rounded-md">
           Get Started
         </button>
       </div>
