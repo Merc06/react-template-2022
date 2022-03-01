@@ -77,11 +77,11 @@ const BecomeScholar = () => {
           </div>
         ))}
       </div>
-      <div className="border-t pt-4 border-gray-700 w-full flex flex-col justify-center items-center pb-4">
+      <div className="border-t pt-4 border-gray-700 w-full flex flex-col justify-center items-center mb-5">
         <h1 className="text-gray-700 text-lg text-center mb-4">
           Sign up for free and start earning
         </h1>
-        <Link to="/auth" className="text-white bg-gray-900 px-14 py-2 font-extrabold upppercase rounded-md">
+        <Link to="/auth" className="text-white bg-gray-900 px-14 py-2 font-bold upppercase rounded-md">
           Get Started
         </Link>
       </div>

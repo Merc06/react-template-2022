@@ -3,8 +3,10 @@ import React from 'react'
 import Brush from '../../images/whitebrush.png';
 import GigIcon from '../../images/gigicon.png';
 import Group from '../../images/giggroup.png';
+import Scholar from '../../images/scholar1.png';
 import { ChevLeft, ChevRight, CIcon, FourIcon, HoldingDollar, OneIcon, P2P, Tools } from '../common/components/Icons';
 import { Link } from 'react-router-dom';
+import GigFooter from '../common/components/GigFooter';
 
 const BecomeSeller = () => {
   // const [item] => ({
@@ -77,8 +79,9 @@ const BecomeSeller = () => {
         <h1 className="text-sm text-gray-800 uppercase">Learn more</h1>
         <ChevRight />
       </Link>
-      <img src={Group} alt="Group Illustration" className="object-contain" />
+      <img src={Scholar} alt="Group Illustration" className="object-contain" />
     </div>
+    <GigFooter />
   </>
   )
 }
