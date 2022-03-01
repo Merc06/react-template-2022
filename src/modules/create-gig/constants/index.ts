@@ -4,3 +4,8 @@ export const INIT_OVERVIEW_STATE = {
     subcategory_id: 0,
     tag: ''
 }
+
+export const INIT_FAQ_STATE = {
+    answer: '',
+    question: '',
+}

@@ -17,8 +17,24 @@ interface CategoryProps {
     name: string;
 }
 
+interface FaqListProps {
+    client_id: number;
+    created_at: string | Date;
+    id: number;
+    question: string;
+    updated_at: string | Date;
+    answer: string;
+};
+
+interface FaqProps {
+    answer: string;
+    question: string;
+}
+
 export type {
     Steps,
     OverviewProps,
     CategoryProps,
+    FaqListProps,
+    FaqProps,
 }

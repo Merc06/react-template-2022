@@ -2,7 +2,7 @@ import api from '../../../helpers/api';
 import { createKey, removeKey } from '../../../helpers/apiCancellation';
 import dispatch from '../../../helpers/dispatch';
 import toastMessage from '../../../helpers/toastMessage';
-import { setCategoryList, setSubCategoryList } from '../reducers';
+import { setCategoryList, setFaqList, setSubCategoryList } from '../reducers';
 import { OverviewProps } from '../types';
 
 
@@ -52,3 +52,91 @@ export const saveOverview = async (
       callback();
     }
 };
+
+export const addDescription = async (
+  payload: object,
+  callback: () => void = () => {}
+) => {
+  const cancellationKey = createKey('faq');
+  const res = await api.post('/gig/description', {
+    payload,
+    cancelToken: cancellationKey.token,
+  });
+  removeKey('faq');
+
+  if (res) {
+    toastMessage(res);
+    callback();
+  }
+};
+
+// FAQ
+export const addFaq = async (
+  payload: object,
+  callback: () => void = () => {}
+) => {
+  const cancellationKey = createKey('faq');
+  const res = await api.post('/gig/faq', {
+    payload,
+    cancelToken: cancellationKey.token,
+  });
+  removeKey('faq');
+
+  if (res) {
+    toastMessage(res);
+    getFaqList();
+    callback();
+  }
+};
+
+export const getFaqList = async (
+  callback: () => void = () => {}
+) => {
+  const cancellationKey = createKey('get-faq-list');
+  const res = await api.get('/gig/faq', {
+    cancelToken: cancellationKey.token,
+  });
+  removeKey('get-faq-list');
+
+  if (res) {
+    dispatch(setFaqList(res));
+    callback();
+  }
+};
+
+export const updateFaq = async (
+  payload: object,
+  id: number,
+  callback: () => void = () => {}
+) => {
+  const cancellationKey = createKey('update-faq');
+  const res = await api.put(`gig/${id}/faq`, {
+    payload,
+    cancelToken: cancellationKey.token,
+  });
+  removeKey('update-faq');
+
+  if (res) {
+    toastMessage(res);
+    getFaqList();
+    callback();
+  }
+};
+
+export const deleteFaq = async (
+  id: number,
+  callback: () => void = () => {}
+) => {
+  const cancellationKey = createKey('faq');
+  const res = await api.delete(`gig/${id}/faq`, {
+    cancelToken: cancellationKey.token,
+  });
+  removeKey('faq');
+
+  if (res) {
+    toastMessage(res);
+    getFaqList();
+    callback();
+  }
+};
+// END FAQ

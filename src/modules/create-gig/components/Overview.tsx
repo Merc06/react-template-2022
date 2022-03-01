@@ -7,7 +7,7 @@ import { CategoryProps, OverviewProps } from '../types';
 
 interface Props {
     state: OverviewProps;
-    onChange: (e: SyntheticEvent, step: string) => void;
+    onChange: (e: SyntheticEvent, step: 'OVERVIEW' | 'FAQ') => void;
 }
 
 const Overview = ({

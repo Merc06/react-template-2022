@@ -15,7 +15,7 @@ const getCheckLabelClassName = (checked: boolean): string => {
 const getCheckWrapperClass = (checked: boolean, disabled: boolean): string => {
   const defaultClass = `${disabled && 'opacity-50'} block w-14 h-6 rounded-full border`;
   const className = checked
-    ? 'bg-blue-700 border-blue-500'
+    ? 'bg-accent border-accent'
     : 'border-gray-300 bg-gray-100';
   return `${defaultClass} ${!disabled ? className : 'border-gray-300 bg-gray-100'}`;
 };

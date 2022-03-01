@@ -1,9 +1,9 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import { IconCopyFile } from '../../common/components/Icons';
-import InputGroup from '../../common/components/InputGroup';
-import Modal from '../../common/components/Modal';
-import manWithMegaphone from '../../../images/man-with-megaphone.png';
-import Button from '../../common/components/Button';
+import { IconCopyFile } from '../../../common/components/Icons';
+import InputGroup from '../../../common/components/InputGroup';
+import Modal from '../../../common/components/Modal';
+import manWithMegaphone from '../../../../images/man-with-megaphone.png';
+import Button from '../../../common/components/Button';
 
 interface Props {
     isModalOpen: boolean;
