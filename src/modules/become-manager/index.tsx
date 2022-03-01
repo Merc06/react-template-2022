@@ -7,6 +7,7 @@ import One from '../../images/Num-one.png';
 import Two from '../../images/Num-two.png';
 import Three from '../../images/Num-three.png';
 import Four from '../../images/Num-four.png';
+import { Link } from 'react-router-dom';
 
 
 const BecomeManager = () => {
@@ -89,9 +90,9 @@ const BecomeManager = () => {
         <h1 className="text-gray-700 text-lg text-center mb-4">
           Are you ready to build your team?
         </h1>
-        <button className="text-white bg-gray-900 px-14 py-2 font-extrabold upppercase rounded-md">
+        <Link to="/auth" className="text-white bg-gray-900 px-14 py-2 font-extrabold upppercase rounded-md">
           Get Started
-        </button>
+        </Link>
       </div>
     </>
   )
