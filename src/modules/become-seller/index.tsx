@@ -3,7 +3,10 @@ import React from 'react'
 import Brush from '../../images/whitebrush.png';
 import GigIcon from '../../images/gigicon.png';
 import Group from '../../images/giggroup.png';
+import Scholar from '../../images/scholar1.png';
 import { ChevLeft, ChevRight, CIcon, FourIcon, HoldingDollar, OneIcon, P2P, Tools } from '../common/components/Icons';
+import { Link } from 'react-router-dom';
+import GigFooter from '../common/components/GigFooter';
 
 const BecomeSeller = () => {
   // const [item] => ({
@@ -59,10 +62,10 @@ const BecomeSeller = () => {
           <img src={GigIcon} alt="Gig Icon" className="w-14 h-auto pr-2" /> manager?
         </span>
       </h1>
-      <button className="p-2 px-6 flex space-x-2 bg-yellow-200 rounded-md shadow-md items-center">
+      <Link to="/become-a-manager" className="p-2 px-6 flex space-x-2 bg-yellow-200 rounded-md shadow-md items-center">
         <ChevLeft />
         <h1 className="text-sm text-gray-800 uppercase">Learn more</h1>
-      </button>
+      </Link>
       <img src={Group} alt="Group Illustration" className="object-contain" />
     </div>
     <div className="bg-yellow-200 flex flex-col justify-center items-center space-y-6 p-5 w-full">
@@ -72,12 +75,13 @@ const BecomeSeller = () => {
           <img src={GigIcon} alt="Gig Icon" className="w-14 h-auto pr-2" /> scholar?
         </span>
       </h1>
-      <button className="p-2 px-6 flex space-x-2 bg-yellow-500 rounded-md shadow-md items-center">
+      <Link to="/become-a-scholar" className="p-2 px-6 flex space-x-2 bg-yellow-500 rounded-md shadow-md items-center">
         <h1 className="text-sm text-gray-800 uppercase">Learn more</h1>
         <ChevRight />
-      </button>
-      <img src={Group} alt="Group Illustration" className="object-contain" />
+      </Link>
+      <img src={Scholar} alt="Group Illustration" className="object-contain" />
     </div>
+    <GigFooter />
   </>
   )
 }

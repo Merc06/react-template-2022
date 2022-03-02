@@ -2806,9 +2806,9 @@ export const CIcon = ({ ...rest }) => (
     <g 
       fill="none" 
       stroke="currentColor" 
-      stroke-linecap="round" 
-      stroke-linejoin="round" 
-      stroke-width="4"
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
+      strokeWidth="4"
     >
       <circle 
         cx="24" 
@@ -2837,9 +2837,9 @@ export const ChevRight = ({ ...rest }) => (
     <path 
       fill="none" 
       stroke="currentColor" 
-      stroke-linecap="round" 
-      stroke-linejoin="round" 
-      stroke-width="2" d="m8 4l8 8l-8 8"
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
+      strokeWidth="2" d="m8 4l8 8l-8 8"
     />
   </svg>
 )
@@ -2859,9 +2859,9 @@ export const ChevLeft = ({ ...rest }) => (
     <path 
       fill="none" 
       stroke="currentColor" 
-      stroke-linecap="round" 
-      stroke-linejoin="round" 
-      stroke-width="2" 
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
+      strokeWidth="2" 
       d="m15 4l-8 8l8 8"
     />
   </svg>
@@ -2906,5 +2906,44 @@ export const FourIcon = ({ ...rest }) => (
       fill="currentColor" 
       d="M32 2C15.432 2 2 15.432 2 32s13.432 30 30 30s30-13.432 30-30S48.568 2 32 2zm12 39.586h-4.145V48h-6.193v-6.414H20v-5.348L34.48 16h5.375v20.217H44v5.369z"
     />
+  </svg>
+)
+
+export const TagIcon = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 20 20"
+    className="inline-block fill-current"
+    { ...rest }
+  >
+    <path 
+      fill="currentColor" 
+      d="M19.388.405a.605.605 0 0 0-1.141.399c.929 2.67-.915 4.664-2.321 5.732l-.568-.814c-.191-.273-.618-.5-.95-.504l-3.188.014a2.162 2.162 0 0 0-1.097.338L.729 12.157a1.01 1.01 0 0 0-.247 1.404l4.269 6.108c.32.455.831.4 1.287.082l9.394-6.588c.27-.191.582-.603.692-.918l.998-3.145c.11-.314.043-.793-.148-1.066l-.346-.496c1.888-1.447 3.848-4.004 2.76-7.133zm-4.371 9.358a1.608 1.608 0 0 1-2.24-.396a1.614 1.614 0 0 1 .395-2.246a1.607 1.607 0 0 1 1.868.017c-.272.164-.459.26-.494.275a.606.606 0 0 0 .259 1.153c.086 0 .174-.02.257-.059c.194-.092.402-.201.619-.33a1.615 1.615 0 0 1-.664 1.586z"
+    />
+  </svg>
+)
+
+export const TenIcon = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="2em" 
+    height="2em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 24 24" 
+    className="inline-block fill-current"
+    { ...rest }
+  >
+    <path 
+      fill="currentColor" 
+      d="M12 2c5.5 0 10 4.5 10 10s-4.5 10-10 10S2 17.5 2 12S6.5 2 12 2m0 2c-4.42 0-8 3.58-8 8s3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8m-2 3H6v2h2v8h2V7m6 0h-2c-1.1 0-2 .9-2 2v6a2 2 0 0 0 2 2h2c1.11 0 2-.89 2-2V9a2 2 0 0 0-2-2m0 8h-2V9h2v6Z"
+    >
+    </path>
   </svg>
 )
