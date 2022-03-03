@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FourIcon, HoldingDollar, OneIcon, P2P, Tools } from '../common/components/Icons';
 
-import Manager from '../../images/ManagerCircle.png';
+import Manager from '../../images/gigmanager.png';
 import Gathering from '../../images/gathering.jpg';
 import One from '../../images/Num-one.png';
 import Two from '../../images/Num-two.png';
@@ -21,7 +21,7 @@ const BecomeManager = () => {
 
   return (
     <>
-      <div className="pt-9 px-3 flex flex-col justify-center items-center bg-yellow-500 pb-4">
+      <div className="pt-9 px-3 flex flex-col justify-center items-center bg-yellow1 pb-4">
         <h1 className="text-gray-700 text-lg font-bold tracking-wider z-10 text-center pb-5">
           Become a Gig Manager and benefit from the sale of 4 gigs
         </h1>

@@ -2,7 +2,7 @@ import React from 'react'
 
 import Brush from '../../images/whitebrush.png';
 import GigIcon from '../../images/gigicon.png';
-import Group from '../../images/giggroup.png';
+import Group from '../../images/managergroup.png';
 import Scholar from '../../images/scholar1.png';
 import { ChevLeft, ChevRight, CIcon, FourIcon, HoldingDollar, OneIcon, P2P, Tools } from '../common/components/Icons';
 import { Link } from 'react-router-dom';
@@ -14,7 +14,7 @@ const BecomeSeller = () => {
   // })
   return (
     <>
-    <div className="pt-9 px-4 flex flex-col justify-center bg-yellow-100">
+    <div className="pt-9 px-4 flex flex-col justify-center bg-yellow1">
       <div className="flex flex-col space-y-9">
         <div className="relative flex justify-center items-center">
           <h1 className="text-gray-700 text-lg font-bold tracking-wider z-10 text-center">You are a <span className="text-blue-600 italic">freelancer</span> or
@@ -55,7 +55,7 @@ const BecomeSeller = () => {
         </div>
       </div>
     </div>
-    <div className="bg-yellow-500 flex flex-col justify-center items-center space-y-6 p-5 w-full">
+    <div className="bg-white flex flex-col justify-center items-center space-y-6 p-5 w-full">
       <h1 className="font-bold text-xl text-gray-800 text-center flex flex-col items-center">
         How do I become a <br/>
         <span className="flex">

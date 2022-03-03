@@ -39,10 +39,10 @@ const Sidebar = ({
                         <div>
                             <h2 className='text-gray-300 font-bold uppercase'>Resources</h2>
                             <div className="flex flex-col py-3 px-5 font-bold text-grayblack space-y-2 text-sm">
-                                <Link to="/become-a-seller">Become a Seller</Link>
-                                <Link to="/become-a-manager">Become a Manager</Link>
-                                <Link to="/become-a-scholar">Become a Scholar</Link>
-                                <p>Buy Gigs</p>
+                                <Link onClick={() => setIsSidebarShow(false)} to="/become-a-seller">Become a Seller</Link>
+                                <Link onClick={() => setIsSidebarShow(false)} to="/become-a-manager">Become a Manager</Link>
+                                <Link onClick={() => setIsSidebarShow(false)} to="/become-a-scholar">Become a Scholar</Link>
+                                <Link onClick={() => setIsSidebarShow(false)} to="/buy-gigs">Buy Gigs</Link>
                                 <p>Guide</p>
                                 <p>Communities</p>
                                 <p>News</p>
