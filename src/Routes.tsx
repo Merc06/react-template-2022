@@ -40,7 +40,7 @@ const Router = () => {
                 <Route path="/become-a-seller" element={<BecomeSeller />} />
                 <Route path="/become-a-manager" element={<BecomeManager />} />
                 <Route path="/become-a-scholar" element={<BecomeScholar />} />
-                <Route path="/buy-gigs" element={<BuyGigs />} />
+                <Route path="/become-a-buyer" element={<BuyGigs />} />
 
                 {
                     Navs.map(({ path, key, component }) => (
