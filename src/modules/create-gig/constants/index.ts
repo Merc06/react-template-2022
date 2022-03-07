@@ -26,3 +26,8 @@ export const INIT_FAQ_STATE = {
     question: '',
     answer: '',
 }
+
+export const INIT_GALLERY_STATE = {
+    type: '',
+    files: '',
+}

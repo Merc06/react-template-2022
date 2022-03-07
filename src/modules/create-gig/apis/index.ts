@@ -125,11 +125,10 @@ export const getScopeList = async (
 
 export const updateScope = async (
   payload: object,
-  packageId: number,
   callback: () => void = () => {}
 ) => {
   const cancellationKey = createKey('update-scope');
-  const res = await api.put(`/gig/${packageId}/pricing`, {
+  const res = await api.put(`/gig/scope/pricing`, {
     payload,
     cancelToken: cancellationKey.token,
   });
@@ -232,3 +231,23 @@ export const deleteFaq = async (
   }
 };
 // END FAQ
+
+// GALLERY
+export const addGallery = async (
+  payload: object,
+  callback: () => void = () => {}
+) => {
+  const cancellationKey = createKey('gallery');
+  const res = await api.post('/gig/gallery', {
+    payload,
+    cancelToken: cancellationKey.token,
+  });
+  removeKey('gallery');
+
+  if (res) {
+    // toastMessage(res);
+    // getFaqList();
+    callback();
+  }
+};
+// END OF GALLERY
