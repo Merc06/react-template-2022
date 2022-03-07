@@ -1,44 +1,31 @@
-import React, { Dispatch, SetStateAction, SyntheticEvent, useState } from 'react';
+import React, { Dispatch, SetStateAction, SyntheticEvent } from 'react';
 import Button from '../../../common/components/Button';
 import Input from '../../../common/components/Input';
 import Modal from '../../../common/components/Modal';
 import TextArea from '../../../common/components/TextArea';
-import { addFaq, updateFaq } from '../../apis';
+import { addFaq, getFaqDescriptionList, updateFaq } from '../../apis';
 import { INIT_FAQ_STATE } from '../../constants';
 import { FaqProps } from '../../types';
 
 interface Props {
-    faqToEditState: FaqProps;
-    setFaqToEditState: Dispatch<SetStateAction<FaqProps>>;
-    faqIdState: number;
-    setFaqIdState: Dispatch<SetStateAction<number>>;
+    state: FaqProps;
+    setState: Dispatch<SetStateAction<FaqProps>>;
     isModalOpen: boolean;
     setIsModalOpen: Dispatch<SetStateAction<boolean>>;
+    isEdit: boolean;
 }
 
 const FaqModal = ({
-    faqToEditState,
-    setFaqToEditState,
-    faqIdState,
-    setFaqIdState,
+    state,
+    setState,
     isModalOpen,
-    setIsModalOpen
+    setIsModalOpen,
+    isEdit
 }: Props) => {
-    const [state, setState] = useState<FaqProps>(INIT_FAQ_STATE);
-
-    const clearState = (): void => {
-        setFaqToEditState(INIT_FAQ_STATE);
-        setState(INIT_FAQ_STATE);
-        setFaqIdState(0);
-    } 
+    const gig_id = localStorage.getItem('gigId');
 
     const onChange = (e: SyntheticEvent): void => {
         const { name, value } = e.target as HTMLInputElement;
-        faqIdState ?
-        setFaqToEditState({
-            ...faqToEditState,
-            [name]: value
-        }) :
         setState({
             ...state,
             [name]: value
@@ -46,24 +33,38 @@ const FaqModal = ({
     }
 
     const onAdd = (): void => {
-        addFaq(state, () => {
-            clearState();
-            setIsModalOpen(false);
-        })
+        if (gig_id) {
+            const payload = {
+                ...state,
+                gig_id: +gig_id
+            }
+            addFaq(payload, () => {
+                getFaqDescriptionList(+gig_id);
+                setState(INIT_FAQ_STATE);
+                setIsModalOpen(false);
+            })
+        }
     }
 
     const onEdit = (): void => {
-        updateFaq(faqToEditState, faqIdState, () => {
-            clearState();
-            setIsModalOpen(false);
-        })
+        if (gig_id) {
+            const payload = {
+                question: state.question,
+                answer: state.answer
+            }
+            updateFaq(payload, state.id, () => {
+                setIsModalOpen(false);
+                getFaqDescriptionList(+gig_id);
+                setState(INIT_FAQ_STATE);
+            })
+        }
     } 
 
     return (
         <Modal
             onClose={() => setIsModalOpen(false)}
             isOpen={isModalOpen}
-            title={`${faqIdState ? 'Edit' : 'Add'} FAQ`}
+            title={`${ isEdit ? 'Edit' : 'Add' } FAQ`}
         >
             <div className='space-y-5 p-2'>
                 <div className="space-y-2">
@@ -72,7 +73,7 @@ const FaqModal = ({
                     </h1>
                     <Input
                         placeholder="Enter a question..."
-                        value={ faqToEditState.question ? faqToEditState.question : state.question }
+                        value={ state.question }
                         name="question"
                         onChange={onChange}
                     />
@@ -84,7 +85,7 @@ const FaqModal = ({
                     </h1>
                     <TextArea
                         placeholder="Enter the answer..."
-                        value={ faqToEditState.answer ? faqToEditState.answer : state.answer }
+                        value={ state.answer }
                         name="answer"
                         onChange={onChange}
                     />
@@ -94,14 +95,14 @@ const FaqModal = ({
                     <Button
                         className='w-28 text-grayblack font-bold'
                         onClick={() => {
-                            clearState();
+                            setState(INIT_FAQ_STATE);
                             setIsModalOpen(false);
                         }}
                     >
                         CANCEL
                     </Button>
                     {
-                        faqIdState ?
+                        isEdit ?
                         <Button
                             className='bg-accent w-28 text-white font-bold'
                             onClick={onEdit}

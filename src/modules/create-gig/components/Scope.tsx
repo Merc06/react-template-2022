@@ -1,21 +1,105 @@
-import React, { useState } from 'react';
+import _ from 'lodash';
+import React, { Dispatch, SetStateAction, SyntheticEvent, useEffect } from 'react';
 import Input from '../../common/components/Input';
 import Select from '../../common/components/Select';
 import TextArea from '../../common/components/TextArea';
 import Toggle from '../../common/components/Toggle';
+import { getScopeList } from '../apis';
+import { DELIVERY_TIME } from '../constants/deliveryTime';
+import { PackageProps } from '../types';
 
-const Scope = () => {
-    const [isQoutationCheck, setIsQoutationCheck] = useState<boolean>(false);
-    const [isBasicCheck, setIsBasicCheck] = useState<boolean>(false);
-    const [isStandardCheck, setIsStandardCheck] = useState<boolean>(false);
-    const [isPremiumCheck, setIsPremiumCheck] = useState<boolean>(false);
+interface Props {
+    isQoutationCheck: boolean;
+    setIsQoutationCheck: Dispatch<SetStateAction<boolean>>;
+    isBasicCheck: boolean;
+    setIsBasicCheck: Dispatch<SetStateAction<boolean>>;
+    isStandardCheck: boolean;
+    setIsStandardCheck: Dispatch<SetStateAction<boolean>>;
+    isPremiumCheck: boolean;
+    setIsPremiumCheck: Dispatch<SetStateAction<boolean>>;
+    basicState: PackageProps;
+    setBasicState: Dispatch<SetStateAction<PackageProps>>;
+    standardState: PackageProps;
+    setStandardState:Dispatch<SetStateAction<PackageProps>>;
+    premiumState: PackageProps;
+    setPremiumState: Dispatch<SetStateAction<PackageProps>>;
+}
+
+const Scope = ({
+    isQoutationCheck,
+    setIsQoutationCheck,
+    isBasicCheck,
+    setIsBasicCheck,
+    isStandardCheck,
+    setIsStandardCheck,
+    isPremiumCheck,
+    setIsPremiumCheck,
+    basicState,
+    setBasicState,
+    standardState,
+    setStandardState,
+    premiumState,
+    setPremiumState
+}: Props) => {
+    const gigId = localStorage.getItem('gigId');
+
     const tableStyle = {
-        width: "600px",
+        width: "600px"
+    }
+    const BASIC = "BASIC";
+    const STANDARD = "STANDARD";
+    const PREMIUM = "PREMIUM";
+
+    useEffect(() => {
+        getScope();
+        // eslint-disable-next-line
+    }, []);
+
+    const checkIsCheck = (res: Array<PackageProps>): void => {
+        !_.isEmpty(res) && setIsQoutationCheck(true);
+        const isBasicExist = res.some((item) => item.package === 'BASIC');
+        const isStandardExist = res.some((item) => item.package === 'STANDARD');
+        const isPremiumExist = res.some((item) => item.package === 'PREMIUM');
+        isBasicExist && setIsBasicCheck(true);
+        isStandardExist && setIsStandardCheck(true);
+        isPremiumExist && setIsPremiumCheck(true);
     }
 
-    const onChange = (): void => {
-        console.log("Clicked")
+    const getScope = (): void => {
+        gigId && getScopeList(+gigId, (res) => {
+            console.log(res)
+            if (!_.isEmpty(res)) {
+                checkIsCheck(res);
+
+                res.map((item, index) => (
+                    item.package === 'BASIC' ?
+                    setBasicState(res[index]) :
+                    item.package === 'STANDARD' ?
+                    setStandardState(res[index]) :
+                    setPremiumState(res[index])
+                ))
+            }
+        });
     }
+
+    const onChange = (e: SyntheticEvent, type: "BASIC" | "STANDARD" | "PREMIUM"): void => {
+        const { name, value } = e.target as HTMLInputElement;
+        type === "BASIC" ?
+        setBasicState({
+            ...basicState,
+            [name]: value
+        }) :
+        type === "STANDARD" ?
+        setStandardState({
+            ...standardState,
+            [name]: value
+        }) :
+        setPremiumState({
+            ...premiumState,
+            [name]: value
+        })
+    }
+
 
     return (
         <div className='space-y-4'>
@@ -37,7 +121,7 @@ const Scope = () => {
                 </div>
             </div>
             
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto pb-3">
                 <table style={tableStyle}>
                     <thead className='text-xs'>
                         <tr className='w-full'>
@@ -86,28 +170,28 @@ const Scope = () => {
                             <td>
                                 <Input
                                     disabled={!isQoutationCheck || !isBasicCheck}
-                                    value={''}
-                                    name="title"
-                                    onChange={onChange}
-                                    placeholder="Package name"
+                                    value={basicState.package_name}
+                                    name="package_name"
+                                    onChange={(e) => onChange(e, BASIC)}
+                                    placeholder="Enter package name..."
                                 />
                             </td>
                             <td>
                                 <Input
                                     disabled={!isQoutationCheck || !isStandardCheck}
-                                    value={''}
-                                    name="title"
-                                    onChange={onChange}
-                                    placeholder="Package name"
+                                    value={standardState.package_name}
+                                    name="package_name"
+                                    onChange={(e) => onChange(e, STANDARD)}
+                                    placeholder="Enter package name..."
                                 />
                             </td>
                             <td>
                                 <Input
                                     disabled={!isQoutationCheck || !isPremiumCheck}
-                                    value={''}
-                                    name="title"
-                                    onChange={onChange}
-                                    placeholder="Package name"
+                                    value={premiumState.package_name}
+                                    name="package_name"
+                                    onChange={(e) => onChange(e, PREMIUM)}
+                                    placeholder="Enter package name..."
                                 />
                             </td>
                         </tr>
@@ -116,28 +200,28 @@ const Scope = () => {
                             <td>
                                 <TextArea
                                     disabled={!isQoutationCheck || !isBasicCheck}
-                                    value={''}
-                                    name="title"
-                                    onChange={onChange}
-                                    placeholder="Package description"
+                                    value={basicState.package_description}
+                                    name="package_description"
+                                    onChange={(e) => onChange(e, BASIC)}
+                                    placeholder="Enter package description..."
                                 />
                             </td>
                             <td>
                                 <TextArea
                                     disabled={!isQoutationCheck || !isStandardCheck}
-                                    value={''}
-                                    name="title"
-                                    onChange={onChange}
-                                    placeholder="Package description"
+                                    value={standardState.package_description}
+                                    name="package_description"
+                                    onChange={(e) => onChange(e, STANDARD)}
+                                    placeholder="Enter package description..."
                                 />
                             </td>
                             <td>
                                 <TextArea
                                     disabled={!isQoutationCheck || !isPremiumCheck}
-                                    value={''}
-                                    name="title"
-                                    onChange={onChange}
-                                    placeholder="Package description"
+                                    value={premiumState.package_description}
+                                    name="package_description"
+                                    onChange={(e) => onChange(e, PREMIUM)}
+                                    placeholder="Enter package description..."
                                 />
                             </td>
                         </tr>
@@ -146,34 +230,40 @@ const Scope = () => {
                             <td>
                                 <Select
                                     disabled={!isQoutationCheck || !isBasicCheck}
-                                    value={''}
-                                    name="category"
-                                    onChange={onChange}
+                                    value={basicState.delivery_time}
+                                    name="delivery_time"
+                                    onChange={(e) => onChange(e, BASIC)}
                                     placeholder=""
                                     defaultOptionLabel=""
-                                    options={[{label: "-", value: "-"}]}
+                                    options={DELIVERY_TIME.map((item) => (
+                                        {label: item, value: item}
+                                    ))}
                                 />
                             </td>
                             <td>
                                 <Select
                                     disabled={!isQoutationCheck || !isStandardCheck}
-                                    value={''}
-                                    name="category"
-                                    onChange={onChange}
+                                    value={standardState.delivery_time}
+                                    name="delivery_time"
+                                    onChange={(e) => onChange(e, STANDARD)}
                                     placeholder=""
                                     defaultOptionLabel=""
-                                    options={[{label: "-", value: "-"}]}
+                                    options={DELIVERY_TIME.map((item) => (
+                                        {label: item, value: item}
+                                    ))}
                                 />
                             </td>
                             <td>
                                 <Select
                                     disabled={!isQoutationCheck || !isPremiumCheck}
-                                    value={''}
-                                    name="category"
-                                    onChange={onChange}
+                                    value={premiumState.delivery_time}
+                                    name="delivery_time"
+                                    onChange={(e) => onChange(e, PREMIUM)}
                                     placeholder=""
                                     defaultOptionLabel=""
-                                    options={[{label: "-", value: "-"}]}
+                                    options={DELIVERY_TIME.map((item) => (
+                                        {label: item, value: item}
+                                    ))}
                                 />
                             </td>
                         </tr>
@@ -181,29 +271,122 @@ const Scope = () => {
                             <td><p className='text-xs w-20 font-bold'>Price(DOK) <span className='text-red-600'>*</span></p></td>
                             <td>
                                 <Input
+                                    type='number'
                                     disabled={!isQoutationCheck || !isBasicCheck}
-                                    value={''}
-                                    name="title"
-                                    onChange={onChange}
-                                    placeholder="0"
+                                    value={+basicState.price}
+                                    name="price"
+                                    onChange={(e) => onChange(e, BASIC)}
+                                    placeholder="Enter DOK price..."
+                                />
+                            </td>
+                            <td>
+                                <Input
+                                    type='number'
+                                    disabled={!isQoutationCheck || !isStandardCheck}
+                                    value={+standardState.price}
+                                    name="price"
+                                    onChange={(e) => onChange(e, STANDARD)}
+                                    placeholder="Enter DOK price..."
+                                />
+                            </td>
+                            <td>
+                                <Input
+                                    type='number'
+                                    disabled={!isQoutationCheck || !isPremiumCheck}
+                                    value={+premiumState.price}
+                                    name="price"
+                                    onChange={(e) => onChange(e, PREMIUM)}
+                                    placeholder="Enter DOK price..."
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><p className='text-xs w-20 font-bold'>Package Inclusion 1</p></td>
+                            <td>
+                                <Input
+                                    disabled={!isQoutationCheck || !isBasicCheck}
+                                    value={basicState.inclusion_one}
+                                    name="inclusion_one"
+                                    onChange={(e) => onChange(e, BASIC)}
+                                    placeholder="Enter inclusion 1..."
                                 />
                             </td>
                             <td>
                                 <Input
                                     disabled={!isQoutationCheck || !isStandardCheck}
-                                    value={''}
-                                    name="title"
-                                    onChange={onChange}
-                                    placeholder="0"
+                                    value={standardState.inclusion_one}
+                                    name="inclusion_one"
+                                    onChange={(e) => onChange(e, STANDARD)}
+                                    placeholder="Enter inclusion 1..."
                                 />
                             </td>
                             <td>
                                 <Input
                                     disabled={!isQoutationCheck || !isPremiumCheck}
-                                    value={''}
-                                    name="title"
-                                    onChange={onChange}
-                                    placeholder="0"
+                                    value={premiumState.inclusion_one}
+                                    name="inclusion_one"
+                                    onChange={(e) => onChange(e, PREMIUM)}
+                                    placeholder="Enter inclusion 1..."
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><p className='text-xs w-20 font-bold'>Package Inclusion 2</p></td>
+                            <td>
+                                <Input
+                                    disabled={!isQoutationCheck || !isBasicCheck}
+                                    value={basicState.inclusion_two}
+                                    name="inclusion_two"
+                                    onChange={(e) => onChange(e, BASIC)}
+                                    placeholder="Enter inclusion 2..."
+                                />
+                            </td>
+                            <td>
+                                <Input
+                                    disabled={!isQoutationCheck || !isStandardCheck}
+                                    value={standardState.inclusion_two}
+                                    name="inclusion_two"
+                                    onChange={(e) => onChange(e, STANDARD)}
+                                    placeholder="Enter inclusion 2..."
+                                />
+                            </td>
+                            <td>
+                                <Input
+                                    disabled={!isQoutationCheck || !isPremiumCheck}
+                                    value={premiumState.inclusion_two}
+                                    name="inclusion_two"
+                                    onChange={(e) => onChange(e, PREMIUM)}
+                                    placeholder="Enter inclusion 2..."
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><p className='text-xs w-20 font-bold'>Package Inclusion 3</p></td>
+                            <td>
+                                <Input
+                                    disabled={!isQoutationCheck || !isBasicCheck}
+                                    value={basicState.inclusion_three}
+                                    name="inclusion_three"
+                                    onChange={(e) => onChange(e, BASIC)}
+                                    placeholder="Enter inclusion 3..."
+                                />
+                            </td>
+                            <td>
+                                <Input
+                                    disabled={!isQoutationCheck || !isStandardCheck}
+                                    value={standardState.inclusion_three}
+                                    name="inclusion_three"
+                                    onChange={(e) => onChange(e, STANDARD)}
+                                    placeholder="Enter inclusion 3..."
+                                />
+                            </td>
+                            <td>
+                                <Input
+                                    disabled={!isQoutationCheck || !isPremiumCheck}
+                                    value={premiumState.inclusion_three}
+                                    name="inclusion_three"
+                                    onChange={(e) => onChange(e, PREMIUM)}
+                                    placeholder="Enter inclusion 3..."
                                 />
                             </td>
                         </tr>

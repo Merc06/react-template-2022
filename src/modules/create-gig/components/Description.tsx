@@ -1,49 +1,60 @@
-import React, { Dispatch, SetStateAction, SyntheticEvent, useEffect } from 'react';
+import React, { Dispatch, SetStateAction, SyntheticEvent, useEffect, useState } from 'react';
 import useAppSelector from '../../../helpers/useAppSelector';
 import Button from '../../common/components/Button';
 import TextArea from '../../common/components/TextArea';
-import { deleteFaq, getFaqList } from '../apis';
+import { deleteFaq, getFaqDescriptionList } from '../apis';
+import { INIT_FAQ_STATE } from '../constants';
 import { FaqListProps, FaqProps } from '../types';
+import FaqModal from './modals/FaqModal';
 
 interface Props {
     description: string;
-    setIsFaqModalOpen: Dispatch<SetStateAction<boolean>>;
-    setFaqToEditState: Dispatch<SetStateAction<FaqProps>>;
-    setFaqIdState: Dispatch<SetStateAction<number>>;
-    onChange: (e: SyntheticEvent, step: 'OVERVIEW' | 'FAQ') => void;
+    setDescription: Dispatch<SetStateAction<string>>;
 }
 
 const Description = ({
     description,
-    setIsFaqModalOpen,
-    setFaqToEditState,
-    setFaqIdState,
-    onChange
+    setDescription,
 }: Props) => {
-    const faqList = useAppSelector('createGig.faqList');
+    const gigId = localStorage.getItem('gigId');
+    const faqDescriptionList = useAppSelector('createGig.faqDescriptionList');
+
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    const [faqState, setFaqState] = useState<FaqProps>(INIT_FAQ_STATE);
+    const [isEdit, setIsEdit] = useState<boolean>(false);
     
     useEffect(() => {
-        getFaqList();
-    }, [])
+        gigId && getFaqDescriptionList(+gigId, (res) => {
+            setDescription(res[0].description || '');
+        }); 
+        // eslint-disable-next-line
+    }, []);
+
+
+    const onChange = (e: SyntheticEvent) => {
+        const { value } = e.target as HTMLInputElement;
+        setDescription(value);
+    }
 
     const onEdit = async ({ id, question, answer }: FaqListProps) => {
         const obj = {
+            id,
             question,
             answer
         }
-        await setFaqToEditState(obj);
-        await setFaqIdState(id);
-        await setIsFaqModalOpen(true);
+        await setFaqState(obj);
+        await setIsModalOpen(true);
     }
 
     return (
+        <>
         <div className='p-4 space-y-8'>
             <div className="flex flex-col space-y-1">
                 <p className='text-xs font-bold'>Briefly describe your gig <span className='text-red-600'>*</span></p>
                 <TextArea
                     value={description}
-                    name="title"
-                    onChange={(e) => onChange(e, 'FAQ')}
+                    name="description"
+                    onChange={onChange}
                 />
             </div>
             <div className="flex flex-col space-y-1">
@@ -54,8 +65,8 @@ const Description = ({
 
                 
                     {
-                        faqList.length &&
-                        faqList.map((item: FaqListProps, index: number) => (
+                        faqDescriptionList[0]?.faq.length ?
+                        faqDescriptionList[0].faq.map((item: FaqListProps, index: number) => (
                             <div className="flex justify-between items-center" key={index}>
                                 <div className="flex flex-col">
                                     <h1 className='text-sm font-bold'>Question #{index + 1}</h1>
@@ -67,30 +78,54 @@ const Description = ({
                                 <div className="flex items-center space-x-2">
                                 <Button
                                     className='bg-blue-700 text-white w-16'
-                                    onClick={() => onEdit(item)}
+                                    onClick={() => {
+                                        setIsEdit(true);
+                                        onEdit(item);
+                                    }}
                                 >
                                     Edit
                                 </Button>
                                 <Button
                                     className='bg-red-600 text-white w-16'
-                                    onClick={() => deleteFaq(item.id)}
+                                    onClick={() => {
+                                        deleteFaq(item.id, () => (
+                                            gigId && getFaqDescriptionList(+gigId)
+                                        ))
+                                    }}
                                 >
                                     Delete
                                 </Button>
                             </div>
                         </div>
-                        ))
+                        )) :
+                        <></>
                     }
 
 
                 <Button
                     className='text-blue-700 font-bold text-xs w-20'
-                    onClick={() => setIsFaqModalOpen(true)}
+                    onClick={() => {
+                        setIsEdit(false);
+                        setIsModalOpen(true);
+                    }}
                 >
                     + ADD FAQ
                 </Button>
             </div>
+
         </div>
+        <FaqModal
+            state={faqState}
+            setState={setFaqState}
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
+            isEdit={isEdit}
+            // faqToEditState={faqToEditState}
+            // setFaqToEditState={setFaqToEditState}
+            // faqIdState={faqIdState}
+            // setFaqIdState={setFaqIdState}
+        />
+        </>
     );
 };
 

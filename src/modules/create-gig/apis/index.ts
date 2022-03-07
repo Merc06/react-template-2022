@@ -2,15 +2,15 @@ import api from '../../../helpers/api';
 import { createKey, removeKey } from '../../../helpers/apiCancellation';
 import dispatch from '../../../helpers/dispatch';
 import toastMessage from '../../../helpers/toastMessage';
-import { setCategoryList, setFaqList, setSubCategoryList } from '../reducers';
-import { OverviewProps } from '../types';
+import { setCategoryList, setFaqDescriptionList, setOverviewInfo, setScopeList, setSubCategoryList } from '../reducers';
+import { OverviewProps, PackageProps } from '../types';
 
 
 export const getCategoryList = async (
   callback: () => void = () => {}
 ) => {
     const cancellationKey = createKey('category');
-    const res = await api.get('gig/category', {
+    const res = await api.get('category', {
       cancelToken: cancellationKey.token,
     });
     removeKey('category');
@@ -25,7 +25,7 @@ export const getSubCategoryList = async (
   callback: () => void = () => {}
 ) => {
     const cancellationKey = createKey('sub-category');
-    const res = await api.get('gig/sub-category', {
+    const res = await api.get('sub-category', {
       cancelToken: cancellationKey.token,
     });
     removeKey('sub-category');
@@ -36,39 +36,148 @@ export const getSubCategoryList = async (
     }
 };
 
-export const saveOverview = async (
-  payload: OverviewProps,
-  callback: () => void = () => {}
+// OVERVIEW
+export const addOverview = async (
+  payload: object,
+  callback: (id: number) => void = () => {}
 ) => {
-    const cancellationKey = createKey('save-overview');
+    const cancellationKey = createKey('overview');
     const res = await api.post('gig', {
       payload,
       cancelToken: cancellationKey.token
     });
-    removeKey('save-overview');
+    removeKey('overview');
     
     if (res) {
       toastMessage(res);
+      callback(res.data.id);
+    }
+};
+
+export const updateOverview = async (
+  payload: object,
+  gigId: number,
+  callback: () => void = () => {}
+) => {
+    const cancellationKey = createKey('update-overview');
+    const res = await api.put(`gig/${gigId}`, {
+      payload,
+      cancelToken: cancellationKey.token
+    });
+    removeKey('update-overview');
+    
+    if (res) {
       callback();
     }
 };
 
-export const addDescription = async (
+export const getOverviewInfo = async (
+  gigId: number,
+  callback: (res: OverviewProps) => void = () => {}
+) => {
+    const cancellationKey = createKey('get-overview-info');
+    const res = await api.get(`gig/${gigId}`, {
+      cancelToken: cancellationKey.token
+    });
+    removeKey('get-overview-info');
+    
+    if (res) {
+      dispatch(setOverviewInfo(res));
+      callback(res);
+    }
+};
+// END OF OVERVIEW
+
+// SCOPE
+export const addScope = async (
   payload: object,
   callback: () => void = () => {}
 ) => {
-  const cancellationKey = createKey('faq');
-  const res = await api.post('/gig/description', {
+  const cancellationKey = createKey('scope');
+  const res = await api.post(`gig/pricing`, {
     payload,
     cancelToken: cancellationKey.token,
   });
-  removeKey('faq');
+  removeKey('scope');
 
   if (res) {
     toastMessage(res);
     callback();
   }
 };
+
+export const getScopeList = async (
+  gigId: number,
+  callback: (res: Array<PackageProps>) => void = () => {}
+) => {
+  const cancellationKey = createKey('get-scope-list');
+  const res = await api.get(`gig/${gigId}/pricing`, {
+    cancelToken: cancellationKey.token,
+  });
+  removeKey('get-scope-list');
+
+  if (res) {
+    console.log(res)
+    dispatch(setScopeList(res));
+    callback(res);
+  }
+};
+
+export const updateScope = async (
+  payload: object,
+  packageId: number,
+  callback: () => void = () => {}
+) => {
+  const cancellationKey = createKey('update-scope');
+  const res = await api.put(`/gig/${packageId}/pricing`, {
+    payload,
+    cancelToken: cancellationKey.token,
+  });
+  removeKey('update-scope');
+
+  if (res) {
+    callback();
+  }
+};
+// END OF SCOPE
+
+// GET FAQ AND DESCRIPTION
+export const getFaqDescriptionList = async (
+  gigId: number,
+  callback: (res: any) => void = () => {}
+) => {
+  const cancellationKey = createKey('get-faq-description-info');
+  const res = await api.get(`/gig/${gigId}/description`, {
+    cancelToken: cancellationKey.token,
+  });
+  removeKey('get-faq-description-info');
+
+  if (res) {
+    console.log(res);
+    dispatch(setFaqDescriptionList(res));
+    callback(res);
+  }
+};
+// END OF GET FAQ AND DESCRIPTION
+
+// DESCRIPTION
+export const addDescription = async (
+  payload: object,
+  callback: () => void = () => {}
+) => {
+  const cancellationKey = createKey('description');
+  const res = await api.post('/gig/description', {
+    payload,
+    cancelToken: cancellationKey.token,
+  });
+  removeKey('description');
+
+  if (res) {
+    toastMessage(res);
+    callback();
+  }
+};
+// END OF DESCRIPTION
 
 // FAQ
 export const addFaq = async (
@@ -84,33 +193,18 @@ export const addFaq = async (
 
   if (res) {
     toastMessage(res);
-    getFaqList();
-    callback();
-  }
-};
-
-export const getFaqList = async (
-  callback: () => void = () => {}
-) => {
-  const cancellationKey = createKey('get-faq-list');
-  const res = await api.get('/gig/faq', {
-    cancelToken: cancellationKey.token,
-  });
-  removeKey('get-faq-list');
-
-  if (res) {
-    dispatch(setFaqList(res));
+    // getFaqList();
     callback();
   }
 };
 
 export const updateFaq = async (
   payload: object,
-  id: number,
+  faqId: number,
   callback: () => void = () => {}
 ) => {
   const cancellationKey = createKey('update-faq');
-  const res = await api.put(`gig/${id}/faq`, {
+  const res = await api.put(`gig/${faqId}/faq`, {
     payload,
     cancelToken: cancellationKey.token,
   });
@@ -118,24 +212,22 @@ export const updateFaq = async (
 
   if (res) {
     toastMessage(res);
-    getFaqList();
     callback();
   }
 };
 
 export const deleteFaq = async (
-  id: number,
+  faqId: number,
   callback: () => void = () => {}
 ) => {
   const cancellationKey = createKey('faq');
-  const res = await api.delete(`gig/${id}/faq`, {
+  const res = await api.delete(`gig/${faqId}/faq`, {
     cancelToken: cancellationKey.token,
   });
   removeKey('faq');
 
   if (res) {
     toastMessage(res);
-    getFaqList();
     callback();
   }
 };
