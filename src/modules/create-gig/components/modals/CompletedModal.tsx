@@ -18,7 +18,6 @@ const CompletedModal = ({
         <Modal
             onClose={() => setIsModalOpen(false)}
             isOpen={isModalOpen}
-            closeOnClickOutSide
             hideHeader
         >
             <div className='text-center space-y-3 p-10'>

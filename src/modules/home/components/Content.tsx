@@ -13,7 +13,7 @@ const Content = () => {
     const [selected, setSelected ] = useState('/');
 
     const onChange = (e: SyntheticEvent) => {
-        const { name, value } = e.target as HTMLInputElement;
+        const { value } = e.target as HTMLInputElement;
         setSelected(value);
     }
     

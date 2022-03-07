@@ -63,6 +63,11 @@ interface PackageProps {
     inclusion_three: string;
 }
 
+interface GalleryProps {
+    type: string;
+    files: string;
+}
+
 export type {
     Steps,
     OverviewProps,
@@ -72,4 +77,5 @@ export type {
     FaqProps,
     OverviewInfoProps,
     PackageProps,
+    GalleryProps
 }

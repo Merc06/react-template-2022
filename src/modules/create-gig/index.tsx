@@ -4,26 +4,24 @@ import React, { useState } from 'react';
 import Button from '../common/components/Button';
 import { IconEye, IconSave } from '../common/components/Icons';
 import Overview from './components/Overview';
-import { OverviewProps } from './types';
-import { INIT_OVERVIEW_STATE } from './constants';
+import { GalleryProps, OverviewProps } from './types';
+import { INIT_GALLERY_STATE, INIT_OVERVIEW_STATE } from './constants';
 import Scope from './components/Scope';
 import { INIT_PACKAGE_STATE } from './constants';
 import { PackageProps } from './types';
-
-// import CompletedModal from './components/modals/CompletedModal';
-
 import Description from './components/Description';
-import { addOverview, addScope, updateOverview, updateScope } from './apis';
+import { addGallery, addOverview, addScope, updateOverview, updateScope } from './apis';
 import useAppSelector from '../../helpers/useAppSelector';
 import toast from 'react-hot-toast';
 import Gallery from './components/Gallery';
+import CompletedModal from './components/modals/CompletedModal';
 
 
 const CreateGig = () => {
     const [activeStep, setActiveStep] = useState<number>(0);
     const gigId = localStorage.getItem('gigId');
 
-    // const [isCompleteModalOpen, setIsCompleteModalOpen] = useState<boolean>(false);
+    const [isCompleteModalOpen, setIsCompleteModalOpen] = useState<boolean>(false);
     const [overviewState, setOverviewState] = useState<OverviewProps>(INIT_OVERVIEW_STATE);
     
     const scopeList = useAppSelector('createGig.scopeList');
@@ -37,6 +35,12 @@ const CreateGig = () => {
     
     const [description, setDescription] = useState('');
 
+    const [img1, setImg1] = useState<GalleryProps>(INIT_GALLERY_STATE);
+    const [img2, setImg2] = useState<GalleryProps>(INIT_GALLERY_STATE);
+    const [img3, setImg3] = useState<GalleryProps>(INIT_GALLERY_STATE);
+    const [video, setVideo] = useState<GalleryProps>(INIT_GALLERY_STATE);
+    const [doc1, setDoc1] = useState<GalleryProps>(INIT_GALLERY_STATE);
+    const [doc2, setDoc2] = useState<GalleryProps>(INIT_GALLERY_STATE);
 
     
     const handleNext = (): void => {
@@ -67,35 +71,36 @@ const CreateGig = () => {
     const submitScope = (): void => {
         if (gigId) {
             const payload = {
+                gig_id: +gigId,
                 data: [
-                    isBasicCheck ? {
+                    {
                         ...basicState,
                         gig_id: +gigId,
                         package: "BASIC"
-                    } : undefined,
-                    isStandardCheck ? {
+                    },
+                    {
                         ...standardState,
                         gig_id: +gigId,
                         package: "STANDARD"
-                    } : undefined,
-                    isPremiumCheck ? {
+                    },
+                    {
                         ...premiumState,
                         gig_id: +gigId,
                         package: "PREMIUM"
-                    } : undefined
+                    }
                 ]
             }
 
             // payload.data.map((item, key) => {
                 
             // })
-            // _.isEmpty(scopeList) ?
-            // addScope(payload, () => {
-            //     handleNext();
-            // }) :
-            // updateScope(payload, +gigId, () => {
-            //     handleNext();
-            // });
+            _.isEmpty(scopeList) ?
+            addScope(payload, () => {
+                handleNext();
+            }) :
+            updateScope(payload, () => {
+                handleNext();
+            });
             handleNext();
         }
     }
@@ -107,10 +112,24 @@ const CreateGig = () => {
         })
     }
 
-    // const onPublished = (): void => {
-    //     // console.log("Setup Finished!")
-    //     setIsModalOpen(true);
-    // }
+    const submitGallery = (): void => {
+        if (gigId) {
+            const payload = {
+                gig_id: +gigId,
+                data: [
+                    { ...img1, gig_id: +gigId },
+                    { ...img2, gig_id: +gigId },
+                    { ...img3, gig_id: +gigId },
+                    { ...video, gig_id: +gigId },
+                    { ...doc1, gig_id: +gigId },
+                    { ...doc2, gig_id: +gigId }
+                ]
+            }
+            addGallery(payload, () => {
+                setIsCompleteModalOpen(true);
+            })
+        }
+    }
 
     return (
         <div className='p-4'>
@@ -244,7 +263,14 @@ const CreateGig = () => {
                         </div>
                     </StepLabel>
                     <StepContent>
-                        <Gallery />
+                        <Gallery
+                            img1={img1} setImg1={setImg1}
+                            img2={img2} setImg2={setImg2}
+                            img3={img3} setImg3={setImg3}
+                            video={video} setVideo={setVideo}
+                            doc1={doc1} setDoc1={setDoc1}
+                            doc2={doc2} setDoc2={setDoc2}
+                        />
                         <div className="flex justify-end space-x-2 mt-7">
                             <Button 
                                 className="bg-gray-200 px-2 text-grayblack uppercase font-semibold"
@@ -254,7 +280,7 @@ const CreateGig = () => {
                             </Button>
                             <Button 
                                 className="bg-accent px-2 text-grayblack uppercase font-semibold"
-                                onClick={submitDescription}
+                                onClick={submitGallery}
                             >
                                 Publish GIG
                             </Button>
@@ -263,10 +289,10 @@ const CreateGig = () => {
                 </Step>
             </Stepper>
 
-            {/* <CompletedModal
+            <CompletedModal
                 isModalOpen={isCompleteModalOpen}
                 setIsModalOpen={setIsCompleteModalOpen}
-            /> */}
+            />
         </div>
     );
 };
