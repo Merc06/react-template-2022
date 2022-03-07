@@ -2933,8 +2933,8 @@ export const TenIcon = ({ ...rest }) => (
     xmlns="http://www.w3.org/2000/svg" 
     aria-hidden="true" 
     role="img" 
-    width="2em" 
-    height="2em" 
+    width="1em" 
+    height="1em" 
     preserveAspectRatio="xMidYMid meet" 
     viewBox="0 0 24 24" 
     className="inline-block fill-current"
@@ -2945,5 +2945,82 @@ export const TenIcon = ({ ...rest }) => (
       d="M12 2c5.5 0 10 4.5 10 10s-4.5 10-10 10S2 17.5 2 12S6.5 2 12 2m0 2c-4.42 0-8 3.58-8 8s3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8m-2 3H6v2h2v8h2V7m6 0h-2c-1.1 0-2 .9-2 2v6a2 2 0 0 0 2 2h2c1.11 0 2-.89 2-2V9a2 2 0 0 0-2-2m0 8h-2V9h2v6Z"
     >
     </path>
+  </svg>
+)
+
+export const ShieldIcon = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 24 24" 
+    className="inline-block fill-current"
+    { ...rest }
+  >
+    <path 
+      fill="currentColor" 
+      d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V5l-9-4zm7 10c0 4.52-2.98 8.69-7 9.93c-4.02-1.24-7-5.41-7-9.93V6.3l7-3.11l7 3.11V11zm-11.59.59L6 13l4 4l8-8l-1.41-1.42L10 14.17z"
+    >
+    </path>
+  </svg>
+)
+
+export const SignIcon = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img"
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 576 512" 
+    className="inline-block fill-current"
+    { ...rest }
+  >
+    <path 
+      fill="currentColor" 
+      d="M218.17 424.14c-2.95-5.92-8.09-6.52-10.17-6.52s-7.22.59-10.02 6.19l-7.67 15.34c-6.37 12.78-25.03 11.37-29.48-2.09L144 386.59l-10.61 31.88c-5.89 17.66-22.38 29.53-41 29.53H80c-8.84 0-16-7.16-16-16s7.16-16 16-16h12.39c4.83 0 9.11-3.08 10.64-7.66l18.19-54.64c3.3-9.81 12.44-16.41 22.78-16.41s19.48 6.59 22.77 16.41l13.88 41.64c19.75-16.19 54.06-9.7 66 14.16c1.89 3.78 5.49 5.95 9.36 6.26v-82.12l128-127.09V160H248c-13.2 0-24-10.8-24-24V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24v-40l-128-.11c-16.12-.31-30.58-9.28-37.83-23.75zM384 121.9c0-6.3-2.5-12.4-7-16.9L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128v-6.1zm-96 225.06V416h68.99l161.68-162.78l-67.88-67.88L288 346.96zm280.54-179.63l-31.87-31.87c-9.94-9.94-26.07-9.94-36.01 0l-27.25 27.25l67.88 67.88l27.25-27.25c9.95-9.94 9.95-26.07 0-36.01z"
+    >
+    </path>
+  </svg>
+)
+
+export const AccessIcon = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 24 24" 
+    className="inline-block fill-current"
+    { ...rest }
+  >
+    <g 
+      fill="none" 
+      stroke="currentColor" 
+      strokeWidth="1.5"
+    >
+      <path 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+        d="M2 20v-1a7 7 0 0 1 7-7v0"
+      >
+      </path>
+      <path 
+        d="M15.804 12.313a1.618 1.618 0 0 1 2.392 0c.325.357.79.55 1.272.527a1.618 1.618 0 0 1 1.692 1.692c-.023.481.17.947.526 1.272c.705.642.705 1.75 0 2.392c-.356.325-.549.79-.526 1.272a1.618 1.618 0 0 1-1.692 1.692a1.618 1.618 0 0 0-1.272.526a1.618 1.618 0 0 1-2.392 0a1.618 1.618 0 0 0-1.272-.526a1.618 1.618 0 0 1-1.692-1.692a1.618 1.618 0 0 0-.527-1.272a1.618 1.618 0 0 1 0-2.392c.357-.325.55-.79.527-1.272a1.618 1.618 0 0 1 1.692-1.692c.481.023.947-.17 1.272-.527Z"
+      >
+      </path>
+      <path 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+        d="m15.364 17l1.09 1.09l2.182-2.18M9 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8Z"
+      >
+      </path>
+    </g>
   </svg>
 )

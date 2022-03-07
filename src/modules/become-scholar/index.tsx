@@ -19,11 +19,11 @@ const BecomeScholar = () => {
   ])
   return (
     <>
-      <div className="pt-9 px-3 flex flex-col justify-center items-center bg-yellow-200 pb-4">
+      <div className="pt-9 px-3 flex flex-col justify-center items-center bg-yellow2 pb-4">
         <h1 className="text-gray-700 text-lg font-bold tracking-wider z-10 text-center pb-5">
           Apply to become a scholar and be part of a Team
         </h1>
-        <img src={Scholar} alt="Group Illustration" className="w-auto h-60" />
+        <img src={Scholar} alt="Group Illustration" className="h-auto object-contain w-60" />
         <div className="flex flex-col space-y-5 items-center">
           <h1 className="text-sm font-semibold text-gray-700 text-center">
             Sign up for free and get recruited by a manager to sell your gig.

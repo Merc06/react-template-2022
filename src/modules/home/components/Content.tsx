@@ -6,9 +6,17 @@ import './content.css';
 import brush from '../../../images/brush.png'
 
 import tokengig from '../../../images/tokengig.png';
-import { useState } from 'react';
+import { SyntheticEvent, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Content = () => {
+    const [selected, setSelected ] = useState('/');
+
+    const onChange = (e: SyntheticEvent) => {
+        const { name, value } = e.target as HTMLInputElement;
+        setSelected(value);
+    }
+    
     const [btn] = useState ([
             { name: 'AMA'},
             { name: 'PROMOTION'},
@@ -68,20 +76,20 @@ const Content = () => {
                 <h1 className="text-lg text-center text-gray-400">I want to:</h1>
                 <div className="radio-button flex space-x-2 justify-center relative">
                     <label className="radio flex items-center">
-                        <input type="radio" value="Services" name="select" className="mr-1" />
+                        <input checked={selected === "/become-a-seller"} onChange={onChange} type="radio" value="/become-a-seller" name="select" className="mr-1" />
                             I want to provide services
                         <span></span>
                     </label>
                     <label className="radio flex items-center">
-                        <input type="radio" value="Talents" name="select" className="mr-1" />
+                        <input checked={selected === "/become-a-buyer"} onChange={onChange} type="radio" value="/become-a-buyer" name="select" className="mr-1" />
                             I want to hire talents
                         <span></span>
                     </label>
                 </div>
                 <div className="flex justify-center pt-2">
-                    <Button className="uppercase text-sm font-semibold p-2 w-60 border-2 border-blue-800 rounded-lg">
+                    <Link to={selected} className="uppercase text-sm font-semibold p-2 w-60 border-2 border-blue-800 rounded-lg">
                         Explore Doc Gig
-                    </Button>
+                    </Link>
                 </div>
                 <button 
                     onClick={scrollToBottom}
