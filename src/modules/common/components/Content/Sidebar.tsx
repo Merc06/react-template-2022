@@ -42,7 +42,7 @@ const Sidebar = ({
                                 <Link onClick={() => setIsSidebarShow(false)} to="/become-a-seller">Become a Seller</Link>
                                 <Link onClick={() => setIsSidebarShow(false)} to="/become-a-manager">Become a Manager</Link>
                                 <Link onClick={() => setIsSidebarShow(false)} to="/become-a-scholar">Become a Scholar</Link>
-                                <Link onClick={() => setIsSidebarShow(false)} to="/buy-gigs">Buy Gigs</Link>
+                                <Link onClick={() => setIsSidebarShow(false)} to="/become-a-buyer">Buy Gigs</Link>
                                 <p>Guide</p>
                                 <p>Communities</p>
                                 <p>News</p>
