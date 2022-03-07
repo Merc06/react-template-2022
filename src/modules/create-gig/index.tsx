@@ -127,6 +127,7 @@ const CreateGig = () => {
             }
             addGallery(payload, () => {
                 setIsCompleteModalOpen(true);
+                localStorage.removeItem('gigId');
             })
         }
     }
