@@ -1,28 +1,43 @@
-import { SyntheticEvent, useEffect } from 'react';
+import { Dispatch, SetStateAction, SyntheticEvent, useEffect } from 'react';
 import useAppSelector from '../../../helpers/useAppSelector';
 import Select from '../../common/components/Select';
 import TextArea from '../../common/components/TextArea';
-import { getCategoryList, getSubCategoryList } from '../apis';
+import { getCategoryList, getOverviewInfo, getSubCategoryList } from '../apis';
 import { CategoryProps, OverviewProps } from '../types';
 
 interface Props {
     state: OverviewProps;
-    onChange: (e: SyntheticEvent, step: 'OVERVIEW' | 'FAQ') => void;
+    setState: Dispatch<SetStateAction<OverviewProps>>;
 }
 
 const Overview = ({
     state,
-    onChange
+    setState,
 }: Props) => {
+    const gigId = localStorage.getItem('gigId');
     const categoryList = useAppSelector('createGig.categoryList');
     const subcategoryList = useAppSelector('createGig.subCategoryList');
-    const step = "OVERVIEW";
 
     useEffect(() => {
+        getOverview();
         getCategoryList();
         getSubCategoryList();
-    }, []);
+        // eslint-disable-next-line
+    }, [])
 
+    const getOverview = (): void => {
+        gigId && getOverviewInfo(+gigId, (res) => {
+            setState(res);
+        });
+    }
+
+    const onChange = (e: SyntheticEvent) => {
+        const { name, value } = e.target as HTMLInputElement;
+        setState({
+            ...state,
+            [name]: value
+        });
+    }
 
     return (
         <div className='p-2 space-y-4'>
@@ -31,7 +46,7 @@ const Overview = ({
                 <TextArea
                     value={state.title}
                     name="title"
-                    onChange={(e) => onChange(e, step)}
+                    onChange={onChange}
                     placeholder="I will do something I'm really good at..."
                 />
             </div>
@@ -41,10 +56,10 @@ const Overview = ({
                     <Select
                         value={state.category_id}
                         name="category_id"
-                        onChange={(e) => onChange(e, step)}
+                        onChange={onChange}
                         placeholder="Token"
                         hasDefaultOption
-                        defaultOptionLabel="Token"
+                        defaultOptionLabel="Select Category"
                         options={
                             categoryList.map(({ id, name }: CategoryProps) => (
                                 {
@@ -57,7 +72,7 @@ const Overview = ({
                     <Select
                         value={state.subcategory_id}
                         name="subcategory_id"
-                        onChange={(e) => onChange(e, step)}
+                        onChange={onChange}
                         placeholder="Select Sub-category"
                         defaultOptionLabel="Select Sub-category"
                         options={
@@ -76,7 +91,7 @@ const Overview = ({
                 <TextArea
                     value={state.tag}
                     name="tag"
-                    onChange={(e) => onChange(e, step)}
+                    onChange={onChange}
                     placeholder="I will do something I'm really good at..."
                 />
             </div>

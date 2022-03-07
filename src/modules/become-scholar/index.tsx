@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { HoldingDollar, P2P, TagIcon, TenIcon, Tools } from '../common/components/Icons';
+import { HoldingDollar, TagIcon, TenIcon, Tools } from '../common/components/Icons';
 
 import Scholar from '../../images/scholar.png';
 import Gathering from '../../images/gathering.jpg';

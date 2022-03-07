@@ -2,15 +2,6 @@ body {
     background-color: #fafafa;
 }
 
-/* table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-
-table {
-    min-width: 35%;
-} */
-
 th, td {
     padding: 2px 8px;
 }
@@ -34,4 +25,9 @@ th, td {
 
 .whitebrush {
     width: 900px;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
 }

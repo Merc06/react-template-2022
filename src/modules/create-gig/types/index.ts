@@ -4,10 +4,14 @@ interface Steps {
 }
 
 interface OverviewProps {
-    title: string;
+    category: string;
     category_id: number;
+    client_id: number;
+    id: number;
+    subcategory: string;
     subcategory_id: number;
     tag: string;
+    title: string;
 }
 
 interface CategoryProps {
@@ -26,9 +30,37 @@ interface FaqListProps {
     answer: string;
 };
 
+interface FaqDescriptionListProps {
+    client_id: number;
+    description: string;
+    faq: FaqListProps;
+    id: number;
+}
+
 interface FaqProps {
+    id: number;
     answer: string;
     question: string;
+}
+
+interface OverviewInfoProps {
+    title: string;
+    category: string;
+    subcategory: string;
+    tag: string;
+}
+
+
+interface PackageProps {
+    gig_id: number | string;
+    package: string;
+    package_name: string;
+    package_description: string;
+    delivery_time: string;
+    price: number;
+    inclusion_one: string;
+    inclusion_two: string;
+    inclusion_three: string;
 }
 
 export type {
@@ -36,5 +68,8 @@ export type {
     OverviewProps,
     CategoryProps,
     FaqListProps,
+    FaqDescriptionListProps,
     FaqProps,
+    OverviewInfoProps,
+    PackageProps,
 }
