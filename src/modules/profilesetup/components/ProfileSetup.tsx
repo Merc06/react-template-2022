@@ -42,7 +42,7 @@ const ProfileSetup = () => {
       setActiveStep(
         res.profile_status === "inProgress-professional" ? 1 :
         res.profile_status === "inProgress-linkedAccounts" ? 2 :
-        res.profile_status === "inProgress-accountSecurity" ? 3 : 0
+        res.profile_status === "inProgress-security" ? 3 : 0
       )
     });
   }, []);

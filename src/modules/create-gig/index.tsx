@@ -1,6 +1,9 @@
 import _ from 'lodash';
 import {Step, StepContent, StepLabel, Stepper } from '@mui/material';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+// import toast from 'react-hot-toast';
+
 import Button from '../common/components/Button';
 import { IconEye, IconSave } from '../common/components/Icons';
 import Overview from './components/Overview';
@@ -12,21 +15,21 @@ import { PackageProps } from './types';
 import Description from './components/Description';
 import { addGallery, addOverview, addScope, updateOverview, updateScope } from './apis';
 import useAppSelector from '../../helpers/useAppSelector';
-import toast from 'react-hot-toast';
 import Gallery from './components/Gallery';
 import CompletedModal from './components/modals/CompletedModal';
 
 
 const CreateGig = () => {
-    const [activeStep, setActiveStep] = useState<number>(0);
+    const navigate = useNavigate();
     const gigId = localStorage.getItem('gigId');
+    const [activeStep, setActiveStep] = useState<number>(0);
 
     const [isCompleteModalOpen, setIsCompleteModalOpen] = useState<boolean>(false);
     const [overviewState, setOverviewState] = useState<OverviewProps>(INIT_OVERVIEW_STATE);
     
     const scopeList = useAppSelector('createGig.scopeList');
-    const [isQoutationCheck, setIsQoutationCheck] = useState<boolean>(false);
-    const [isBasicCheck, setIsBasicCheck] = useState<boolean>(false);
+    const [isQoutationCheck, setIsQoutationCheck] = useState<boolean>(true);
+    const [isBasicCheck, setIsBasicCheck] = useState<boolean>(true);
     const [isStandardCheck, setIsStandardCheck] = useState<boolean>(false);
     const [isPremiumCheck, setIsPremiumCheck] = useState<boolean>(false);
     const [basicState, setBasicState] = useState<PackageProps>(INIT_PACKAGE_STATE);
@@ -72,6 +75,7 @@ const CreateGig = () => {
         if (gigId) {
             const payload = {
                 gig_id: +gigId,
+                allowQoutation: isQoutationCheck ? 1 : 0,
                 data: [
                     {
                         ...basicState,
@@ -91,9 +95,6 @@ const CreateGig = () => {
                 ]
             }
 
-            // payload.data.map((item, key) => {
-                
-            // })
             _.isEmpty(scopeList) ?
             addScope(payload, () => {
                 handleNext();
@@ -101,13 +102,12 @@ const CreateGig = () => {
             updateScope(payload, () => {
                 handleNext();
             });
-            handleNext();
         }
     }
 
     const submitDescription = (): void => {
         gigId && updateOverview({ description }, +gigId, () => {
-            toast.success("Gig FAQ and Description successfully created");
+            // toast.success("Gig FAQ and Description successfully created");
             handleNext();
         })
     }
@@ -126,7 +126,7 @@ const CreateGig = () => {
                 ]
             }
             addGallery(payload, () => {
-                setIsCompleteModalOpen(true);
+                navigate('/create-gig-completed');
                 localStorage.removeItem('gigId');
             })
         }
