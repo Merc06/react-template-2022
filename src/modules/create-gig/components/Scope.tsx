@@ -57,9 +57,9 @@ const Scope = ({
 
     const checkIsCheck = (res: Array<PackageProps>): void => {
         !_.isEmpty(res) && setIsQoutationCheck(true);
-        const isBasicExist = res.some((item) => item.package === 'BASIC');
-        const isStandardExist = res.some((item) => item.package === 'STANDARD');
-        const isPremiumExist = res.some((item) => item.package === 'PREMIUM');
+        const isBasicExist = res.some((item) => item.package === 'BASIC' && (item.package_name || item.package_description || item.delivery_time || item.price));
+        const isStandardExist = res.some((item) => item.package === 'STANDARD' && (item.package_name || item.package_description || item.delivery_time || item.price));
+        const isPremiumExist = res.some((item) => item.package === 'PREMIUM' && (item.package_name || item.package_description || item.delivery_time || item.price));
         isBasicExist && setIsBasicCheck(true);
         isStandardExist && setIsStandardCheck(true);
         isPremiumExist && setIsPremiumCheck(true);
@@ -106,7 +106,7 @@ const Scope = ({
             <div className="flex items-center justify-between">
                 <p className='text-sm font-bold'>Packages</p>
                 <div className='flex items-center space-x-3'>
-                    <p className='text-xs italic'>Allow Qoutation</p>
+                    <p className='text-xs italic'>Allow Qoutation Request</p>
                     <Toggle
                         checked={isQoutationCheck}
                         onChecked={() => {
@@ -130,7 +130,6 @@ const Scope = ({
                                 <div className="flex items-center justify-center space-x-1">
                                     <p>BASIC</p>
                                     <Toggle
-                                        disabled={!isQoutationCheck}
                                         checked={isBasicCheck}
                                         onChecked={() => setIsBasicCheck(!isBasicCheck)}
                                         checkedLabel="Yes"
@@ -142,7 +141,6 @@ const Scope = ({
                                 <div className="flex items-center justify-center space-x-1">
                                     <p>STANDARD</p>
                                     <Toggle
-                                        disabled={!isQoutationCheck}
                                         checked={isStandardCheck}
                                         onChecked={() => setIsStandardCheck(!isStandardCheck)}
                                         checkedLabel="Yes"
@@ -154,7 +152,6 @@ const Scope = ({
                                 <div className="flex items-center justify-center space-x-1">
                                     <p>PREMIUM</p>
                                     <Toggle
-                                        disabled={!isQoutationCheck}
                                         checked={isPremiumCheck}
                                         onChecked={() => setIsPremiumCheck(!isPremiumCheck)}
                                         checkedLabel="Yes"
