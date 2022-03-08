@@ -16,9 +16,13 @@ const Router = () => {
     // PROFILE SETUP ROUTES
     const CreateAccount = lazy(() => import('./modules/auth/components/CreateAccount'));
     const UserType = lazy(() => import('./modules/profilesetup/components/UserType'));
+
     const ProfileRole = lazy(() => import('./modules/profilesetup/components/ProfileRole'));
     const ProfileSetup = lazy(() => import('./modules/profilesetup/components/ProfileSetup'));
     const ProfileCompleted = lazy(() => import('./modules/profilesetup/components/ProfileCompleted'));
+    
+    const Completed = lazy(() => import('./modules/create-gig/components/Completed'));
+
     const BecomeSeller = lazy(() => import('./modules/become-seller'));
     const BecomeManager = lazy(() => import('./modules/become-manager'));
     const BecomeScholar = lazy(() => import('./modules/become-scholar'));
@@ -37,6 +41,9 @@ const Router = () => {
                 <Route path="/profile-role" element={<ProfileRole />} />
                 <Route path="/profile-setup" element={<ProfileSetup />} />
                 <Route path="/profile-completed" element={<ProfileCompleted />} />
+                
+                <Route path="/create-gig-completed" element={<Completed />} />
+
                 <Route path="/become-a-seller" element={<BecomeSeller />} />
                 <Route path="/become-a-manager" element={<BecomeManager />} />
                 <Route path="/become-a-scholar" element={<BecomeScholar />} />
