@@ -27,6 +27,8 @@ const Router = () => {
     const BecomeManager = lazy(() => import('./modules/become-manager'));
     const BecomeScholar = lazy(() => import('./modules/become-scholar'));
     const BuyGigs = lazy(() => import('./modules/buy-gigs'));
+    const TokenGigs = lazy(() => import('./modules/token-gigs'));
+    const GigPost = lazy(() => import('./modules/gig-post'));
 
     const isLogin: boolean = useAppSelector('common.isLogin');
     
@@ -48,6 +50,8 @@ const Router = () => {
                 <Route path="/become-a-manager" element={<BecomeManager />} />
                 <Route path="/become-a-scholar" element={<BecomeScholar />} />
                 <Route path="/become-a-buyer" element={<BuyGigs />} />
+                <Route path="/token-gigs" element={<TokenGigs />} />
+                <Route path="/search-gig-post" element={<GigPost />} />
 
                 {
                     Navs.map(({ path, key, component }) => (

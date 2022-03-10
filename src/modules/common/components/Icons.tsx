@@ -645,8 +645,8 @@ export const IconsCamera = ({ ...rest }) => (
 export const IconSearch = ({ ...rest }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="17.7"
-    height="17.703"
+    width="1em"
+    height="1em"
     viewBox="0 0 17.7 17.703"
     data-testid="search"
     className="inline-block fill-current"
@@ -1842,8 +1842,21 @@ export const ChevronDown = ({...rest}) => (
 )
 
 export const ChevronRight = ({...rest}) => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" {...rest}>
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={4} d="M9 5l7 7-7 7" />
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    className="inline-block fill-current"
+    width="1em"
+    height="1em" 
+    fill="none" 
+    viewBox="0 0 24 24" 
+    stroke="currentColor" 
+    {...rest}>
+    <path 
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
+      strokeWidth={4} 
+      d="M9 5l7 7-7 7" 
+    />
   </svg>
 )
 
@@ -1870,6 +1883,7 @@ export const SearchIcon = ({...rest}) => (
     height="1em" 
     preserveAspectRatio="xMidYMid meet" 
     viewBox="0 0 16 16"
+    className="inline-block fill-current"
     {...rest}
   >
     <g 
@@ -3022,5 +3036,85 @@ export const AccessIcon = ({ ...rest }) => (
       >
       </path>
     </g>
+  </svg>
+)
+
+export const CloseIcon = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 24 24"
+    className="inline-block fill-current"
+    { ...rest }
+  >
+    <path 
+      fill="currentColor" 
+      d="M15.59 7L12 10.59L8.41 7L7 8.41L10.59 12L7 15.59L8.41 17L12 13.41L15.59 17L17 15.59L13.41 12L17 8.41L15.59 7Z"
+    />
+  </svg>
+)
+
+export const StarIcon = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 64 64"
+    className="inline-block fill-current"
+    { ...rest }
+  >
+    <path 
+      fill="#ffce31" 
+      d="M62 25.2H39.1L32 3l-7.1 22.2H2l18.5 13.7l-7 22.1L32 47.3L50.5 61l-7.1-22.2L62 25.2z"
+    />
+  </svg>
+)
+
+export const DIcon = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 24 24"
+    className="inline-block fill-current"
+    { ...rest }
+  >
+    <path 
+      fill="currentColor" 
+      d="M9 7h4a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9V7m2 2v6h2V9h-2m1-7a10 10 0 0 1 10 10a10 10 0 0 1-10 10A10 10 0 0 1 2 12A10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8a8 8 0 0 0 8 8a8 8 0 0 0 8-8a8 8 0 0 0-8-8Z"
+    />
+  </svg>
+)
+
+export const Heart2Icon = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 24 24"
+    className="inline-block fill-current"
+    { ...rest }
+  >
+    <path 
+      fill="none" 
+      stroke="currentColor" 
+      stroke-linecap="round" 
+      stroke-linejoin="round" 
+      stroke-width="2" 
+      d="M7 3C4.239 3 2 5.216 2 7.95c0 2.207.875 7.445 9.488 12.74a.985.985 0 0 0 1.024 0C21.125 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3s-5 3-5 3s-2.239-3-5-3Z"
+    />
   </svg>
 )

@@ -24,6 +24,13 @@ const Content = () => {
             { name: 'INFLUENCER'},
             { name: 'PRO SERVICES'},
         ])
+    const [btn2] = useState ([
+            { name: 'ART & DESIGN'},
+            { name: 'SOCIAL'},
+            { name: 'WRITERS'},
+            { name: 'GAME'},
+            { name: 'PRO SERVICES'},
+        ])
 
         const [visible, setVisible] = useState(false)
         
@@ -115,6 +122,14 @@ const Content = () => {
                     {btn.map((btn, key) => (
                         <Button key={key} className="uppercase text-sm font-medium p-2 w-full border shadow-md text-gray-800 border-gray-800 rounded-lg">
                             {btn.name}
+                        </Button>
+                    ))}
+                </div>
+                <div className="flex flex-col space-y-4 px-5 pt-4">
+                    <h1 className="text-sm text-gray-800 tracking-wider font-bold">NFT SUB CATEGORIES</h1>
+                    {btn2.map((btn2, key) => (
+                        <Button key={key} className="uppercase text-sm font-medium p-2 w-full border shadow-md text-gray-800 border-gray-800 rounded-lg">
+                            {btn2.name}
                         </Button>
                     ))}
                 </div>
