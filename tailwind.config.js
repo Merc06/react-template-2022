@@ -25,6 +25,7 @@ module.exports = {
         'gig2': "url('images/gig2.png')",
         'gig3': "url('images/gig3.png')",
         'gig4': "url('images/gig4.png')",
+        'ytbg': "url('images/ytbg.png')",
       },
     },
   },

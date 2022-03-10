@@ -32,7 +32,7 @@ const Sidebar = ({
                         <div>
                             <h2 className='text-gray-300 font-bold uppercase'>Categories</h2>
                             <div className="flex flex-col py-3 px-5 font-bold text-grayblack space-y-2 text-sm">
-                                <p>Token Gigs</p>
+                                <Link onClick={() => setIsSidebarShow(false)} to="token-gigs">Token Gigs</Link>
                                 <p>More Categories</p>
                             </div>
                         </div>
