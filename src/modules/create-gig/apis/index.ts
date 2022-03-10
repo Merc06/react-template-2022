@@ -117,7 +117,6 @@ export const getScopeList = async (
   removeKey('get-scope-list');
 
   if (res) {
-    console.log(res)
     dispatch(setScopeList(res));
     callback(res);
   }

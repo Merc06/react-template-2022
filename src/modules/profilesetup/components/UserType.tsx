@@ -10,7 +10,9 @@ const UserType = () => {
 
   const onChoose = (type: string): void => {
     signupUserType({ type }, () => {
-      navigate('/profile-role');
+      type === 'Seller' ?
+      navigate('/profile-role') :
+      navigate('/profile-setup')
     });
   }
 

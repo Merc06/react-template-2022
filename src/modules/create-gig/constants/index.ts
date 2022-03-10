@@ -5,7 +5,7 @@ export const INIT_OVERVIEW_STATE = {
     id: 0,
     subcategory: '',
     subcategory_id: 0,
-    tag: '',
+    tag: [],
     title: ''
 }
 

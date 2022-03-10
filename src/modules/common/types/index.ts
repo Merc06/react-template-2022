@@ -17,16 +17,19 @@ type CancellationKeys = {
   };
   
 type ProfileProps = {
-  email: string;
-  description: string;
-  first_name: string;
   id: string;
-  language: Array<LanguageProps>;
+  profile_status: string;
+  email: string;
+  profile_type: string;
+  profile_role: string;
+  contact: string;
+  verified: number;
+  first_name: string;
   last_name: string;
   photo: string;
-  profile_status: string;
-  verified: number;
+  description: string;
   website: string;
+  language: Array<LanguageProps>;
 };
 
 
