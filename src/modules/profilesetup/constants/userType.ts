@@ -1,22 +1,22 @@
-import Seller from '../../../images/Seller.png';
-import Manager from '../../../images/Manager.png';
-import RoleManager from '../../../images/role-manager.png';
-import RoleScholar from '../../../images/role-scholar.png';
+import Seller from '../../../images/img-seller-default.png';
+import Buyer from '../../../images/img-buyer-default.png';
+import RoleManager from '../../../images/img-manager-default.png';
+import RoleScholar from '../../../images/img-scholar-default.png';
 
 export const UserTypeItems = [
     {
       img: Seller, 
-      title: 'I want to be a seller',
+      title: 'I want to sell gigs',
       SubTitle: 'Post freelance gigs and earn',
       Button: 'BECOME A SELLER',
       style: 'bg-accent w-full text-grayblack font-bold',
       type: 'Seller'
     },
     {
-      img: Manager, 
-      title: 'I want to be a manager',
-      SubTitle: 'Hire freelancers and scholars for your project',
-      Button: 'BECOME A MANAGER',
+      img: Buyer, 
+      title: 'I want to buy gigs',
+      SubTitle: 'Hire freelancers for your project',
+      Button: 'BECOME A BUYER',
       style: 'bg-grayblack w-full text-white font-bold',
       type: 'Manager'
     }

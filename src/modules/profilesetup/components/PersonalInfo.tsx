@@ -9,7 +9,7 @@ import { PersonalInfoState } from '../../auth/types';
 import Input from '../../common/components/Input';
 import Uploader from '../../common/components/Uploader';
 import TextArea from '../../common/components/TextArea';
-import LanguageFormModal from './Modal';
+import LanguageFormModal from './modals/Modal';
 import useAppSelector from '../../../helpers/useAppSelector';
 import { deleteLanguage, getLanguageList } from '../apis';
 import { LanguageProps } from '../types';

@@ -26,6 +26,7 @@ const CreateGig = () => {
 
     const [isCompleteModalOpen, setIsCompleteModalOpen] = useState<boolean>(false);
     const [overviewState, setOverviewState] = useState<OverviewProps>(INIT_OVERVIEW_STATE);
+    const [tags, setTags] = React.useState(["SAMPLE TAG"]);
     
     const scopeList = useAppSelector('createGig.scopeList');
     const [isQoutationCheck, setIsQoutationCheck] = useState<boolean>(true);
@@ -59,7 +60,7 @@ const CreateGig = () => {
             title: overviewState.title,
             category_id: overviewState.category_id,
             subcategory_id: overviewState.subcategory_id,
-            tag: overviewState.tag,
+            tag: tags,
         }
         gigId ?
         updateOverview(payload, +gigId, () => {
@@ -153,6 +154,8 @@ const CreateGig = () => {
                         <Overview
                             state={overviewState}
                             setState={setOverviewState}
+                            tags={tags}
+                            setTags={setTags}
                         />
                         <div className="flex justify-end space-x-2 mt-7">
                             <Button

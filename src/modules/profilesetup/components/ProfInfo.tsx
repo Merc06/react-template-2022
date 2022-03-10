@@ -8,7 +8,7 @@ import { deleteCertification, deleteEducation, deleteOccupation, deleteSkill, ge
 import { fieldList } from '../constants/fieldList';
 import { CertificationProps, EducationProps, OccupationProps, SkillListProps } from '../types';
 // import Input from '../../../common/components/Input';
-import Modal from './Modal';
+import Modal from './modals/Modal';
 import { WebsiteStateProps } from './ProfileSetup';
 
 interface Props {

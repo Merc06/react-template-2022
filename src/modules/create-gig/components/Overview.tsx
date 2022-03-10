@@ -4,15 +4,21 @@ import Select from '../../common/components/Select';
 import TextArea from '../../common/components/TextArea';
 import { getCategoryList, getOverviewInfo, getSubCategoryList } from '../apis';
 import { CategoryProps, OverviewProps } from '../types';
+import ReactTagInput from "@pathofdev/react-tag-input";
+import "@pathofdev/react-tag-input/build/index.css";
 
 interface Props {
     state: OverviewProps;
     setState: Dispatch<SetStateAction<OverviewProps>>;
+    tags: Array<string>;
+    setTags: Dispatch<SetStateAction<Array<any>>>;
 }
 
 const Overview = ({
     state,
     setState,
+    tags,
+    setTags
 }: Props) => {
     const gigId = localStorage.getItem('gigId');
     const categoryList = useAppSelector('createGig.categoryList');
@@ -88,12 +94,21 @@ const Overview = ({
             </div>
             <div className="flex flex-col space-y-1">
                 <p className='text-xs font-bold'>Search Tags <span className='text-red-600'>*</span></p>
-                <TextArea
+                <ReactTagInput 
+                    tags={tags} 
+                    placeholder="Type and press enter"
+                    maxTags={10}
+                    editable={true}
+                    readOnly={false}
+                    removeOnBackspace={true}
+                    onChange={(newTags) => setTags(newTags)}
+                />
+                {/* <TextArea
                     value={state.tag}
                     name="tag"
                     onChange={onChange}
                     placeholder="I will do something I'm really good at..."
-                />
+                /> */}
             </div>
         </div>
     );

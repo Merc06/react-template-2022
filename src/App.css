@@ -31,3 +31,10 @@ table {
     border-collapse: separate;
     border-spacing: 0 10px;
 }
+
+.react-tag-input {
+    border-radius: 0.5rem !important;
+    font-size: 0.75rem !important; /* responsive font size */
+    border-color: #262626 !important;
+    padding: 0.5rem 1rem !important;
+}

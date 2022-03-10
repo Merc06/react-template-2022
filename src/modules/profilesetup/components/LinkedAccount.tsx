@@ -82,7 +82,7 @@ const LinkedAccount = () => {
             return (
               googleProps ?
               <Button
-                className="px-4 uppercase border border-accent text-accent"
+                className="px-4 uppercase border border-green-600 text-green-600"
                 disabled
               >
                 Connected
@@ -109,7 +109,7 @@ const LinkedAccount = () => {
         </div>
         {
           _.find(linkedAccounts, (item) => (item.presence_name === 'facebook')) ?
-          <Button disabled className="px-4 uppercase border border-accent text-accent">
+          <Button disabled className="px-4 uppercase border border-green-600 text-green-600">
             Connected
           </Button> :
           <FacebookLogin

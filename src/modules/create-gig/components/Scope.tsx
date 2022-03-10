@@ -67,7 +67,6 @@ const Scope = ({
 
     const getScope = (): void => {
         gigId && getScopeList(+gigId, (res) => {
-            console.log(res)
             if (!_.isEmpty(res)) {
                 checkIsCheck(res);
 

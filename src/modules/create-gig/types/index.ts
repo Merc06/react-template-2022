@@ -10,7 +10,7 @@ interface OverviewProps {
     id: number;
     subcategory: string;
     subcategory_id: number;
-    tag: string;
+    tag: Array<string>;
     title: string;
 }
 

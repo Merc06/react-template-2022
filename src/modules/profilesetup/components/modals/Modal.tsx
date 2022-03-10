@@ -1,17 +1,17 @@
 import _ from 'lodash';
 import React, { Dispatch, SetStateAction, SyntheticEvent, useState } from 'react';
 
-import { addCertification, addEducation, addLanguage, addOccupation, addSkills, updateCertification, updateEducation, updateLanguage, updateOccupation } from '../../profilesetup/apis';
-import Button from '../../common/components/Button';
-import Input from '../../common/components/Input';
-import Modal from '../../common/components/Modal';
-import Select from '../../common/components/Select';
+import { addCertification, addEducation, addLanguage, addOccupation, addSkills, updateCertification, updateEducation, updateLanguage, updateOccupation } from '../../apis';
+import Button from '../../../common/components/Button';
+import Input from '../../../common/components/Input';
+import Modal from '../../../common/components/Modal';
+import Select from '../../../common/components/Select';
 // import { INIT_CERTIFICATION_INFO, INIT_EDUCATION_INFO, INIT_LANGUAGE_INFO, INIT_OCCUPATION_INFO, INIT_SKILLS_INFO } from '../../../constants';
-import { Proficiency } from '../constants/proficiency';
-import TextArea from '../../common/components/TextArea';
-import { getYear } from '../constants/year';
-import { SkillProps } from '../types';
-import useAppSelector from '../../../helpers/useAppSelector';
+import { Proficiency } from '../../constants/proficiency';
+import TextArea from '../../../common/components/TextArea';
+import { getYear } from '../../constants/year';
+import { SkillProps } from '../../types';
+import useAppSelector from '../../../../helpers/useAppSelector';
 // import { LanguageProps } from '../types';
 // import { CertificationInfo, EducationInfo, LanguageInfo, OccupationInfo, SkillsInfo } from '../../types';
 
