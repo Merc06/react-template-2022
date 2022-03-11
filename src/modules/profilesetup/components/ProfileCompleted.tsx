@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import useAppSelector from '../../../helpers/useAppSelector';
 import imgLogin from '../../../images/img-login.png';
+import FinishSetupBuyer from '../../../images/img-finishsetup-buyer.png';
+import FinishSetupScholar from '../../../images/img-finishsetup-scholar.png';
 import Button from '../../common/components/Button';
 
 const ProfileCompleted = () => {
@@ -18,7 +20,16 @@ const ProfileCompleted = () => {
                     'Now go ahead and find your first gig. You can edit your profile information anytime.'
                 }
             </p>
-            <div className='w-full'><img src={imgLogin} className="max-h-64 mx-auto" alt="Doc-Gig Brand" /></div>
+            <div className='w-full p-4'>
+                <img
+                    src={
+                        profileInfo.profile_role === 'Manager' ? imgLogin :
+                        profileInfo.profile_role === 'Scholar' ? FinishSetupScholar :
+                        FinishSetupBuyer
+                    }
+                    className="max-h-64 mx-auto" alt="Doc-Gig Brand"
+                />
+            </div>
             <Link
                 to={`
                     ${
