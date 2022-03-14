@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
 
-import { MenuList, Navs } from './modules/common/constants/routes';
+import { Menubar, Navs, ProfileMenuList } from './modules/common/constants/routes';
 // import ProtectedRoutes from './ProtectedRoutes';
 import useAppSelector from './helpers/useAppSelector';
 
@@ -59,7 +59,12 @@ const Router = () => {
                     ))
                 }
                 {
-                    MenuList.map(({ path, key, component }) => (
+                    Menubar.map(({ path, key, component }) => (
+                        <Route path={path} key={key} element={component} />
+                    ))
+                }
+                {
+                    ProfileMenuList.map(({ path, key, component }) => (
                         <Route path={path} key={key} element={component} />
                     ))
                 }
