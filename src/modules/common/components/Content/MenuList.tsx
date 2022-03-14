@@ -20,7 +20,7 @@ const MenuList = ({
 
     useEffect(() => {
         getProfile();
-    })
+    }, []);
 
     const onLogout = () => {
         logout();
