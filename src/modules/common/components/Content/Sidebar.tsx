@@ -7,10 +7,11 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import discord from '../../../../images/discord.svg';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link } from 'react-router-dom';
+import { Dispatch, SetStateAction } from 'react';
 
 interface Props {
     isSidebarShow: boolean;
-    setIsSidebarShow: (isSidebarShow: boolean) => void;
+    setIsSidebarShow: Dispatch<SetStateAction<boolean>>;
 }
 
 const Sidebar = ({

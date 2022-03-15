@@ -31,12 +31,10 @@ const ProfileCompleted = () => {
                 />
             </div>
             <Link
-                to={`
-                    ${
-                        profileInfo.profile_role === 'Manager' ? '/create-gig' :
-                        profileInfo.profile_role === 'Scholar' ? '/' : '/gigs'
-                    }
-                `}
+                to={
+                    profileInfo.profile_role === 'Manager' ? '/create-gig' :
+                    profileInfo.profile_role === 'Scholar' ? '/' : '/gigs'
+                }
             >
                 <Button className='bg-grayblack text-white font-bold uppercase w-full'>
                     {
