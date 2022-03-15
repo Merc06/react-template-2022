@@ -29,6 +29,7 @@ const Router = () => {
     const BuyGigs = lazy(() => import('./modules/buy-gigs'));
     const TokenGigs = lazy(() => import('./modules/token-gigs'));
     const GigPost = lazy(() => import('./modules/gig-post'));
+    const GigDetails = lazy(() => import('./modules/gig-details'));
 
     const isLogin: boolean = useAppSelector('common.isLogin');
     
@@ -52,6 +53,7 @@ const Router = () => {
                 <Route path="/become-a-buyer" element={<BuyGigs />} />
                 <Route path="/token-gigs" element={<TokenGigs />} />
                 <Route path="/search-gig-post" element={<GigPost />} />
+                <Route path="/gig-details" element={<GigDetails />} />
 
                 {
                     Navs.map(({ path, key, component }) => (
@@ -68,7 +70,6 @@ const Router = () => {
                         <Route path={path} key={key} element={component} />
                     ))
                 }
-                
                 <Route path="*" element={<PageNotFound />} />
             </Routes>
         </>

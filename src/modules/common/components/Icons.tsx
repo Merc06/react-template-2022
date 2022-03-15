@@ -3111,10 +3111,120 @@ export const Heart2Icon = ({ ...rest }) => (
     <path 
       fill="none" 
       stroke="currentColor" 
-      stroke-linecap="round" 
-      stroke-linejoin="round" 
-      stroke-width="2" 
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
+      strokeWidth="2" 
       d="M7 3C4.239 3 2 5.216 2 7.95c0 2.207.875 7.445 9.488 12.74a.985.985 0 0 0 1.024 0C21.125 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3s-5 3-5 3s-2.239-3-5-3Z"
     />
+  </svg>
+)
+
+export const ClockIcon = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 24 24"
+    className="inline-block fill-current"
+    { ...rest }
+  >
+    <g 
+      transform="rotate(-90 12 12)"
+    >
+      <g 
+        fill="currentColor"
+      >
+        <path 
+          d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8a8 8 0 0 1-8 8z"
+        >
+        </path>
+        <path 
+          d="M16 11h-3V8a1 1 0 0 0-2 0v4a1 1 0 0 0 1 1h4a1 1 0 0 0 0-2z"
+        >
+        </path>
+      </g>
+    </g>
+  </svg>
+)
+
+export const LocationIcon = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 20 20"
+    className="inline-block fill-current"
+    { ...rest }
+  >
+    <path 
+      d="M10 2C6.69 2 4 4.69 4 8c0 2.02 1.17 3.71 2.53 4.89c.43.37 1.18.96 1.85 1.83c.74.97 1.41 2.01 1.62 2.71c.21-.7.88-1.74 1.62-2.71c.67-.87 1.42-1.46 1.85-1.83C14.83 11.71 16 10.02 16 8c0-3.31-2.69-6-6-6zm0 2.56a3.44 3.44 0 1 1 0 6.88a3.44 3.44 0 0 1 0-6.88z" 
+      fill="currentColor"
+    >
+    </path>
+  </svg>
+)
+
+export const ProfileIcon = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 24 24"
+    className="inline-block fill-current"
+    { ...rest }
+  >
+    <path 
+      d="M21.1 12.5l1.4 1.41l-6.53 6.59L12.5 17l1.4-1.41l2.07 2.08l5.13-5.17M10 17l3 3H3v-2c0-2.21 3.58-4 8-4l1.89.11L10 17m1-13a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4z" 
+      fill="currentColor"
+    >
+    </path>
+  </svg>
+)
+
+export const HandIcon = ({ ...rest }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    aria-hidden="true" 
+    role="img" 
+    width="1em" 
+    height="1em" 
+    preserveAspectRatio="xMidYMid meet" 
+    viewBox="0 0 48 48"
+    className="inline-block fill-current"
+    { ...rest }
+  >
+    <g 
+      fill="none" 
+      stroke="currentColor" 
+      strokeWidth="4" 
+      strokeLinecap="round" 
+      strokeLinejoin="round"
+    >
+      <path 
+        d="M20 33l6 2s15-3 17-3s2 2 0 4s-9 8-15 8s-10-3-14-3H4"
+      >
+      </path>
+      <path 
+        d="M4 29c2-2 6-5 10-5s13.5 4 15 6s-3 5-3 5"
+      >
+      </path>
+      <path 
+        d="M16 18v-8a2 2 0 0 1 2-2h24a2 2 0 0 1 2 2v16"
+      >
+      </path>
+      <path 
+        d="M25 8h10v9H25z"
+      >
+      </path>
+    </g>
   </svg>
 )
