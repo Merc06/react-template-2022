@@ -1,13 +1,27 @@
 import React, { useState } from 'react'
-import { ChevronRight, StarIcon } from '../common/components/Icons';
+import { ChevronRight, ClockIcon, HandIcon, LocationIcon, ProfileIcon, StarIcon } from '../common/components/Icons';
 import Profile from '../../images/displaypicture.jpg';
 import Basic from './components/Basic';
 import Premium from './components/Premium';
 import Standard from './components/Standard';
+import { Link } from 'react-router-dom';
 
 const GigDetails = () => {
 
   const [show,setShow] = useState(1);
+  const [reviews] = useState ([
+    {star: '5 Stars'},
+    {star: '4 Stars'},
+    {star: '3 Stars'},
+    {star: '2 Stars'},
+    {star: '1 Stars'}
+  ])
+
+  const [rating] = useState ([
+    {text: 'Seller Communication Level'},
+    {text: 'Recommend to a friend'},
+    {text: 'Service as described'},
+  ])
 
   const toggleTab = (index: React.SetStateAction<any>) => {
     setShow(index);
@@ -68,6 +82,64 @@ const GigDetails = () => {
           {show === 1 && <Basic />}
           {show === 2 && <Standard />}
           {show === 3 && <Premium />}
+        </div>
+      </div>
+      <div className="flex flex-col p-4 divide-y divide-gray-200">
+        <div className="flex flex-col p-4 space-y-3">
+          <h1 className="text-lg uppercase text-gray-900 tracking-wider font-bold">About this Gig</h1>
+          <h1 className="text-xs font-bold text-gray-700 uppercase">---</h1>
+        </div>
+        <div className="flex flex-col p-4 space-y-3">
+          <h1 className="text-lg uppercase text-gray-900 tracking-wider font-bold">About Seller</h1>
+          <div className="flex flex-col space-y-3">
+            <img src={Profile} alt="Profile Illustration" className="h-24 w-24 object-cover object-center rounded-full shadow-sm" />
+            <div className="flex flex-col space-y-2">
+              <div className="flex space-x-2 items-center">
+                <LocationIcon className="text-lg" />
+                <h1 className="text-xs font-semibold text-gray-500 uppercase">From ---</h1>
+              </div>
+              <div className="flex space-x-2 items-center">
+                <ProfileIcon className="text-lg" />
+                <h1 className="text-xs font-semibold text-gray-500 uppercase">Member Since ---</h1>
+              </div>
+              <div className="flex space-x-2 items-center">
+                <ClockIcon className="text-lg" />
+                <h1 className="text-xs font-semibold text-gray-500 uppercase">Avg. Response time ---</h1>
+              </div>
+              <div className="flex space-x-2 items-center">
+                <HandIcon className="text-lg" />
+                <h1 className="text-xs font-semibold text-gray-500 uppercase">Last Delivery About ---</h1>
+              </div>
+              <div className="flex flex-col space-y-3 pt-5">
+                <button className="p-2 text-center w-full text-white rounded-md bg-gray-700 uppercase text-xs">Contact me for a quote</button>
+                <Link to="/become-a-manager" className="p-2 text-center border border-gray-700 w-full text-gray-800 rounded-md uppercase text-xs">Visit profile</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col p-4 space-y-3">
+          <h1 className="text-lg uppercase text-gray-900 flex items-center tracking-wider font-bold">--- Reviews <StarIcon className="mx-1" /> ---</h1>
+          <div className="my-2 flex flex-col space-y-1">
+          {reviews.map((reviews,key) => (
+            <div key={key} className="flex space-x-1 items-center">
+              <h1 className="text-xs text-gray-400 w-12">{reviews.star}</h1>
+              <div className="w-56 h-1 bg-gray-200"/>
+              <h1 className="text-xs text-gray-400 w-12">(0)</h1>  
+            </div>
+            ))}
+          </div>
+          <h1 className="text-lg uppercase text-gray-500 tracking-wider font-bold">Rating Breakdown</h1>
+          <div className="my-2 flex flex-col space-y-1">
+            {rating.map(( rating,key ) => (
+            <div key={key} className="flex space-x-1 items-center justify-between">
+              <h1 className="text-xs text-gray-400">{rating.text}</h1>
+              <div className="flex space-x-8">
+                <h1 className="text-xs text-gray-400">---</h1>
+                <StarIcon />
+              </div>
+            </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
