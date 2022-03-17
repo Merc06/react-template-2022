@@ -30,6 +30,7 @@ type ProfileProps = {
   description: string;
   website: string;
   language: Array<LanguageProps>;
+  username: string;
 };
 
 

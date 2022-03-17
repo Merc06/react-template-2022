@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CategoryProps, FaqDescriptionListProps, OverviewInfoProps, PackageProps } from '../types';
 
-interface CommonState {
+interface createGigState {
   categoryList: Array<CategoryProps> | [];
   subCategoryList: Array<CategoryProps> | [];
   faqDescriptionList: Array<FaqDescriptionListProps> | [];
@@ -9,7 +9,7 @@ interface CommonState {
   scopeList: Array<PackageProps> | [];
 }
 
-const initialState: CommonState = {
+const initialState: createGigState = {
   categoryList: [],
   subCategoryList: [],
   faqDescriptionList: [],
@@ -17,7 +17,7 @@ const initialState: CommonState = {
   scopeList: []
 };
 
-export const commonSlice = createSlice({
+export const createGigSlice = createSlice({
   name: 'createGig',
   initialState,
   reducers: {
@@ -45,6 +45,6 @@ export const {
   setFaqDescriptionList,
   setOverviewInfo,
   setScopeList
-} = commonSlice.actions;
+} = createGigSlice.actions;
 
-export default commonSlice.reducer;
+export default createGigSlice.reducer;
