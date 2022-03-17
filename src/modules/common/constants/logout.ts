@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import dispatch from '../../../helpers/dispatch';
 import { resetAuth, setProfile } from '../reducers';
 

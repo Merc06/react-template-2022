@@ -1086,8 +1086,8 @@ export const IconCloseCirle = ({ ...rest }) => (
 export const IconBallpen = ({ ...rest }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="11.553"
-    height="11.553"
+    width="1em"
+    height="1em"
     viewBox="0 0 11.553 11.553"
     data-testid="icon-ballpen"
     className="inline-block fill-current"
