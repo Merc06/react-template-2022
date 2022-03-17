@@ -5,6 +5,7 @@ import noImage from '../../../../images/default-img.png';
 import { getProfile } from '../../apis';
 import { logout } from '../../constants/logout';
 import { ProfileMenuList } from '../../constants/routes';
+import { ProfileProps } from '../../types';
 
 interface Props {
     isMenuListShow: boolean;
@@ -16,10 +17,12 @@ const MenuList = ({
     setIsMenuListShow
 }: Props) => {
     const navigate = useNavigate();
-    const profileInfo = useAppSelector('common.profile');
+    const profileInfo: ProfileProps = useAppSelector('common.profile');
+    const isLogin = useAppSelector('common.isLogin');
 
     useEffect(() => {
-        getProfile();
+        isLogin && getProfile();
+        // eslint-disable-next-line
     }, []);
 
     const onLogout = () => {
@@ -42,7 +45,7 @@ const MenuList = ({
                     <img src={noImage} alt="Default" className='w-16 h-16 rounded' />
                 }
                 <div className="flex flex-col">
-                    <h4 className='text-sm font-bold text-[#fafafa]'>{profileInfo.last_name}, {profileInfo.first_name}</h4>
+                    <h4 className='text-sm font-bold text-[#fafafa]'>{profileInfo.username}</h4>
                     <h4 className='text-xs font'>
                         {profileInfo.profile_type === 'Seller' ? profileInfo.profile_role : profileInfo.profile_type}
                     </h4>

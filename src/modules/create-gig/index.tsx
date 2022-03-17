@@ -58,8 +58,8 @@ const CreateGig = () => {
     const submitOverview = (): void => {
         const payload = {
             title: overviewState.title,
-            category_id: overviewState.category_id,
-            subcategory_id: overviewState.subcategory_id,
+            category_id: +overviewState.category_id,
+            subcategory_id: +overviewState.subcategory_id,
             tag: tags,
         }
         gigId ?
