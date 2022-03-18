@@ -12,14 +12,14 @@ const Basic = ({
   return (
     basicInfo.package_name ?
     <>
-      <div className="flex flex-col space--2">
+      <div className="flex flex-col space-y-1">
         <h1 className="text-xs font-bold text-gray-700 uppercase">{ basicInfo.package_name }</h1>
-        <h1 className="text-sm font-bold text-gray-700 uppercase">{basicInfo.price} DOK</h1>
+        <h1 className="text-xl font-bold text-gray-700 uppercase">{basicInfo.price} DOK</h1>
       </div>
-      <div className="flex flex-col space-y-2">
+      {/* <div className="flex flex-col space-y-2">
         <h1 className="text-xs font-bold text-gray-500 uppercase">--- real and active english followers</h1>
-      </div>
-      <div className="flex flex-col space-y-3">
+      </div> */}
+      <div className="flex flex-col space-y-3 pt-10">
         <div className="flex space-x-2 items-center">
           <ClockIcon className="text-lg" />
           <h1 className="text-xs font-bold text-gray-700 uppercase">({ basicInfo.delivery_time }) Days Delivery</h1>

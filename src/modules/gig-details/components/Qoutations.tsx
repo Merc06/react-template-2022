@@ -18,13 +18,13 @@ const Qoutations = () => {
     }
 
     return (
-        <div className="m-3 flex flex-col border-2 rounded-sm border-yellow-400">
+      <div className="m-3 flex flex-col border-2 rounded-sm border-yellow-400">
         <div className="flex justify-center w-full py-2 bg-yellow-400">
           <h1 onClick={() => toggleTab(1)} className={show === 1 ? 'text-gray-800 w-full text-center font-bold text-xs uppercase':'text-white w-full text-center font-bold text-xs uppercase'}>Basic</h1>
           <h1 onClick={() => toggleTab(2)} className={show === 2 ? 'text-gray-800 w-full text-center font-bold text-xs uppercase':'text-white w-full text-center font-bold text-xs uppercase'}>Standard</h1>
           <h1 onClick={() => toggleTab(3)} className={show === 3 ? 'text-gray-800 w-full text-center font-bold text-xs uppercase':'text-white w-full text-center font-bold text-xs uppercase'}>Premium</h1>
         </div>
-        <div className="flex flex-col p-5 space-y-3 h-56">
+        <div className="p-6 h-56">
           {show === 1 && <Basic basicInfo={basicInfo[0]} />}
           {show === 2 && <Standard standardInfo={standardInfo[0]} />}
           {show === 3 && <Premium premiumInfo={premiumInfo[0]} />}
