@@ -33,7 +33,7 @@ const ProfileCompleted = () => {
             <Link
                 to={
                     profileInfo.profile_role === 'Manager' ? '/create-gig' :
-                    profileInfo.profile_role === 'Scholar' ? '/' : '/gigs'
+                    profileInfo.profile_role === 'Scholar' ? '/' : '/search-gig-post'
                 }
             >
                 <Button className='bg-grayblack text-white font-bold uppercase w-full'>
