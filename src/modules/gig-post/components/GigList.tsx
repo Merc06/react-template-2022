@@ -48,17 +48,15 @@ const GigList = () => {
                     className="flex flex-col rounded-md shadow-md"
                     onClick={() => onClickItem(item)}
                 >
-                    <div className="relative">
-                        {
-                            !_.isEmpty(item.gallery) ?
-                            <img className="rounded-t-lg h-full max-h-[144px] mx-auto" src={getOneImage(item.gallery)} alt="" /> :
-                            <img className="rounded-t-lg max-h-[144px] mx-auto" src={noImage} alt="No Uploaded" />
-                        }
+                    {
+                        !_.isEmpty(item.gallery) ?
+                        <img className="rounded-t-lg h-full max-h-[144px] mx-auto" src={getOneImage(item.gallery)} alt="" /> :
+                        <img className="rounded-t-lg max-h-[144px] mx-auto" src={noImage} alt="No Uploaded" />
+                    }
 
-                        <h1 className="text-white bg-gray-800 py-1 text-xs font-semibold text-center uppercase">
-                            {item?.category[0]?.name} / {item?.subCategory[0]?.name}
-                        </h1>
-                    </div>
+                    <h1 className="text-white bg-gray-800 py-1 text-xs font-semibold text-center uppercase">
+                        {item?.category[0]?.name} / {item?.subCategory[0]?.name}
+                    </h1>
 
                     <div className="py-2 px-3 space-y-2">
                         <h1 className='font-bold uppercase truncate'>{item.name}</h1>
