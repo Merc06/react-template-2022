@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 
 import { CancelTokenSource } from 'axios';
-import { LanguageProps } from '../../profilesetup/types';
+import { CertificationProps, EducationProps, LanguageProps, SkillListProps } from '../../profilesetup/types';
 
 type RouteProps = {
     key: string;
@@ -31,6 +31,9 @@ type ProfileProps = {
   website: string;
   language: Array<LanguageProps>;
   username: string;
+  skills: Array<SkillListProps>;
+  educations: Array<EducationProps>;
+  certifications: Array<CertificationProps>;
 };
 
 

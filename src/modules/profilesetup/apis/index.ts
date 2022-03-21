@@ -398,3 +398,20 @@ export const linkAccount = async (
     callback(res);
   }
 };
+
+export const AddNumber = async (
+  payload: object,
+  callback: () => void
+) => {
+  const cancellationKey = createKey('add-contact');
+  const res = await api.put('security', {
+    payload,
+    cancelToken: cancellationKey.token,
+  });
+  removeKey('add-contact');
+
+  if (res) {
+    toastMessage(res);
+    callback();
+  }
+};

@@ -8,7 +8,7 @@ import Button from '../../common/components/Button';
 
 const ProfileCompleted = () => {
     const profileInfo = useAppSelector('common.profile');
-    console.log(profileInfo);
+    // console.log(profileInfo);
 
     return (
         <div className='p-10 text-center space-y-5'>
