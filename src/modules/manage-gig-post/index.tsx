@@ -19,7 +19,7 @@ const ManageGigPost = () => {
       <h1 className="text-gray-600 font-semibold text-sm tracking-wider">Manage Gig Posts</h1>
       <div className="flex items-center space-x-2">
         <div className="w-full">
-          <select onChange={onChange} value={show} className="p-2 text-xs rounded-md border border-gray-600 w-full">
+          <select onChange={onChange} value={show} className="p-2 text-xs rounded-md focus:outline-none border border-gray-600 w-full">
             <option value={1}>ACTIVE</option>
             <option value={2}>PENDING APPROVAL</option>
             <option value={3}>REQUIRES MODIFICATION</option>
@@ -31,7 +31,7 @@ const ManageGigPost = () => {
           Create a new gig
         </button>
       </div>
-      <div className="border border-gray-500 p-2 rounded-sm">
+      <div className="border border-gray-200 rounded-t-md bg-white">
         {show === 1 && <Active />}
         {show === 2 && <PendingApproval />}
         {show === 3 && <RequiresModification />}
