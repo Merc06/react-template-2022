@@ -151,7 +151,7 @@ export const getFaqDescriptionList = async (
   removeKey('get-faq-description-info');
 
   if (res) {
-    console.log(res);
+    // console.log(res);
     dispatch(setFaqDescriptionList(res));
     callback(res);
   }

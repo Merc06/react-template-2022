@@ -4,6 +4,7 @@ import common from './modules/common/reducers';
 import createGig from './modules/create-gig/reducers';
 import profile from './modules/profilesetup/reducers';
 import gigs from './modules/gig-post/reducers';
+import myGigs from './modules/my-profile/reducers';
 // import dashboard from 'modules/dashboard/reducers';
 // import docPaperless from 'modules/doc-paperless/reducers';
 // import docCopyright from 'modules/doc-copyrights/reducers';
@@ -19,7 +20,8 @@ const store = configureStore({
     common,
     profile,
     createGig,
-    gigs
+    gigs,
+    myGigs
     // dashboard,
     // docPaperless,
     // docCopyright,
