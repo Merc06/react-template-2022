@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { AllGigListProps } from '../types';
 
 
 interface ProfileState {
-  gigList: Array<any>;
+  gigList: Array<AllGigListProps>;
 }
 
 const initialState: ProfileState = {
@@ -13,7 +14,7 @@ export const gigsSlice = createSlice({
   name: 'gigs',
   initialState,
   reducers: {
-    setGigList: (state, action: PayloadAction<Array<any>>) => {
+    setGigList: (state, action: PayloadAction<Array<AllGigListProps>>) => {
       state.gigList = action.payload || [];
     },
   },
