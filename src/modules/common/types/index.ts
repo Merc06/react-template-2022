@@ -34,13 +34,19 @@ type ProfileProps = {
   skills: Array<SkillListProps>;
   educations: Array<EducationProps>;
   certifications: Array<CertificationProps>;
+  country: string;
+  member_since: Date | string;
 };
 
-
+type CountryProps = {
+  code: string;
+  id: number;
+  name: string;
+}
 
 export type {
     RouteProps,
     CancellationKeys,
     ProfileProps,
-    
+    CountryProps
 }

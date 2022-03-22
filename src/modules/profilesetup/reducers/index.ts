@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { CountryProps } from '../../common/types';
 import type {
   OccupationProps,
   LanguageProps,
@@ -16,7 +17,8 @@ interface ProfileState {
   certificationList: Array<CertificationProps>;
   skillList: Array<SkillListProps>
   skills: Array<SkillProps>;
-  LinkedAccountList: Array<LinkedAccountProps>;
+  linkedAccountList: Array<LinkedAccountProps>;
+  countryList: Array<CountryProps>;
 }
 
 const initialState: ProfileState = {
@@ -26,7 +28,8 @@ const initialState: ProfileState = {
   certificationList: [],
   skillList: [],
   skills: [],
-  LinkedAccountList: []
+  linkedAccountList: [],
+  countryList: []
 };
 
 export const profileSlice = createSlice({
@@ -52,7 +55,10 @@ export const profileSlice = createSlice({
       state.skills = action.payload || [];
     },
     setLinkedAccountList: (state, action: PayloadAction<Array<LinkedAccountProps>>) => {
-      state.LinkedAccountList = action.payload || [];
+      state.linkedAccountList = action.payload || [];
+    },
+    setCountryList: (state, action: PayloadAction<Array<CountryProps>>) => {
+      state.countryList = action.payload || [];
     },
   },
 });
@@ -64,7 +70,8 @@ export const {
   setCertificationList,
   setSkillList,
   setSkills,
-  setLinkedAccountList
+  setLinkedAccountList,
+  setCountryList
 } = profileSlice.actions;
 
 export default profileSlice.reducer;

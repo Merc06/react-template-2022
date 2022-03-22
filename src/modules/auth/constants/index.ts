@@ -42,4 +42,5 @@ export const INIT_PERSONAL_INFO_STATE = {
     last_name: '',
     photo: '',
     description: '',
+    country: '',
 }

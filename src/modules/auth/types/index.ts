@@ -12,6 +12,7 @@ interface PersonalInfoState {
     last_name: string;
     photo: string;
     description: string;
+    country: string;
 }
 
 

@@ -11,8 +11,10 @@ import Uploader from '../../common/components/Uploader';
 import TextArea from '../../common/components/TextArea';
 import LanguageFormModal from './modals/Modal';
 import useAppSelector from '../../../helpers/useAppSelector';
-import { deleteLanguage, getLanguageList } from '../apis';
+import { deleteLanguage, getCountryList, getLanguageList } from '../apis';
 import { LanguageProps } from '../types';
+import { CountryProps } from '../../common/types';
+import Select from 'react-select';
 
 interface Props {
   personalInfoState: PersonalInfoState,
@@ -26,9 +28,13 @@ const PersonalInfo = ({
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [itemToEdit, setItemToEdit] = useState<any>({});
   const languageList: Array<LanguageProps> = useAppSelector('profile.languageList');
+  const [countryList, setCountryList] = useState<Array<CountryProps> | []>([]);
 
   useEffect(() => {
     getLanguageList();
+    getCountryList((res) => {
+      setCountryList(res);
+    });
   }, []);
 
   const onChange = (e: SyntheticEvent): void => {
@@ -89,6 +95,21 @@ const PersonalInfo = ({
           onChange={onChange}
         />
       </div>
+
+      <h1 className="text-xs text-gray-700 font-medium tracking-wide pt-4">
+        Country<span className="text-red-500">*</span>
+      </h1>
+      <Select
+        name='country'
+        onChange={(item) => setPersonalInfoState({ ...personalInfoState, country: item?.value ? item.value : '' })}
+        className="text-xs rounded-md border border-grayblack focus-within:border-accent"
+        options={
+          countryList.map((item) => {
+            const obj = { value: item.name, label: item.name }
+            return obj;
+          })
+        }
+      />
 
       <h1 className="text-xs text-gray-700 font-medium tracking-wide pt-4">
         Profile Picture<span className="text-red-500">*</span>

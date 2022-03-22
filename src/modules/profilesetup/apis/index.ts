@@ -15,8 +15,10 @@ import {
   setCertificationList,
   setSkillList,
   setSkills,
-  setLinkedAccountList
+  setLinkedAccountList,
+  setCountryList
 } from '../reducers';
+import { CountryProps } from '../../common/types';
 
 
 // LANGUAGE
@@ -413,5 +415,20 @@ export const AddNumber = async (
   if (res) {
     toastMessage(res);
     callback();
+  }
+};
+
+export const getCountryList = async (
+  callback: (res: Array<CountryProps>) => void = () => {}
+) => {
+  const cancellationKey = createKey('country');
+  const res = await api.get('country', {
+    cancelToken: cancellationKey.token,
+  });
+  removeKey('country');
+
+  if (res) {
+    dispatch(setCountryList(res));
+    callback(res);
   }
 };
