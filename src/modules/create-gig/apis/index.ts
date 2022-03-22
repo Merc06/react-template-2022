@@ -234,7 +234,7 @@ export const deleteFaq = async (
 // GALLERY
 export const addGallery = async (
   payload: object,
-  callback: () => void = () => {}
+  callback: (res: any) => void = () => {}
 ) => {
   const cancellationKey = createKey('gallery');
   const res = await api.post('/gig/gallery', {
@@ -246,7 +246,24 @@ export const addGallery = async (
   if (res) {
     // toastMessage(res);
     // getFaqList();
-    callback();
+    callback(res);
   }
 };
 // END OF GALLERY
+
+// GET ONE GIG
+export const getOneGig = async (
+  gigId: number,
+  callback: (res: any) => void = () => {}
+) => {
+  const cancellationKey = createKey('get-one-gig');
+  const res = await api.get(`/gig/${gigId}`, {
+    cancelToken: cancellationKey.token,
+  });
+  removeKey('get-one-gig');
+
+  if (res) {
+    // console.log(res)
+    callback(res);
+  }
+};

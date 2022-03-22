@@ -7,7 +7,6 @@ interface AllGigListProps {
     pricing: Array<Pricing>;
     category: Array<Category>;
     subCategory: Array<Category>;
-    gig_description: Array<any>;
     gallery: Array<Gallery>;
 }
 

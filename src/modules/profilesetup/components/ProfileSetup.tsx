@@ -16,6 +16,7 @@ import { INIT_PERSONAL_INFO_STATE } from '../../auth/constants';
 import { addProfile, getProfile, updateProfile } from '../../common/apis';
 import { ProfileProps } from '../../common/types';
 import { Link } from 'react-router-dom';
+import useAppSelector from '../../../helpers/useAppSelector';
 
 export interface WebsiteStateProps {
   website: string;
@@ -25,8 +26,8 @@ const ProfileSetup = () => {
   const [activeStep, setActiveStep] = useState(0);
   // const profile: ProfileProps = useAppSelector('common.profile');
   const [personalInfoState, setPersonalInfoState] = useState<PersonalInfoState>(INIT_PERSONAL_INFO_STATE);
-  const [cRate, setcRate] = useState<string>("0");
   const [websiteState, setWebsiteState] = useState<WebsiteStateProps>({ website: '' });
+  const profileInfo = useAppSelector('common.profile');
 
   useEffect(() => {
     getProfile((res: ProfileProps) => {
@@ -48,7 +49,7 @@ const ProfileSetup = () => {
     });
   }, []);
 
-  const nextStep = (percent: string) => {
+  const nextStep = () => {
     activeStep === 0 ?
     addProfile(personalInfoState, () => {
       setActiveStep((currentStep) => currentStep + 1)
@@ -58,13 +59,10 @@ const ProfileSetup = () => {
       setActiveStep((currentStep) => currentStep + 1)
     }) :
     setActiveStep((currentStep) => currentStep + 1);
-
-    setcRate(percent);
   }
 
-  const previousStep = (percent: string) => {
+  const previousStep = () => {
     setActiveStep((currentStep) => currentStep - 1)
-    setcRate(percent);
   }
 
   return (
@@ -74,17 +72,27 @@ const ProfileSetup = () => {
       <div className="flex space-x-3 items-center">
 
         <div className="w-44 bg-gray-300">
-          <div className={`bg-yellow-500 text-xs font-medium text-blue-100 text-center p-1 leading-none ${
-            cRate === "0" ? "w-0" :
-            cRate === "33" ? "w-2/6" :
-            cRate === "66" ? "w-4/6" :
-            cRate === "99" ? "w-11/12" :
-            "w-full"
+          <div className={`bg-yellow-500 text-xs font-medium text-blue-100 text-center py-1 leading-none ${
+            profileInfo.profile_status === "inProgress-personal" ? "w-0" :
+            profileInfo.profile_status === "inProgress-professional" ? "w-1/4" :
+            profileInfo.profile_status === "inProgress-linkedAccounts" ? "w-2/4" :
+            profileInfo.profile_status === "inProgress-accountSecurity" ? "w-3/4" :
+            profileInfo.profile_status === "completed" ? "w-full" :
+            "w-0"
           }`}></div>
         </div>
 
         <div className="ml-6 mr-3">
-          <h1 className="text-xs text-gray-300 font-medium">COMPLETION RATE {cRate}%</h1>
+          <h1 className="text-xs text-gray-300 font-medium">
+            COMPLETION RATE {
+              profileInfo.profile_status === "inProgress-personal" ? "0" :
+              profileInfo.profile_status === "inProgress-professional" ? "25" :
+              profileInfo.profile_status === "inProgress-linkedAccounts" ? "50" :
+              profileInfo.profile_status === "inProgress-accountSecurity" ? "75" :
+              profileInfo.profile_status === "completed" ? "100" :
+              "0"
+            }%
+          </h1>
         </div>
         
       </div>
@@ -105,7 +113,7 @@ const ProfileSetup = () => {
             <div className="flex justify-end space-x-2 mt-7">
               <Button 
                 className="bg-yellow-500 px-2 text-gray-700 uppercase font-semibold"
-                onClick={() => nextStep("33")}
+                onClick={() => nextStep()}
               >
                 Next
               </Button>
@@ -122,13 +130,13 @@ const ProfileSetup = () => {
             <div className="flex justify-end space-x-2 mt-7">
               <Button 
                   className="bg-gray-300 px-2 text-gray-700 uppercase font-semibold"
-                  onClick={() => previousStep("0")}
+                  onClick={() => previousStep()}
                 >
                   Previous
               </Button>
               <Button 
                 className="bg-yellow-500 px-2 text-gray-700 uppercase font-semibold"
-                onClick={() => nextStep("66")}
+                onClick={() => nextStep()}
               >
                 Next
               </Button>
@@ -144,13 +152,13 @@ const ProfileSetup = () => {
             <div className="flex justify-end space-x-2 mt-7">
               <Button 
                   className="bg-gray-300 px-2 text-gray-700 uppercase font-semibold"
-                  onClick={() => previousStep("33")}
+                  onClick={() => previousStep()}
                 >
                   Previous
               </Button>
               <Button 
                 className="bg-yellow-500 px-2 text-gray-700 uppercase font-semibold"
-                onClick={() => nextStep("99")}
+                onClick={() => nextStep()}
               >
                 Next
               </Button>
@@ -166,7 +174,7 @@ const ProfileSetup = () => {
             <div className="flex justify-end space-x-2 mt-7">
               <Button 
                   className="bg-gray-300 px-2 text-gray-700 uppercase font-semibold"
-                  onClick={() => previousStep("66")}
+                  onClick={() => previousStep()}
                 >
                   Previous
               </Button>

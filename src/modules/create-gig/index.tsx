@@ -126,8 +126,8 @@ const CreateGig = () => {
                     { ...doc2, gig_id: +gigId }
                 ]
             }
-            addGallery(payload, () => {
-                navigate('/create-gig-completed');
+            addGallery(payload, (res) => {
+                navigate('/create-gig-completed', { state: { gigId: res.data.id }});
                 localStorage.removeItem('gigId');
             })
         }
