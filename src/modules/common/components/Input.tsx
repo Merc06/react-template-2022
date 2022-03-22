@@ -12,6 +12,8 @@ interface Props {
   autoFocus?: boolean;
   autoComplete?: string;
   className?: string;
+  onFocus?: () => void;
+  onBlur?: () => void;
 }
 
 const Input = ({
@@ -25,7 +27,9 @@ const Input = ({
   type = 'text',
   autoFocus,
   autoComplete,
-  className
+  className,
+  onFocus,
+  onBlur
 }: Props): JSX.Element => (
   <input
     id={name}
@@ -40,6 +44,8 @@ const Input = ({
     className={`${className} transition text-xs duration-300 ease-in-out w-full px-4 py-2 placeholder:text-gray-400 border border-gray-500 rounded-lg overflow-hidden focus-within:border-accent focus:outline-none bg-none`}
     data-testid={testid}
     autoComplete={autoComplete}
+    onFocus={onFocus}
+    onBlur={onBlur}
   />
 );
 

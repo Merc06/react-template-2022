@@ -34,7 +34,8 @@ const ProfileSetup = () => {
         first_name: res.first_name || "",
         last_name: res.last_name || "",
         photo: res.photo || "",
-        description: res.description || ""
+        description: res.description || "",
+        country: res.country || "",
       })
       setWebsiteState({
         website: res.website || ""

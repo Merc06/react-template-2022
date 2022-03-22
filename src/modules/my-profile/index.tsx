@@ -57,11 +57,13 @@ const MyProfile = () => {
             <div className="flex flex-col space-y-2 mx-auto border-b-2 border-gray-300 w-full pb-5">
                 <div className="flex space-x-2 items-center">
                     <LocationIcon />
-                    <h1 className="text-gray-500 text-xs font-semibold">From ---</h1>
+                    <h1 className="text-gray-500 text-xs font-semibold">From <strong>{profileInfo.country}</strong></h1>
                 </div>
                 <div className="flex space-x-2 items-center">
                     <ProfileIcon />
-                    <h1 className="text-gray-500 text-xs font-semibold">Member Since ---</h1>
+                    <h1 className="text-gray-500 text-xs font-semibold">
+                        Member Since <strong>{new Date(profileInfo.member_since).toLocaleDateString()}</strong>
+                    </h1>
                 </div>
                 <div className="flex space-x-2 items-center">
                     <ClockIcon />
