@@ -16,7 +16,7 @@ const About = lazy(() => import('../../about'));
 const Dashboard = lazy(() => import('../../dashboard'));
 const CreateGig = lazy(() => import ('../../create-gig'));
 
-const MyGigs = lazy(() => import ('../../my-gigs'));
+const MyGigs = lazy(() => import ('../../manage-gig-post'));
 const MyOrders = lazy(() => import ('../../my-orders'));
 const MyProfile = lazy(() => import ('../../my-profile'));
 const AccountSettings = lazy(() => import ('../../account-settings'));
@@ -90,7 +90,7 @@ export const Menubar: Array<RouteProps> = [
 export const ProfileMenuList: Array<RouteProps> = [
     {
         key: 'mygigs',
-        path: '/my-gigs',
+        path: '/manage-gig-posts',
         label: 'My Gigs',
         component: <MyGigs />
     },
