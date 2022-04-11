@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type {
-  ProfileProps,
   CancellationKeys,
 } from '../../../modules/common/types';
 
@@ -8,14 +7,12 @@ interface CommonState {
   isLogin: boolean;
   loadingKeys: Array<string>;
   cancellationKeys: Array<CancellationKeys>;
-  profile: ProfileProps | {};
 }
 
 const initialState: CommonState = {
   isLogin: false,
   loadingKeys: [],
   cancellationKeys: [],
-  profile: {},
 };
 
 export const commonSlice = createSlice({
@@ -33,9 +30,9 @@ export const commonSlice = createSlice({
         (item) => item.key !== action.payload
       );
     },
-    setProfile: (state, action: PayloadAction<ProfileProps | {}>) => {
-      state.profile = action.payload || {};
-    },
+    // setProfile: (state, action: PayloadAction<ProfileProps | {}>) => {
+    //   state.profile = action.payload || {};
+    // },
     addLoadingKey: (state, action: PayloadAction<string>) => {
       state.loadingKeys = [
         ...state.loadingKeys,
@@ -52,7 +49,6 @@ export const {
   resetAuth,
   addCancellationKey,
   removeCancellationKey,
-  setProfile,
   addLoadingKey,
   removeLoadingKey,
 } = commonSlice.actions;

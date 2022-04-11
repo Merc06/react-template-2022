@@ -1,1 +1,0 @@
-export const DELIVERY_TIME = ["2 days", "4 days", "7 days"];
